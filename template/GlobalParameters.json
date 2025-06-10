@@ -1,0 +1,18 @@
+  {
+    "penalty_oversupply_buyer": "number",
+    "penalty_undersupply_farmer": "number",
+    "main_location":
+    {
+      "latitude": "number",
+      "longitude": "number"
+    },
+
+    "fruit":
+    [
+      {
+        "type": "string",
+        "priority": "number"
+      }
+    ]
+  }
+

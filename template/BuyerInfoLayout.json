@@ -1,0 +1,23 @@
+[
+  {
+    "first_name": "string",
+    "last_name": "string",
+    "store_name": "string",
+
+    "location":
+    {
+      "latitude": "number",
+      "longitude": "number"
+    },
+
+    "produce":
+    [
+      {
+        "supply_limit": "number (kg)",
+        "supply_current": "number (kg)"
+      }
+    ]
+
+  }
+]
+

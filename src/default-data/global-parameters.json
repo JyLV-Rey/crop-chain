@@ -1,0 +1,36 @@
+  {
+    "penalty_oversupply_buyer": 100,
+    "penalty_undersupply_farmer": 100,
+    
+    "main_location":
+    {
+      "zoom": 14,
+      "latitude": 14.24679,
+      "longitude": 121.41244
+    },
+
+    "produce":
+    [
+      {
+        "type": "Potato",
+        "priority": 1
+      },
+      {
+        "type": "Mango",
+        "priority": 1
+      },
+      {
+        "type": "Corn",
+        "priority": 1
+      },
+      {
+        "type": "Banana",
+        "priority": 1
+      },
+      {
+        "type": "Rice",
+        "priority": 1
+      }
+    ]
+  }
+
