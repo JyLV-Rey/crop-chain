@@ -1,17 +1,9 @@
-import { useGlobalData } from "../../../default-data/DefaultGlobalData";
-
-
-function ListFarmers() {
-  const { farmers, global } = useGlobalData();
+function FarmerField( {farmer, global }) {
   
   return (
     <>
       <div className="flex flex-row flex-wrap justify-around gap-4 w-auto m-2">
-        {farmers.map((farmer, index) => (
-          <div
-            key={index}
-            className="flex flex-col w-auto p-4 border-neutral-300 border-2 rounded-2xl text-neutral-700 shadow-xl/5 hover:shadow-2xl hover:scale-105 ease-(--my-beizer) duration-200"
-          >
+          <div className="flex flex-col w-auto p-4 border-neutral-300 border-2 rounded-2xl text-neutral-700 shadow-xl/5 hover:shadow-2xl hover:scale-105 ease-(--my-beizer) duration-200">
             <h1 className="text-3xl font-extrabold">
               {farmer.last_name}, {farmer.first_name}
             </h1>
@@ -28,10 +20,9 @@ function ListFarmers() {
               ))}
             </div>
           </div>
-        ))}
       </div>
     </>
   );
 }
 
-export default ListFarmers;
+export default FarmerField;

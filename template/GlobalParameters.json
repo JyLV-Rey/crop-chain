@@ -7,7 +7,7 @@
       "longitude": "number"
     },
 
-    "fruit":
+    "produce":
     [
       {
         "type": "string",

@@ -33,14 +33,14 @@ const DisplayLocation = ({ farmers, buyers }) => {
   return (
     <MapContainer                 // the documentati0on lowkey too boring
       center={[global.main_location.latitude, global.main_location.longitude]}
-      scrollWheelZoom={false}     // disable scroll zoom
+//      scrollWheelZoom={false}     // disable scroll zoom
       doubleClickZoom={false}     // disable double-click zoom
  //     zoomControl={false}         // remove the +/- zoom control
       touchZoom={false}           // disable touch-based zoom
       keyboard={false}            // disable keyboard interaction
       boxZoom={false}             // disable box zoom
       zoom={global.main_location.zoom} 
-      style={{ height: '500px', width: '100%' }}>
+      style={{ height: '700px', width: '100%' }}>
 
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

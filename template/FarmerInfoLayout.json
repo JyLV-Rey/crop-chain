@@ -10,7 +10,7 @@
       "longitude": "number"
     },
 
-    "fruit":
+    "produce":
     [
       {
         "supply": "number (kg)"

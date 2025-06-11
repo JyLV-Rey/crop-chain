@@ -1,0 +1,37 @@
+import NavBar from "../../../features/NavBar";
+import { Link } from "react-router-dom";
+import FarmerField from "./components/FarmerField";
+import BuyerField from "./components/BuyerField";
+import { useGlobalData } from "../../../default-data/DefaultGlobalData";
+
+function AssignmentInitialization() {
+  const { farmers, buyers, global } = useGlobalData();
+
+  return(
+    <>
+      <NavBar/>
+      <div className="flex flex-col border-2 border-neutral-300 bg-neutral-100 shadow-xl/5 m-5 rounded-2xl p-2">
+        <h1 className="text-4xl font-extrabold text-neutral-500 text-center">Edit The Data</h1>
+        <p className="text-xl font-extrabold text-neutral-400 text-center">Select a field to edit their data and supply</p>
+        <div className="flex flex-row justify-around border-2 border-neutral-300 m-2 rounded-2xl p-2">
+          {farmers.map((farmer, index) => (
+            <Link to={`EditFarmer?id=${index}`}>
+              <FarmerField key={index} farmer={farmer} global={global}></FarmerField>
+            </Link>
+          ))}
+
+        </div>
+        <div className="flex flex-row justify-around border-2 border-neutral-300 m-2 rounded-2xl p-2">
+          {buyers.map((buyer, index) => (
+            <Link to={`EditBuyer?id=${index}`}>
+              <BuyerField key={index} buyer={buyer} global={global}></BuyerField>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+}
+
+
+export default AssignmentInitialization;

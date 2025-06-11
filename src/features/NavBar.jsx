@@ -8,7 +8,7 @@ function NavBar() {
       <nav className="flex flex-row justify-around space-x-4 text-xl text-neutral-700 w-full">
         <Link to="/" className={`${HoverClass}`}>Home</Link>
         <Link to="/ViewData" className={`${HoverClass}`}>View Data</Link>
-        <Link to="#" className={`p-2 rounded-lg text-neutral-100 font-extrabold hover:text-4xl duration-200 ease-(--my-beizer) hover:font-extrabold bg-neutral-600 shadow-xl hover:bg-neutral-200 hover:text-neutral-600`}>Assignment</Link>
+        <Link to="/Assignment/Initialization" className={`p-2 rounded-lg text-neutral-100 font-extrabold hover:text-4xl duration-200 ease-(--my-beizer) hover:font-extrabold bg-neutral-600 shadow-xl hover:bg-neutral-200 hover:text-neutral-600`}>Assignment</Link>
         <Link to="#" className={`${HoverClass}`}>Overview</Link>
         <Link to="/AboutUs" className={`${HoverClass}`}>About Us</Link>
       </nav>

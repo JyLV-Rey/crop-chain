@@ -1,16 +1,11 @@
-import { useGlobalData } from "../../../default-data/DefaultGlobalData";
 
-function ListBuyers() {
-  const { buyers, global } = useGlobalData();
+
+function ListBuyers( {buyer, global} ) {
 
   return (
     <>
       <div className="flex flex-row flex-wrap justify-around gap-4 w-auto m-2">
-        {buyers.map((buyer, index) => (
-          <div
-            key={index}
-            className="flex flex-col w-auto p-4 border-neutral-300 border-2 rounded-2xl text-neutral-700 shadow-xl/5 hover:shadow-2xl hover:scale-105 ease-(--my-beizer) duration-200 bg-neutral-100">
-              
+          <div className="flex flex-col w-auto p-4 border-neutral-300 border-2 rounded-2xl text-neutral-700 shadow-xl/5 hover:shadow-2xl hover:scale-105 ease-(--my-beizer) duration-200 bg-neutral-100">
             <h1 className="text-3xl font-extrabold">
               {buyer.last_name}, {buyer.first_name}
             </h1>
@@ -42,7 +37,6 @@ function ListBuyers() {
               ))}
             </div>
           </div>
-        ))}
       </div>
     </>
   );
