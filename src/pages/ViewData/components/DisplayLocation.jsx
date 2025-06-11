@@ -40,7 +40,7 @@ const DisplayLocation = ({ farmers, buyers }) => {
       keyboard={false}            // disable keyboard interaction
       boxZoom={false}             // disable box zoom
       zoom={global.main_location.zoom} 
-      style={{ height: '700px', width: '100%' }}>
+      style={{ height: '700px', width: '100%', zIndex: 1 }}>
 
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

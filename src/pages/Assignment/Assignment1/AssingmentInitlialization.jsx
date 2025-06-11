@@ -10,7 +10,7 @@ function AssignmentInitialization() {
   return(
     <>
       <NavBar/>
-      <div className="flex flex-col border-2 border-neutral-300 bg-neutral-100 shadow-xl/5 m-5 rounded-2xl p-2">
+      <div className="flex flex-col border-2 border-neutral-300 bg-neutral-100 shadow-xl/5 m-5 rounded-2xl p-2 mt-20">
         <h1 className="text-4xl font-extrabold text-neutral-500 text-center">Edit The Data</h1>
         <p className="text-xl font-extrabold text-neutral-400 text-center">Select a field to edit their data and supply</p>
         <div className="flex flex-row justify-around border-2 border-neutral-300 m-2 rounded-2xl p-2">

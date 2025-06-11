@@ -12,7 +12,7 @@ function TechStack() {
 
   return(
     <>
-      <img src="logos/CropChain.png" className='h-50 w-fit self-center' alt="" />
+      <img src="logos/CropChain.png" className='h-50 w-fit self-center mt-20' alt="" />
       <div className="w-auto p-4 text-center">
         <h2 className="text-6xl text-neutral-600 text-shadow-lg/10 font-extrabold">Tech Stack</h2>
         <h3 className="text-lg text-neutral-400 text-shadow-lg/4 font-medium">These are the programs that made this project possible</h3>

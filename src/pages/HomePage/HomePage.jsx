@@ -7,7 +7,7 @@ function HomePage() {
   return (
     <>
       <NavBar />
-      <div className='flex flex-col items-center justify-center'>
+      <div className='flex flex-col items-center justify-center mt-20'>
         <img src="/logos/CropChain.png" className="w-50 h-auto object-cover"alt="" />
         <h1 className="shiny-text font-extrabold text-8xl drop-shadow-xl ">CropChain</h1>
         <p className="font-medium text-xl text-neutral-500">From the Crops to the Cashier, now Faster</p>
