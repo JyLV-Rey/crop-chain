@@ -10,11 +10,11 @@ function ViewData() {
   return(
     <>
       <NavBar></NavBar>
-      <div className="w-auto p-10 shadow-lg mb-10 h-auto rounded-2xl">
+      <div className="w-auto p-2 shadow-lg m-10 h-auto rounded-md">
         <DisplayLocation farmers={farmers} buyers={buyers} />
       </div>
-      <ListFarmers></ListFarmers>
-      <ListBuyers></ListBuyers>
+      <ListFarmers/>
+      <ListBuyers/>
     </>
   );
 }
