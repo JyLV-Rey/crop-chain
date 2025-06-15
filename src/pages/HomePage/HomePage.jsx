@@ -1,6 +1,6 @@
 import NavBar from "../../features/NavBar"
 import { Link } from "react-router-dom"
-import { Users, BarChart, MapPin, CheckCircle, CircleUserRound, Leaf, RefreshCcw, Truck, Handshake, Store, Warehouse, Landmark } from "lucide-react";
+import { Users, BarChart, MapPin, CheckCircle, CircleUserRound, Leaf, RefreshCcw, Truck, ArrowRight, Handshake, Store, Warehouse, Landmark } from "lucide-react";
 
 function HomePage() {
   return (
@@ -92,96 +92,51 @@ function HomePage() {
       <div className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-4xl font-bold text-center text-gray-800 mb-16">How It Works</h2>
-          <div className="grid md:grid-cols-3 gap-12 items-stretch">
-            
-            {/** num 1 */}
-            <div className="text-center flex flex-col justify-between h-full">
-              <div className="bg-green-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8">
+
+            {/* Step 1 */}
+            <div className="bg-green-50 rounded-2xl p-6 shadow-md text-center w-full max-w-sm flex-shrink-0">
+              <div className="bg-green-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Leaf size={36} className="text-green-600" />
               </div>
-              <div className="bg-green-600 text-white w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-4 text-lg font-bold">
-                1
-              </div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">Farmers Post Crops</h3>
+              <h3 className="text-2xl font-bold text-gray-800 mb-2">Farmers Post Crops</h3>
               <p className="text-gray-600 text-lg">
                 Farmers input their available crops, quantities, and location information into the system.
               </p>
             </div>
 
-            {/** num 2 */}
-            <div className="text-center flex flex-col justify-between h-full">
-              <div className="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+            {/* next*/}
+            <div className="hidden md:flex items-center justify-center">
+              <ArrowRight className="w-10 h-10 text-gray-400" />
+            </div>
+
+            {/* Step 2 */}
+            <div className="bg-blue-50 rounded-2xl p-6 shadow-md text-center w-full max-w-sm flex-shrink-0">
+              <div className="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
                 <RefreshCcw size={36} className="text-blue-600" />
               </div>
-              <div className="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-4 text-lg font-bold">
-                2
-              </div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">System Matches to Best Buyer</h3>
+              <h3 className="text-2xl font-bold text-gray-800 mb-2">System Matches to Best Buyer</h3>
               <p className="text-gray-600 text-lg">
-                Our algorithm analyzes supply, demand, and logistics to create optimal farmer-buyer pairings.
+                The algorithm analyzes supply, demand, and logistics to create optimal farmer-buyer pairings.
               </p>
             </div>
 
-            {/** num 3 */}
-            <div className="text-center flex flex-col justify-between h-full">
-              <div className="bg-purple-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+            {/* next*/}
+            <div className="hidden md:flex items-center justify-center">
+              <ArrowRight className="w-10 h-10 text-gray-400" />
+            </div>
+
+            {/* Step 3 */}
+            <div className="bg-purple-50 rounded-2xl p-6 shadow-md text-center w-full max-w-sm flex-shrink-0">
+              <div className="bg-purple-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Truck size={36} className="text-purple-600" />
               </div>
-              <div className="bg-purple-600 text-white w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-4 text-lg font-bold">
-                3
-              </div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">Crops are Delivered Effectively</h3>
+              <h3 className="text-2xl font-bold text-gray-800 mb-2">Crops are Delivered Effectively</h3>
               <p className="text-gray-600 text-lg">
                 Coordinated logistics ensure efficient delivery from farm to market with minimal waste.
               </p>
             </div>
 
-          </div>
-        </div>
-      </div>
-
-      {/* Users Who Benefit */}
-      <div className="py-20 bg-green-50">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center text-gray-800 mb-16">
-            Who Benefits from CropChain
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Farmers */}
-            <div className="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-shadow duration-300">
-              <div className="mb-4 flex justify-center">
-                <CircleUserRound size={32} className="text-green-700" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">Farmers</h3>
-              <p className="text-gray-600">Direct market access and fair pricing for their crops</p>
-            </div>
-
-            {/* Buyers */}
-            <div className="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-shadow duration-300">
-              <div className="mb-4 flex justify-center">
-                <Store size={32} className="text-blue-700" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">Buyers</h3>
-              <p className="text-gray-600">Reliable supply chain and quality produce sourcing</p>
-            </div>
-
-            {/* Logistics Coordinators */}
-            <div className="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-shadow duration-300">
-              <div className="mb-4 flex justify-center">
-                <Truck size={32} className="text-purple-700" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">Logistics Coordinators</h3>
-              <p className="text-gray-600">Optimized routes and efficient delivery planning</p>
-            </div>
-
-            {/* Department of Agriculture */}
-            <div className="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-shadow duration-300">
-              <div className="mb-4 flex justify-center">
-                <Landmark size={32} className="text-yellow-700" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">Department of Agriculture</h3>
-              <p className="text-gray-600">Scalable solution for agricultural market efficiency</p>
-            </div>
           </div>
         </div>
       </div>
