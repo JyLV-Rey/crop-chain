@@ -1,0 +1,37 @@
+[
+  [
+    { "distance": 4.873 },
+    { "distance": 8.378 },
+    { "distance": 3.221 },
+    { "distance": 1.965 },
+    { "distance": 4.346 }
+  ],
+  [
+    { "distance": 8.338 },
+    { "distance": 2.996 },
+    { "distance": 7.931 },
+    { "distance": 10.933 },
+    { "distance": 8.18 }
+  ],
+  [
+    { "distance": 1.338 },
+    { "distance": 6.816 },
+    { "distance": 4.196 },
+    { "distance": 5.537 },
+    { "distance": 2.164 }
+  ],
+  [
+    { "distance": 4.527 },
+    { "distance": 7.744 },
+    { "distance": 1.198 },
+    { "distance": 3.32 },
+    { "distance": 6.208 }
+  ],
+  [
+    { "distance": 2.004 },
+    { "distance": 7.483 },
+    { "distance": 4.862 },
+    { "distance": 6.204 },
+    { "distance": 2.831 }
+  ]
+]

@@ -3,6 +3,7 @@ import Members from "./components/Members";
 import TechStack from "./components/TechStack";
 
 function AboutUs() {
+
   return(
     <>
       <NavBar/>

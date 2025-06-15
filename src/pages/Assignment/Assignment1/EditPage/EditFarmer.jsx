@@ -20,6 +20,7 @@ function EditFarmer() {
 
   const [produce, setProduce] = useState(() => [...farmer.produce]);
 
+  console.log(farmer.location)
 
   function isFormValid() {
   if (!firstName.trim() || !lastName.trim() || !farmName.trim()) return false;

@@ -6,6 +6,7 @@ import ViewData from './pages/ViewData/ViewData.jsx';
 import AssignmentInitialization from './pages/Assignment/Assignment1/AssingmentInitlialization.jsx';
 import EditFarmer from './pages/Assignment/Assignment1/EditPage/EditFarmer.jsx';
 import EditBuyer from './pages/Assignment/Assignment1/EditPage/EditBuyer.jsx';
+import GlobalConfig from './pages/Assignment/GlobalConfig/GlobalConfig.jsx';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/AboutUs" element={<AboutUs />} />
             <Route path="/ViewData" element={<ViewData />}></Route>
             <Route path="/Assignment/Initialization" element={<AssignmentInitialization />}></Route>
+            <Route path="/Assignment/Initialization/EditGlobal" element={<GlobalConfig />}></Route>
             <Route path="/Assignment/Initialization/EditFarmer" element={<EditFarmer />}></Route>
             <Route path="/Assignment/Initialization/EditBuyer" element={<EditBuyer />}></Route>
           </Routes>

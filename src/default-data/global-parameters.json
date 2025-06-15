@@ -1,7 +1,8 @@
   {
+    "penalty_distance": 100,
     "penalty_oversupply_buyer": 100,
     "penalty_undersupply_farmer": 100,
-    
+
     "main_location":
     {
       "zoom": 13,
@@ -12,7 +13,7 @@
     "produce":
     [
       {
-        "type": "Potato",
+        "type": "Cauliflower",
         "priority": 1
       },
       {
