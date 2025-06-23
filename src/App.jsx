@@ -8,6 +8,8 @@ import AssignmentInitialization from './pages/Assignment/Assignment1/AssingmentI
 import EditFarmer from './pages/Assignment/Assignment1/EditPage/EditFarmer.jsx';
 import EditBuyer from './pages/Assignment/Assignment1/EditPage/EditBuyer.jsx';
 import GlobalConfig from './pages/Assignment/GlobalConfig/GlobalConfig.jsx';
+import CreateBuyer from './pages/Assignment/Assignment1/CreatePage/CreateBuyer.jsx';
+import CreateFarmer from './pages/Assignment/Assignment1/CreatePage/CreateFarmer.jsx';
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
             <Route path="/Assignment/Initialization/EditGlobal" element={<GlobalConfig />}></Route>
             <Route path="/Assignment/Initialization/EditFarmer" element={<EditFarmer />}></Route>
             <Route path="/Assignment/Initialization/EditBuyer" element={<EditBuyer />}></Route>
+            <Route path="/Assignment/Initialization/CreateBuyer" element={<CreateBuyer />}></Route>
+            <Route path="/Assignment/Initialization/CreateFarmer" element={<CreateFarmer />}></Route>
           </Routes>
         </div>
     </>

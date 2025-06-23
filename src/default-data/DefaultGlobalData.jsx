@@ -10,7 +10,7 @@ const LOCAL_KEYS = {
   farmers: 'app_farmers',
   buyers: 'app_buyers',
   global: 'app_global',
-  distance: 'app_distance',
+  distance: 'app_distance'
 };
 
 const loadFromLocalStorage = (key, defaultValue) => {
@@ -55,7 +55,7 @@ export const GlobalProvider = ({ children }) => {
   }, [global]);
 
   useEffect(() => {
-    localStorage.setItem(LOCAL_KEYS.global, JSON.stringify(distance));
+    localStorage.setItem(LOCAL_KEYS.distance, JSON.stringify(distance));
   }, [distance]);
 
   return (

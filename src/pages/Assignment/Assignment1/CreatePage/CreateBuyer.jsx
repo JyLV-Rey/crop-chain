@@ -1,26 +1,29 @@
-import { Navigate, useNavigate, useSearchParams } from "react-router-dom";
-import NavBar from "../../../../features/NavBar";
+import { useNavigate } from "react-router-dom";
 import TextField from "../../../../features/TextField";
 import ProductNumberField from "../../../../features/ProduceNumberField";
 import { useGlobalData } from "../../../../default-data/DefaultGlobalData";
 import { useState } from "react";
 import LocationSelector from "../components/LocationSelector";
 
-function EditBuyer() {
-  const [searchParams] = useSearchParams();
-  const id = searchParams.get('id');
+function CreateBuyer() {
   const navigate = useNavigate();
 
   const { buyers, global, setBuyers } = useGlobalData();
-  const buyer = buyers[Number(id)];
 
-  const [firstName, setFirstName] = useState(buyer.first_name);
-  const [lastName, setLastName] = useState(buyer.last_name);
-  const [storeName, setStoreName] = useState(buyer.store_name);
-  const [buyerLocation, setBuyerLocation] = useState(buyer.location);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [storeName, setStoreName] = useState('');
+  const [buyerLocation, setBuyerLocation] = useState([global.main_location.latitude, global.main_location.longitude]);
 
-  const [produce, setProduce] = useState(() => [...buyer.produce]);
+  const [produce, setProduce] = useState(() => {
+    const produce = global.produce.map(() => ({
+      supply_current: Math.floor((Math.random() * 400 - 100) + 100),
+      supply_limit: Math.floor((Math.random() * 600 - 400) + 400)
 
+    }));
+
+    return produce;
+  });
 
   function isFormValid() {
   if (!firstName.trim() || !lastName.trim() || !storeName.trim()) return false;
@@ -60,9 +63,8 @@ function EditBuyer() {
     }
   }
 
-  function updateBuyers() {
+  function createBuyer() {
     const updatedBuyer = {
-      ...buyer,
       first_name: firstName,
       last_name: lastName,
       store_name: storeName,
@@ -70,22 +72,14 @@ function EditBuyer() {
       produce: produce
     };
 
-    setBuyers(prevBuyers => {
-      const updatedBuyers = [...prevBuyers];
-      updatedBuyers[Number(id)] = updatedBuyer;
-      navigate(`/Assignment/Initialization`);
-      return updatedBuyers;
-    });
+    const newBuyers = [...buyers, updatedBuyer];
+
+
+    setBuyers(newBuyers);
+
+    navigate(`/Assignment/Initialization`);
   }
 
-  function deleteBuyer() {
-    const confirmed = window.confirm('Are you sure you want to delete this buyer?');
-    if (confirmed) {
-      const updatedBuyers = buyers.filter((buyer, index) => index !== Number(id));
-      setBuyers(updatedBuyers);
-      navigate(`/Assignment/Initialization`);
-    }
-  }
 
   function cancelButton() {
     navigate(`/Assignment/Initialization`);
@@ -94,7 +88,7 @@ function EditBuyer() {
   return(
     <>
       <h1 className="mt-5 text-4xl font-extrabold text-neutral-500 text-center">
-          Buyer {Number(id) + 1}
+          Create New Buyer
       </h1>
       <div className="flex flex-row justify-center p-5 border-2 border-neutral-300 w-fit self-center mt-5 rounded-2xl shadow-2xl/10">
         <div className='flex flex-col w-auto m-5 p-5 border-2 h-fit border-neutral-300 rounded-2xl shadow-xl/3'>
@@ -123,17 +117,16 @@ function EditBuyer() {
         </div>
 
         <div className="mt-5 rounded-lg bg-neutral-100 flex flex-col h-250 w-fit p-2 shadow-xl/5 hover:shadow-2xl hover:scale-105 ease-(--my-beizer) duration-200">
-          <LocationSelector oldLocation={buyer.location} currentLocation={buyerLocation} setLocation={updateLocation} className="flex flex-col h-300 w-200"/>
-          <p className='font-semibold text-center text-neutral-500 mt-2'>Current Location <br /> {buyerLocation.latitude.toFixed(4)}, {buyerLocation.longitude.toFixed(4)}</p>
+          <LocationSelector oldLocation={global.main_location} currentLocation={global.main_location} setLocation={updateLocation} className="flex flex-col h-300 w-200"/>
+          
         </div>
       </div>
       <div className='flex flex-row justify-center w-auto m-5 p-2 gap-10'>
-        <button onClick={deleteBuyer} className='bg-red-400 p-2 text-3xl font-extrabold rounded-lg text-neutral-100 hover:scale-120 hover:bg-amber-500 hover:border-2 hover:border-amber-800 hover:text-amber-800 ease-(--my-beizer) duration-200 shadow-xl hover:shadow-2xl'>Delete Buyer</button>
         <button onClick={cancelButton} className='bg-red-400 p-2 text-3xl font-extrabold rounded-lg text-neutral-100 hover:scale-120 hover:bg-amber-500 hover:border-2 hover:border-amber-800 hover:text-amber-800 ease-(--my-beizer) duration-200 shadow-xl hover:shadow-2xl'>Cancel</button>
-        <button onClick={updateBuyers} disabled={!isFormValid()} className={`p-2 text-3xl font-extrabold rounded-lg hover:scale-120 text-neutral-100 disabled:bg-neutral-400 disabled:border-2 disabled:border-neutral-500 disabled:text-neutral-100  hover:bg-emerald-200 hover:border-2 bg-emerald-400 hover:border-emerald-400 hover:text-emerald-400 ease-(--my-beizer) duration-200 shadow-xl hover:shadow-2xl`}>Save</button>
+        <button onClick={createBuyer} disabled={!isFormValid()} className={`p-2 text-3xl font-extrabold rounded-lg hover:scale-120 text-neutral-100 disabled:bg-neutral-400 disabled:border-2 disabled:border-neutral-500 disabled:text-neutral-100  hover:bg-emerald-200 hover:border-2 bg-emerald-400 hover:border-emerald-400 hover:text-emerald-400 ease-(--my-beizer) duration-200 shadow-xl hover:shadow-2xl`}>Save</button>
       </div>
     </>
   );
 }
 
-export default EditBuyer;
+export default CreateBuyer;

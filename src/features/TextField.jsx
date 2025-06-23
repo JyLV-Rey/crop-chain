@@ -1,9 +1,10 @@
 function TextField({ data, header, setFunction, isRequired = false }) {
-  const isInvalid = isRequired && !data?.trim();
+  const isInvalid = isRequired && !`${data}`.trim();
+
 
   return (
     <div className="flex flex-col mb-3">
-      <h1 className="text-xl font-bold text-neutral-500">{header}</h1>
+      <h1 className="text-xl font-bold text-neutral-600">{header}</h1>
       <input
         type="text"
         value={data}
