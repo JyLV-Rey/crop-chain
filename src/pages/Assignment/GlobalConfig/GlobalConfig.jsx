@@ -197,7 +197,7 @@ function GlobalConfig() {
         {/* Main Location */}
         <div className="flex flex-col w-auto p-5 border-2 justify-center items-center border-neutral-300 rounded-2xl">
           <h1 className='text-3xl font-extrabold text-neutral-700'>Set Default Map View Location</h1>
-          <h2 className='text-sm font-medium text-neutral-700'>The location will serve as the default location that can be seen only on the view data page.</h2>
+          <h2 className='text-sm font-medium text-neutral-700 text-center'>The location will serve as the default location that can be seen only on the view data page. <br /> This will also serve as the default location of the markers when creating and initializing a buyer or a farmer</h2>
 
           <LocationSelector
             oldLocation={global.main_location}

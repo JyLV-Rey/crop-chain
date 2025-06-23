@@ -13,7 +13,7 @@ function CreateBuyer() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [storeName, setStoreName] = useState('');
-  const [buyerLocation, setBuyerLocation] = useState([global.main_location.latitude, global.main_location.longitude]);
+  const [buyerLocation, setBuyerLocation] = useState(global.main_location);
 
   const [produce, setProduce] = useState(() => {
     const produce = global.produce.map(() => ({

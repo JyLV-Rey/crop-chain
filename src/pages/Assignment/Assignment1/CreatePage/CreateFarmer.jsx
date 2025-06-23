@@ -13,7 +13,7 @@ function EditFarmer() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [farmName, setFarmName] = useState('');
-  const [farmerLocation, setFarmerLocation] = useState(global.location);
+  const [farmerLocation, setFarmerLocation] = useState(global.main_location);
 
   const [produce, setProduce] = useState(() => {
     const produce = global.produce.map(() => ({

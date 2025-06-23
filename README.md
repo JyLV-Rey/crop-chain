@@ -8,6 +8,11 @@ This is the repository for an experimental project for my school, where we assig
 - React
 - Tailwind
 - Javascript
-- Anger
+- Node
+- Express
+- Docker
+- Valhalla
+- ChartJS
+- KaTeX
 
 
