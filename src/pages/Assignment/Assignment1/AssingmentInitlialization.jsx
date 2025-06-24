@@ -6,11 +6,10 @@ import { useGlobalData } from "../../../default-data/DefaultGlobalData";
 import { useEffect, useState } from "react";
 
 function AssignmentInitialization() {
-  const { farmers, buyers, global, distance } = useGlobalData();
+  const { farmers, buyers, global } = useGlobalData();
   const [statusMsg, setStatusMsg] = useState('');
   const [assignmentStatus, setAssignmentStatus] = useState('');
 
-  console.log(distance);
 
   useEffect(() => {
     disableAssignment();

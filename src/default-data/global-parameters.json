@@ -1,7 +1,7 @@
   {
-    "penalty_distance": 100,
-    "penalty_oversupply_buyer": 100,
-    "penalty_undersupply_farmer": 100,
+    "penalty_distance": 1,
+    "penalty_oversupply_buyer": 1,
+    "penalty_undersupply_farmer": 1,
 
     "main_location":
     {

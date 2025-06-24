@@ -12,13 +12,13 @@ function NavBar() {
 
   const getNavLinkClass = (path) => {
     const baseClass =
-      "relative px-6 py-3 rounded-full text-lg font-semibold transition-all duration-300 ease-in-out transform"
+      "p-3 rounded-xl text-lg font-semibold transition-all duration-300 ease-(--my-beizer) transform"
 
     if (isActive(path)) {
-      return `${baseClass} bg-green-100 text-green-700 shadow-sm scale-105`
+      return `${baseClass} bg-emerald-500 text-emerald-50 font-extrabold shadow-lg/15 scale-105`
     }
 
-    return `${baseClass} text-gray-600 hover:text-green-600 hover:bg-green-50 hover:scale-110 hover:font-bold`
+    return `${baseClass} text-gray-600 hover:bg-emerald-400 hover:scale-105 hover:font-extrabold hover:text-emerald-50`
   }
 
   return (
@@ -32,7 +32,7 @@ function NavBar() {
           </Link>
 
           {/* Navigation Links */}
-          <nav className="flex items-center space-x-2">
+          <nav className="flex flex-row gap-10 items-center">
             <Link to="/" className={getNavLinkClass("/")}>
               Home
             </Link>

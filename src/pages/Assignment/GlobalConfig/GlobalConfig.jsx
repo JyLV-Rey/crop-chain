@@ -11,7 +11,7 @@ function GlobalConfig() {
   const [penaltyDistance, setPenaltyDistance] = useState(global.penalty_distance);
   const [penaltyBuyerOversupply, setPenaltyBuyerOversupply] = useState(global.penalty_oversupply_buyer);
   const [penaltyFarmerUndersupply, setPenaltyFarmerUndersupply] = useState(global.penalty_undersupply_farmer);
-  const [mainLocation, setMainLocation] = useState([global.main_location.latitude, global.main_location.longitude]);
+  const [mainLocation, setMainLocation] = useState(global.main_location);
   const [newProduce, setNewProduce] = useState(global.produce);
 
   const zoom = global.main_location.zoom;
@@ -137,7 +137,7 @@ function GlobalConfig() {
 
   return(
     <>
-      <div className='flex flex-col justify-center items-center mt-10 w-auto'>
+      <div className='flex flex-col justify-center items-center mt-5 ml-10 mr-10 w-auto'>
           <h1 className='text-3xl font-extrabold text-neutral-700'>Edit Global Parameters</h1>
           <h2 className='text-lg font-medium text-neutral-700'>These are the parameters that will help further customize the assignment. This ensures that it can be flexible enough to tweak the algorithm to prioritize the factors being edited below</h2>
       </div>
