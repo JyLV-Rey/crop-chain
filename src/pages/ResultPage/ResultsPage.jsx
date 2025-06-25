@@ -1,7 +1,28 @@
+import { useEffect, useState } from "react";
 import NavBar from "../../features/NavBar";
-import DistanceMatrix from "./DistanceMatrix/DistanceMatrix";
+import getDistanceMatrix from "../../features/Distance";
+import DisplayDistanceMatrix from "./DistanceMatrix/DisplayDistanceMatrix";
+import { useGlobalData } from "../../default-data/DefaultGlobalData";
+import costMatrix from "./CostMatrix/CostMatrix";
 
 function ResultsPage() {
+  const { farmers, buyers, global } = useGlobalData();
+
+  const [distanceMatrix , setDistanceMatrix] = useState([]);
+
+  useEffect(() => {
+    async function fetchDistanceMatrix() {
+      const matrix = await getDistanceMatrix(buyers, farmers);
+      setDistanceMatrix(matrix);
+    }
+    fetchDistanceMatrix();
+  }, []);
+
+  if(distanceMatrix.length !== 0) {
+    console.log(costMatrix(farmers, buyers, distanceMatrix, global));
+  }
+
+//  console.log(distanceMatrix);
   return(
     <>
       <div>
@@ -12,7 +33,7 @@ function ResultsPage() {
             <h1 className="text-3xl font-extrabold">Distance Matrix</h1>
             <p className="text-lg">These are the distances between each farmer and buyer. This is calclulated by the Valhalla Routing System. To view the route to the location, you can simply click on the distance.</p>
             <div className="self-center mt-2">
-              <DistanceMatrix />
+              <DisplayDistanceMatrix distanceMatrix={distanceMatrix} buyers={buyers} farmers={farmers} />
             </div>
           </div>
 
