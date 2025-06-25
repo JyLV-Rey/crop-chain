@@ -56,14 +56,13 @@ function ResultsPage() {
               </div>
               <div className="mt-2 flex flex-col w-fit text-lg self-center text-center">
                 <p className="text-lg font-extrabold mb-5">Formula:</p>
-                <InlineMath math={`C_{bfp} = \\frac{d_{bf}^\\beta \\cdot \\left(1 + \\left( \\frac{b_{bp}}{b_p^{\\text{max}}} \\right)^\\delta \\right)}{(s_{bp} + 1)^\\alpha}`} />
+                <InlineMath math={`C_{bfp} = P_f \\cdot \\frac{d_{bf}^\\beta \\cdot \\left(1 + \\left( \\frac{b_{bp}}{b_p^{\\text{max}}} \\right)^\\delta \\right)}{(s_{bp} + 1)^\\alpha}`} />
               </div>
             </div>
 
 
             <div className="mt-5 self-center">
               <DisplayCostMatrix costMatrix={finalCostMatrix} buyers={buyers} farmers={farmers} global={global} distanceMatrix={distanceMatrix} />
-
             </div>
           </div>
 
