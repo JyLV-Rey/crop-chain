@@ -11,7 +11,7 @@ function ResultsPage() {
           <div className="flex flex-col text-neutral-700">
             <h1 className="text-3xl font-extrabold">Distance Matrix</h1>
             <p className="text-lg">These are the distances between each farmer and buyer. This is calclulated by the Valhalla Routing System. To view the route to the location, you can simply click on the distance.</p>
-            <div className="self-center">
+            <div className="self-center mt-2">
               <DistanceMatrix />
             </div>
           </div>
