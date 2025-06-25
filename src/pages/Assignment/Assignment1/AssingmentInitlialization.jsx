@@ -1,5 +1,5 @@
 import NavBar from "../../../features/NavBar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import FarmerField from "./components/FarmerField";
 import BuyerField from "./components/BuyerField";
 import { useGlobalData } from "../../../default-data/DefaultGlobalData";
@@ -9,6 +9,7 @@ function AssignmentInitialization() {
   const { farmers, buyers, global } = useGlobalData();
   const [statusMsg, setStatusMsg] = useState('');
   const [assignmentStatus, setAssignmentStatus] = useState('');
+  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -71,7 +72,7 @@ function AssignmentInitialization() {
           </div>
         </div>
           <div className="flex flex-col justify-center m-5">
-            <button disabled={assignmentStatus} className="disabled:pointer-none disabled:bg-neutral-500 disabled:hover:border-red-800 disabled:hover:bg-red-400  disabled:hover:text-red-50   hover:text-emerald-500 hover:font-extrabold hover:border-2 hover:border-emerald-400 hover:bg-emerald-200 p-2 rounded-xl hover:scale-105 text-emerald-50 text-xl border-emerald-50 bg-emerald-500 duration-200 ease-(--my-beizer)">Create Assignment</button>
+            <button disabled={assignmentStatus} onClick={() => navigate('/Assignment/Metric/Result')} className="disabled:pointer-none disabled:bg-neutral-500 disabled:hover:border-red-800 disabled:hover:bg-red-400  disabled:hover:text-red-50   hover:text-emerald-500 hover:font-extrabold hover:border-2 hover:border-emerald-400 hover:bg-emerald-200 p-2 rounded-xl hover:scale-105 text-emerald-50 text-xl border-emerald-50 bg-emerald-500 duration-200 ease-(--my-beizer)">Create Assignment</button>
             <span className="text-red-500 text-sm">{statusMsg ? statusMsg : ''}</span>
           </div>
       </div>

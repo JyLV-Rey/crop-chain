@@ -1,0 +1,37 @@
+  {
+    "penalty_distance": 1,
+    "penalty_oversupply_buyer": 1,
+    "penalty_undersupply_farmer": 1,
+
+    "main_location":
+    {
+      "zoom": 13,
+      "latitude": 14.24679,
+      "longitude": 121.41244
+    },
+
+    "produce":
+    [
+      {
+        "type": "Cauliflower",
+        "priority": 1
+      },
+      {
+        "type": "Mango",
+        "priority": 1
+      },
+      {
+        "type": "Corn",
+        "priority": 1
+      },
+      {
+        "type": "Banana",
+        "priority": 1
+      },
+      {
+        "type": "Rice",
+        "priority": 1
+      }
+    ]
+  }
+

@@ -102,6 +102,7 @@ function GlobalConfig() {
     setBuyerProduce(tempBuyerProduce);
   }
 
+  // note to self dont map too much i swear to god
   function handleSave() {
     if (!window.confirm('Are you sure you want to save these changes?')) return;
 
@@ -119,17 +120,24 @@ function GlobalConfig() {
     };
     setGlobal(tempGlobal);
 
-    // note to self use spread functions omg
+    // thjso took me forever omg
     const tempFarmers = farmers.map((farmer) => ({
       ...farmer,
-      produce: farmerProduce.map((fp) => ({ ...fp }))
+      produce: farmer.produce.map((fp, index) => ({
+        ...fp,
+        type: newProduce[index]?.type || fp.type
+      }))
     }));
-    setFarmers(tempFarmers);
 
     const tempBuyers = buyers.map((buyer) => ({
       ...buyer,
-      produce: buyerProduce.map((bp) => ({ ...bp })) // same structure for all farmers
+      produce: buyer.produce.map((bp, index) => ({
+        ...bp,
+        type: newProduce[index]?.type || bp.type
+      }))
     }));
+
+    setFarmers(tempFarmers);
     setBuyers(tempBuyers);
 
     navigate(-1);
