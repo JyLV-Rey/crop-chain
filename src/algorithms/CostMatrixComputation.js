@@ -21,8 +21,8 @@ function costMatrix(farmers, buyers, distanceMatrix, global) {
 
            const farmer_supply = produce.supply;
 
-           const buyer_cost = 1 + Math.pow((buyer_supply_current / buyer_supply_max), penalty_oversupply);
-           const farmer_cost = 1 + Math.pow(farmer_supply, penalty_undersupply);
+           const buyer_cost = 1 + (Math.pow((buyer_supply_current / buyer_supply_max), penalty_oversupply));
+           const farmer_cost = 1 + (Math.pow(farmer_supply, penalty_undersupply));
 
            const total_cost = (distance_cost * buyer_cost) / farmer_cost;
 

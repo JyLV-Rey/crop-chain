@@ -10,7 +10,7 @@ function DisplayCostMatrix( {costMatrix, buyers, farmers, global, distanceMatrix
   }, [displayIndex]);
   return(
     <>
-      <div className="flex flex-row w-fit gap-2 justify-between p-5 rounded-lg shadow-2xl">
+      <div className="flex flex-row w-fit gap-10 justify-between p-5 rounded-lg shadow-2xl">
         <div className="flex flex-col text-xs h-full gap-2">
           <div className={`flex flex-row w-full justify-between`}>
             <div className="rounded-md shadow-lg bg-amber-100 text-amber-800 font-extrabold w-40   text-bold p-2 text-center">
@@ -38,7 +38,7 @@ function DisplayCostMatrix( {costMatrix, buyers, farmers, global, distanceMatrix
                 </div>
                 {
                   row.map((distance, index) => (
-                    <button key={index} onClick={() => {setDisplayIndex({buyer_index: rowIndex, farmer_index: index})}} className="hover:scale-105 duration-200 ease-(--my-beizer) hover:bg-amber-100 hover:text-amber-700 shadow-lg font-bold cursor-pointer rounded-md w-25 text-bold p-2 text-center">
+                    <button key={index} onClick={() => {setDisplayIndex({buyer_index: rowIndex, farmer_index: index})}} className="hover:scale-120 duration-200 ease-(--my-beizer) hover:bg-amber-100 hover:text-amber-700 shadow-lg font-bold cursor-pointer rounded-md w-25 text-bold p-2 text-center">
                       <p>
                         {distance.toFixed(2)}
                       </p>
@@ -51,22 +51,21 @@ function DisplayCostMatrix( {costMatrix, buyers, farmers, global, distanceMatrix
           {
             displayIndex.buyer_index !== undefined && displayIndex.farmer_index !== undefined &&
             <>
-              <p className="text-sm font-extrabold mt-5 text-neutral-700">View Computation</p>
+              <p className="text-sm font-extrabold mt-5 text-neutral-700">View Computation (f)</p>
               <div className="flex flex-row justify-between gap-2 items-center text-neutral-600 font-semibold">
-                <button onClick={() => {setSelectedSolution(-1)}} className="bg-neutral-100 flex-grow shadow-lg p-2 hover:scale-105 duration-200 ease-(--my-beizer) hover:bg-emerald-100 hover:text-emerald-700 font-bold hover:font-extrabold">Total Computation</button>
+                <button onClick={() => {setSelectedSolution(-1)}} className="bg-neutral-100 flex-grow shadow-lg p-2 hover:scale-105 duration-200 ease-(--my-beizer) hover:bg-emerald-100 hover:text-emerald-700 font-bold hover:font-extrabold cursor-pointer">Total Computation</button>
                 {
                   global.produce.map((produce, index) => (
-                      <button key={index} onClick={() => {setSelectedSolution(index)}} className="bg-neutral-100 flex-grow shadow-lg p-2 hover:scale-105 duration-200 ease-(--my-beizer) hover:bg-blue-100 hover:text-blue-700 hover:text-bold">{produce.type}</button>
+                      <button key={index} onClick={() => {setSelectedSolution(index)}} className="bg-neutral-100 flex-grow shadow-lg p-2 hover:scale-105 duration-200 ease-(--my-beizer) cursor-pointer hover:bg-blue-100 hover:text-blue-700 hover:text-bold">{produce.type}</button>
                   ))
                 }
-
               </div>
             </>
           }
         </div>
         {
           displayIndex.buyer_index !== undefined && displayIndex.farmer_index !== undefined &&
-            <DisplaySolution farmerIndex={displayIndex.farmer_index} buyerIndex={displayIndex.buyer_index} solutionIndex={selectedSolution} distanceMatrix={distanceMatrix} />
+            <DisplaySolution costMatrix={costMatrix} farmerIndex={displayIndex.farmer_index} buyerIndex={displayIndex.buyer_index} solutionIndex={selectedSolution} distanceMatrix={distanceMatrix} />
         }
       </div>
     </>
