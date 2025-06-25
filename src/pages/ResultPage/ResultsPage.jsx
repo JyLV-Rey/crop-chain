@@ -4,25 +4,28 @@ import getDistanceMatrix from "../../features/Distance";
 import DisplayDistanceMatrix from "./DistanceMatrix/DisplayDistanceMatrix";
 import { useGlobalData } from "../../default-data/DefaultGlobalData";
 import costMatrix from "./CostMatrix/CostMatrix";
+import DisplayCostMatrix from "./CostMatrix/DisplayCostMatrix";
 
 function ResultsPage() {
   const { farmers, buyers, global } = useGlobalData();
 
   const [distanceMatrix , setDistanceMatrix] = useState([]);
+  const [finalCostMatrix, setFinalCostMatrix] = useState([]);
 
   useEffect(() => {
-    async function fetchDistanceMatrix() {
+    async function fetchMatrixes() {
       const matrix = await getDistanceMatrix(buyers, farmers);
+      
       setDistanceMatrix(matrix);
+      ;
     }
-    fetchDistanceMatrix();
+    fetchMatrixes();
   }, []);
 
-  if(distanceMatrix.length !== 0) {
-    console.log(costMatrix(farmers, buyers, distanceMatrix, global));
-  }
+  useEffect (() => {
+    if (distanceMatrix.length > 0) setFinalCostMatrix(costMatrix(farmers, buyers, distanceMatrix, global));
+  }, [distanceMatrix]);
 
-//  console.log(distanceMatrix);
   return(
     <>
       <div>
@@ -41,6 +44,8 @@ function ResultsPage() {
             <h1 className="text-3xl font-extrabold">Cost Matrix</h1>
             <p className="text-lg">These are the costs between each farmer and buyer assigned by our heuristic function. Tap the cost to view the solution and the formula used to calculate the cost.</p>
             <div className="self-center">
+              <DisplayCostMatrix costMatrix={finalCostMatrix} buyers={buyers} farmers={farmers} global={global} distanceMatrix={distanceMatrix} />
+
             </div>
           </div>
 
