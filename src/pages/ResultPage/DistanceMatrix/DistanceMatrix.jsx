@@ -19,9 +19,7 @@ function DistanceMatrix() {
   console.log(distanceMatrix);
 
   return (
-    <div className="flex flex-col mt-30 justify-between items-center">
       <DisplayDistanceMatrix distanceMatrix={distanceMatrix} buyers={buyers} farmers={farmers} />
-    </div>
   );
 }
 
