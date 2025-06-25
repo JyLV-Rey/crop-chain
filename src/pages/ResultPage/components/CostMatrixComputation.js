@@ -3,8 +3,9 @@ export default function CostMatrixComputation({
   supplies,      // 1D array: supplies[i]
   buyerStocks,   // 1D array: buyerStocks[j]
   bMax,          // scalar: max target stock
-  alpha,         // scalar: exponent of supply of fruit
-  delta          // scalar: oversupply penalty
+  alpha,         // scalar: supply exponent
+  delta,         // scalar: oversupply penalty
+  beta           // scalar: distance exponent (NEW)
 }) {
   const costMatrix = [];
 
@@ -15,10 +16,11 @@ export default function CostMatrixComputation({
       const s_if = supplies[i];
       const b_jf = buyerStocks[j];
 
-      // Formula:
-      const numerator = d_ij * (1 + delta * (b_jf / bMax));
+      const distanceComponent = Math.pow(d_ij, beta);
+      const oversupplyPenalty = 1 + delta * (b_jf / bMax);
       const denominator = Math.pow(s_if, alpha);
-      const cost = numerator / denominator;
+
+      const cost = (distanceComponent * oversupplyPenalty) / denominator;
 
       row.push(parseFloat(cost.toFixed(2)));
     }

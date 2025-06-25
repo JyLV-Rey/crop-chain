@@ -11,6 +11,7 @@ const buyerStocks = [50, 30, 20];   // buyer j
 const bMax = 100;
 const alpha = 1;
 const delta = 0.5;
+const beta = 1.5;
 
 const matrix = CostMatrixComputation({
   distances,
@@ -18,7 +19,8 @@ const matrix = CostMatrixComputation({
   buyerStocks,
   bMax,
   alpha,
-  delta
+  delta,
+  beta
 });
 
 console.table(matrix);
