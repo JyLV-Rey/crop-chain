@@ -65,10 +65,8 @@ function DisplayCostMatrix( {costMatrix, buyers, farmers, global, distanceMatrix
           }
         </div>
         {
-          displayIndex.buyer_index !== undefined && displayIndex.farmer_index !== undefined && selectedSolution &&
-          <div className="flex flex-col">
+          displayIndex.buyer_index !== undefined && displayIndex.farmer_index !== undefined &&
             <DisplaySolution farmerIndex={displayIndex.farmer_index} buyerIndex={displayIndex.buyer_index} solutionIndex={selectedSolution} distanceMatrix={distanceMatrix} />
-          </div>
         }
       </div>
     </>
