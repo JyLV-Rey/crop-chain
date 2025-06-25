@@ -27,7 +27,7 @@ function App() {
             <Route path="/Assignment/Initialization/EditBuyer" element={<EditBuyer />}></Route>
             <Route path="/Assignment/Initialization/CreateBuyer" element={<CreateBuyer />}></Route>
             <Route path="/Assignment/Initialization/CreateFarmer" element={<CreateFarmer />}></Route>
-            <Route path="/Assignment/Metric/Result/" element={<ResultsPage />}></Route>
+            <Route path="/results" element={<ResultsPage />} />
           </Routes>
         </div>
     </>

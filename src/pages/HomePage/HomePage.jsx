@@ -1,6 +1,7 @@
 import NavBar from "../../features/NavBar"
 import { Link } from "react-router-dom"
 import { Users, BarChart, MapPin, CheckCircle, CircleUserRound, Leaf, RefreshCcw, Truck, ArrowRight, Handshake, Store, Warehouse, Landmark } from "lucide-react";
+import FarmerRadarChart from "../ResultPage/components/RadarChart"; // <-- Add this import
 
 function HomePage() {
   return (
@@ -18,6 +19,11 @@ function HomePage() {
             A prototype platform that bridges the gap between small-scale farmers and local markets through optimized
             crop-to-market matching.
           </p>
+
+          {/* Insert the FarmerRadarChart here */}
+          <div className="my-12 flex justify-center">
+            <FarmerRadarChart />
+          </div>
 
           <div className="flex gap-6 justify-center flex-wrap">
             <Link

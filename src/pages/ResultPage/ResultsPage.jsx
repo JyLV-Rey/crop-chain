@@ -1,75 +1,57 @@
-import { useEffect, useState } from "react";
-import NavBar from "../../features/NavBar";
-import getDistanceMatrix from "../../features/Distance";
-import DisplayDistanceMatrix from "./DistanceMatrix/DisplayDistanceMatrix";
-import { useGlobalData } from "../../default-data/DefaultGlobalData";
-import costMatrix from "../../algorithms/CostMatrixComputation";
-import DisplayCostMatrix from "./CostMatrix/DisplayCostMatrix";
-import { BlockMath, InlineMath } from "react-katex";
+import FarmerRadarChart from './components/RadarChart';
+import HeatmapChart from './components/Heatmap';
+import CropBubbleChart from './components/Bubble';
 
 function ResultsPage() {
-  const { farmers, buyers, global } = useGlobalData();
-
-  const [distanceMatrix , setDistanceMatrix] = useState([]);
-  const [finalCostMatrix, setFinalCostMatrix] = useState([]);
-
-  useEffect(() => {
-    async function fetchMatrixes() {
-      const matrix = await getDistanceMatrix(buyers, farmers);
-
-      setDistanceMatrix(matrix);
-      ;
-    }
-    fetchMatrixes();
-  }, []);
-
-  useEffect (() => {
-    if (distanceMatrix.length > 0) setFinalCostMatrix(costMatrix(farmers, buyers, distanceMatrix, global));
-  }, [distanceMatrix]);
-
-  return(
-    <>
-      <div>
-        <NavBar />
-        <div className="flex flex-col gap-10 mt-10 p-10">
-
-          <div className="flex flex-col text-neutral-700">
-            <h1 className="text-3xl font-extrabold">Distance Matrix</h1>
-            <p className="text-lg">These are the distances between each farmer and buyer. This is calclulated by the Valhalla Routing System. To view the route to the location, you can simply click on the distance.</p>
-            <div className="self-center mt-2">
-              <DisplayDistanceMatrix distanceMatrix={distanceMatrix} buyers={buyers} farmers={farmers} />
-            </div>
-          </div>
-
-          <div className="flex flex-col text-neutral-800">
-
-            <h1 className="text-3xl font-extrabold">Cost Matrix</h1>
-            <p className="text-lg">These are the costs between each farmer and buyer assigned by our heuristic function. Tap the cost to view the solution and the formula used to calculate the cost.</p>
-            <p className="italic">(Note: The costs are multiplied by 100 to scale for visual purposes only.)</p>
-
-            <div className="flex flex-row justify-center align-top gap-5">
-              <div className="mt-2 flex flex-col w-fit   self-center text-center">
-                <p className="text-lg font-extrabold">Given Parameters:</p>
-                <InlineMath math={`\\alpha = ${global.penalty_undersupply_farmer}`} />
-                <InlineMath math={`\\beta = ${global.penalty_distance}`} />
-                <InlineMath math={`\\delta = ${global.penalty_oversupply_buyer}`} />
-              </div>
-              <div className="mt-2 flex flex-col w-fit text-lg self-center text-center">
-                <p className="text-lg font-extrabold mb-5">Formula:</p>
-                <InlineMath math={`C_{bfp} = \\frac{d_{bf}^\\beta \\cdot \\left(1 + \\left( \\frac{b_{bp}}{b_p^{\\text{max}}} \\right)^\\delta \\right)}{(s_{bp} + 1)^\\alpha}`} />
-              </div>
-            </div>
-
-
-            <div className="mt-5 self-center">
-              <DisplayCostMatrix costMatrix={finalCostMatrix} buyers={buyers} farmers={farmers} global={global} distanceMatrix={distanceMatrix} />
-
-            </div>
-          </div>
-
+  return (
+    <div style={{ padding: '2rem', color: 'black' }}>
+      {/* Radar Chart Section */}
+      <section style={{ marginBottom: '3rem' }}>
+        <h2 style={{ fontSize: '1.8rem', marginBottom: '1rem' }}>📊 Match Quality Radar Visualization</h2>
+        <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+          <FarmerRadarChart />
         </div>
-      </div>
-    </>
+        <p style={{ marginTop: '1rem', fontSize: '1rem', maxWidth: '800px' }}>
+          This radar chart visually compares farmer-buyer matchings across five key criteria:
+          <strong> Supply Match %, Distance Efficiency, Oversupply Avoidance, Cost Effectiveness,</strong> and
+          <strong> Priority Alignment</strong>.
+          Each axis represents one metric, and the closer a shape gets to the outer edge, the better the match performs in that area.
+          This allows stakeholders to quickly assess which pairings offer the most balanced and optimal outcomes, helping guide decisions based on multiple dimensions—not just cost.
+        </p>
+      </section>
+
+      {/* Heatmap Section */}
+      <section style={{ marginBottom: '3rem' }}>
+        <h2 style={{ fontSize: '1.8rem', marginBottom: '1rem' }}>🌡️ Total Cost Heatmap by Farmer–Buyer Pair</h2>
+        <HeatmapChart />
+        <p style={{ marginTop: '1rem', fontSize: '1rem', maxWidth: '800px' }}>
+          This simulated heatmap shows the <strong>calculated total cost</strong> of assigning each farmer to each buyer,
+          based on distance, supply levels, and stock availability.
+          Each colored cell represents a unique farmer–buyer pairing, with color intensity indicating the total cost:
+          <strong> Greener tones mean lower cost and higher efficiency</strong>, while
+          <strong> redder tones indicate more expensive or suboptimal matches</strong>.
+          This visualization helps quickly identify the most cost-effective assignments, supporting data-driven pairing decisions.
+        </p>
+      </section>
+
+      {/* Bubble Chart Section */}
+      <section>
+        <h2 style={{ fontSize: '1.8rem', marginBottom: '1rem' }}>📈 Cost vs Distance per Crop (Interactive Bubble Chart)</h2>
+        <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+          <CropBubbleChart />
+        </div>
+        <p style={{ marginTop: '1rem', fontSize: '1rem', maxWidth: '800px' }}>
+          This interactive bubble chart displays all possible <strong>farmer–buyer combinations</strong> for the selected crop.
+          Use the dropdown to filter by fruit type.  
+          <ul style={{ marginLeft: '1rem' }}>
+            <li><strong>X-axis:</strong> Distance in kilometers between farmer and buyer</li>
+            <li><strong>Y-axis:</strong> Total computed cost based on supply and stock conditions</li>
+            <li><strong>Bubble Size:</strong> Farmer’s available supply for the selected crop</li>
+          </ul>
+          This helps visualize trade-offs between logistics cost and crop supply availability per crop category.
+        </p>
+      </section>
+    </div>
   );
 }
 
