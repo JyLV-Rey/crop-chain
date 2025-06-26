@@ -61,7 +61,7 @@ const FrancesGraph = () => {
         max: 100,
         title: {
           display: true,
-          text: 'Distribution (%)',
+          text: 'Utilization (%)',
           font: { family: 'sans-serif' },
         },
         ticks: {
