@@ -14,7 +14,7 @@ function AssignmentPanel( {farmers, buyers, distanceMatrix, global, bestAssignme
 
             <div className="flex flex-row w-full justify-between gap-2">
 
-              <div className="flex flex-col justify-between h-auto shadow-xl/10 p-2 rounded-xl">
+              <div className="flex flex-col justify-between w-1/4 h-auto shadow-xl/10 p-2 rounded-xl">
                 <p className="font-bold text-xl">Produce Statistics</p>
                 <ProduceStatistics produceList={global.produce} farmer={farmers[assignment[0]]} buyer={buyers[assignment[1]]} />
               </div>
@@ -40,7 +40,7 @@ function AssignmentPanel( {farmers, buyers, distanceMatrix, global, bestAssignme
                   </div>
               </div>
 
-              <div className='flex flex-col justify-between gap1 text-xs shadow-xl/10 p-2 w-2/5 rounded-xl'>
+              <div className='flex flex-col justify-between gap-1 text-xs w-1/4 shadow-xl/10 p-2 rounded-xl'>
                   <p className="font-bold text-xl">Directions</p>
                   <div className="flex flex-col gap-1 self-start items-start h-full">
                     {

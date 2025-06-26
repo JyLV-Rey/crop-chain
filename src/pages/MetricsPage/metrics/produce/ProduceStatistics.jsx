@@ -17,7 +17,7 @@ function getUtilizationColor(num) {
 function ProduceStatistics({ produceList, farmer, buyer, buyers, farmers, buyerIndex, farmerIndex }) {
   return (
     <>
-      <div className="flex flex-row gap-3 text-xs h-full justify-between  p-2">
+      <div className="flex flex-row gap-3 text-xs flex-wrap h-full w-full justify-between  p-2">
         {produceList.map((produce, pIndex) => {
           const farmerSupply = farmer.produce[pIndex].supply;
           const buyerCurrent = buyer.produce[pIndex].supply_current;

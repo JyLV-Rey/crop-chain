@@ -8,9 +8,9 @@ import data from '../ResultPage/mock-output.json'
 import DistanceStats from "./metrics/distance/DistanceStats";
 import BuyerSaturationStats from "./metrics/oversupply/OversupplyStats";
 import EachProduce from "./metrics/produce/EachProduce";
-import AssignmentSummary from "./component/AssignmentSummary";
-import GroupedBarChart from "./component/GroupedBarChart";
-import LineChart from "./component/LineChart";
+import AssignmentSummary from "./components/AssignmentSummary";
+import GroupedBarChart from "./components/GroupedBarChart";
+import LineChart from "./components/LineChart";
 
 function StatsPage() {
   const { farmers, buyers, global } = useGlobalData()

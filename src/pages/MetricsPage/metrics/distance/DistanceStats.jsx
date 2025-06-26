@@ -1,5 +1,5 @@
 // --- New Component: DistanceStats.jsx ---
-import DistanceChart from "../../component/ParamChart";
+import DistanceChart from "../../components/ParamChart";
 function DistanceStats({ buyers, farmers, bestAssignment, bestDistanceAssignment, distanceMatrix }) {
   const currentTotal = bestAssignment.bestAssignment.reduce(
     (acc, [f, b]) => acc + Number(distanceMatrix[f][b].distance),
