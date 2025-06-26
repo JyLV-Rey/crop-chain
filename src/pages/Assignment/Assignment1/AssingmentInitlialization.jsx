@@ -4,6 +4,7 @@ import FarmerField from "./components/FarmerField";
 import BuyerField from "./components/BuyerField";
 import { useGlobalData } from "../../../default-data/DefaultGlobalData";
 import { useEffect, useState } from "react";
+import DisplayLocation from '../../ViewData/components/DisplayLocation';
 
 function AssignmentInitialization() {
   const { farmers, buyers, global } = useGlobalData();
@@ -16,6 +17,10 @@ function AssignmentInitialization() {
     disableAssignment();
   }, [buyers, farmers]);
 
+  // console logs and stringytfys farmers and buyers
+   console.log(JSON.stringify(farmers, null, 2));
+   console.log(JSON.stringify(buyers, null, 2));
+ 
   function disableAssignment() {
     if (buyers.length === 0 || farmers.length === 0) {
       setStatusMsg('Cannot start assignment without farmers and buyers');
@@ -37,13 +42,16 @@ function AssignmentInitialization() {
   return(
     <>
       <NavBar/>
-      <div className="flex flex-col justify-center items-center border-2 border-neutral-300 bg-neutral-100 shadow-xl/5 m-5 rounded-2xl p-2 mt-20">
-        <h1 className="text-xl font-extrabold text-neutral-600 text-center">Edit The Data</h1>
+      <div className="flex flex-col justify-center items-center  bg-neutral-100 shadow-xl/5 m-5 rounded-2xl p-2 mt-20">
+        <div className="  p-2 shadow-lg w-200 h-auto rounded-md">
+          <DisplayLocation farmers={farmers} buyers={buyers} />
+        </div>
+
+        <h1 className="text-xl font-extrabold text-neutral-600 text-center mt-10">Edit The Data</h1>
         <p className="text-smfont-extrabold text-neutral-400 text-center">Select a field to edit their data and supply</p>
         <Link to="EditGlobal">
           <button className="hover:text-emerald-500 hover:font-extrabold hover:border-2 hover:border-emerald-400 hover:bg-emerald-200 p-2 rounded-xl hover:scale-105 text-emerald-50 text-smborder-emerald-50 bg-emerald-500 duration-200 ease-(--my-beizer) m-5">Edit Regional Parameters</button>
         </Link>
-
         <div className="flex flex-col border-2 border-neutral-300 m-2 rounded-2xl p-2">
           <h1 className="text-xl font-extrabold text-neutral-600 text-center">Farmer Data</h1>
           <div className="flex flex-row justify-around ">

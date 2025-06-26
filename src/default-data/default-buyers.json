@@ -1,59 +1,418 @@
 [
   {
     "buyers": [
+  {
+    "first_name": "Lorenzo",
+    "last_name": "Santos",
+    "store_name": "Lorenzo's Organic Hub",
+    "location": {
+      "latitude": 16.750946007636667,
+      "longitude": 121.44631527364254
+    },
+    "produce": [
       {
-        "first_name": "Alfredo",
-        "last_name": "Lopez",
-        "store_name": "Alfredo's Store",
-        "location": { "latitude": 17.010, "longitude": 120.510 },
+        "supply_limit": 1200,
+        "supply_current": 1175
+      },
+      {
+        "supply_limit": 1180,
+        "supply_current": 300
+      },
+      {
+        "supply_limit": 1195,
+        "supply_current": 1120
+      }
+    ]
+  },
+  {
+    "first_name": "Mae",
+    "last_name": "Tolentino",
+    "store_name": "Mae's Corner Market",
+    "location": {
+      "latitude": 17.5,
+      "longitude": 120.8
+    },
+    "produce": [
+      {
+        "supply_limit": 1210,
+        "supply_current": 107
+      },
+      {
+        "supply_limit": 1175,
+        "supply_current": 540
+      },
+      {
+        "supply_limit": 1205,
+        "supply_current": 990
+      }
+    ]
+  },
+  {
+    "first_name": "Jonas",
+    "last_name": "Villanueva",
+    "store_name": "FreshPick Jonas",
+    "location": {
+      "latitude": 16.695456711238055,
+      "longitude": 120.76712477420058
+    },
+    "produce": [
+      {
+        "supply_limit": 1220,
+        "supply_current": 760
+      },
+      {
+        "supply_limit": 1190,
+        "supply_current": 1140
+      },
+      {
+        "supply_limit": 1215,
+        "supply_current": 1185
+      }
+    ]
+  },
+  {
+    "first_name": "Clarisse",
+    "last_name": "Bayani",
+    "store_name": "Clarisse Daily Goods",
+    "location": {
+      "latitude": 17.7,
+      "longitude": 120.5
+    },
+    "produce": [
+      {
+        "supply_limit": 1200,
+        "supply_current": 600
+      },
+      {
+        "supply_limit": 1185,
+        "supply_current": 1150
+      },
+      {
+        "supply_limit": 1210,
+        "supply_current": 1020
+      }
+    ]
+  },
+  {
+    "first_name": "Erwin",
+    "last_name": "De Vera",
+    "store_name": "Erwin's Farm Depot",
+    "location": {
+      "latitude": 17.9,
+      "longitude": 120.7
+    },
+    "produce": [
+      {
+        "supply_limit": 1195,
+        "supply_current": 390
+      },
+      {
+        "supply_limit": 1200,
+        "supply_current": 1200
+      },
+      {
+        "supply_limit": 1220,
+        "supply_current": 700
+      }
+    ]
+  }
+] 
+
+  },
+  {
+    "buyers": [
+  {
+    "first_name": "Monica",
+    "last_name": "Gatchalian",
+    "store_name": "Monica's Harvest",
+    "location": {
+      "latitude": 17.7830631225756,
+      "longitude": 121.78584512855326
+    },
+    "produce": [
+      {
+        "supply_limit": 1210,
+        "supply_current": 250
+      },
+      {
+        "supply_limit": 1200,
+        "supply_current": 1180
+      },
+      {
+        "supply_limit": 1225,
+        "supply_current": 520
+      }
+    ]
+  },
+  {
+    "first_name": "Ivan",
+    "last_name": "Dela Peña",
+    "store_name": "Ivan’s Local",
+    "location": {
+      "latitude": 17.162535708770847,
+      "longitude": 121.81775779596398
+    },
+    "produce": [
+      {
+        "supply_limit": 1185,
+        "supply_current": 150
+      },
+      {
+        "supply_limit": 1200,
+        "supply_current": 730
+      },
+      {
+        "supply_limit": 1215,
+        "supply_current": 1220
+      }
+    ]
+  },
+  {
+    "first_name": "Nina",
+    "last_name": "Carreon",
+    "store_name": "Nina’s Fresh Finds",
+    "location": {
+      "latitude": 18.043659670908916,
+      "longitude": 121.62235810288361
+    },
+    "produce": [
+      {
+        "supply_limit": 1190,
+        "supply_current": 1020
+      },
+      {
+        "supply_limit": 1210,
+        "supply_current": 980
+      },
+      {
+        "supply_limit": 1205,
+        "supply_current": 300
+      }
+    ]
+  },
+  {
+    "first_name": "Ron",
+    "last_name": "Soriano",
+    "store_name": "Soriano Grocery",
+    "location": {
+      "latitude": 17.142665089784735,
+      "longitude": 121.19140630321846
+    },
+    "produce": [
+      {
+        "supply_limit": 1220,
+        "supply_current": 1220
+      },
+      {
+        "supply_limit": 1200,
+        "supply_current": 640
+      },
+      {
+        "supply_limit": 1210,
+        "supply_current": 100
+      }
+    ]
+  },
+  {
+    "first_name": "Hazel",
+    "last_name": "Mendoza",
+    "store_name": "Hazel's Picks",
+    "location": {
+      "latitude": 17.600144456828968,
+      "longitude": 121.72201979373186
+    },
+    "produce": [
+      {
+        "supply_limit": 1210,
+        "supply_current": 1190
+      },
+      {
+        "supply_limit": 1205,
+        "supply_current": 860
+      },
+      {
+        "supply_limit": 1185,
+        "supply_current": 135
+      }
+    ]
+  }
+]
+
+  },
+  {
+    "buyers": [
+  {
+    "first_name": "Derek",
+    "last_name": "Fajardo",
+    "store_name": "Fajardo Farm Supplies",
+    "location": {
+      "latitude": 15.217055339241007,
+      "longitude": 121.15190783781665
+    },
+    "produce": [
+      {
+        "supply_limit": 1200,
+        "supply_current": 105
+      },
+      {
+        "supply_limit": 1215,
+        "supply_current": 420
+      },
+      {
+        "supply_limit": 1225,
+        "supply_current": 1140
+      }
+    ]
+  },
+  {
+    "first_name": "Gloria",
+    "last_name": "Reyes",
+    "store_name": "Gloria’s Greens",
+    "location": {
+      "latitude": 15.4,
+      "longitude": 121.2
+    },
+    "produce": [
+      {
+        "supply_limit": 1205,
+        "supply_current": 600
+      },
+      {
+        "supply_limit": 1190,
+        "supply_current": 1155
+      },
+      {
+        "supply_limit": 1210,
+        "supply_current": 1190
+      }
+    ]
+  },
+  {
+    "first_name": "Tom",
+    "last_name": "Cuevas",
+    "store_name": "Cuevas Produce",
+    "location": {
+      "latitude": 15.6,
+      "longitude": 121
+    },
+    "produce": [
+      {
+        "supply_limit": 1200,
+        "supply_current": 780
+      },
+      {
+        "supply_limit": 1215,
+        "supply_current": 1110
+      },
+      {
+        "supply_limit": 1220,
+        "supply_current": 400
+      }
+    ]
+  },
+  {
+    "first_name": "Isabel",
+    "last_name": "Lozano",
+    "store_name": "Isabel’s Market",
+    "location": {
+      "latitude": 15.841456087766288,
+      "longitude": 120.67465651248182
+    },
+    "produce": [
+      {
+        "supply_limit": 1200,
+        "supply_current": 1200
+      },
+      {
+        "supply_limit": 1180,
+        "supply_current": 170
+      },
+      {
+        "supply_limit": 1210,
+        "supply_current": 1150
+      }
+    ]
+  },
+  {
+    "first_name": "Miguel",
+    "last_name": "Sarmiento",
+    "store_name": "Miguel's Basket",
+    "location": {
+      "latitude": 15.418884448761238,
+      "longitude": 120.70081443658898
+    },
+    "produce": [
+      {
+        "supply_limit": 1195,
+        "supply_current": 650
+      },
+      {
+        "supply_limit": 1200,
+        "supply_current": 1220
+      },
+      {
+        "supply_limit": 1225,
+        "supply_current": 100
+      }
+    ]
+  }
+]
+  },
+  {
+    "buyers": [
+      {
+        "first_name": "Patricia",
+        "last_name": "Quintos",
+        "store_name": "Patricia's Produce",
+        "location": { "latitude": 13.200, "longitude": 121.100 },
         "produce": [
-          { "supply_limit": 600, "supply_current": 430 },
-          { "supply_limit": 580, "supply_current": 350 },
-          { "supply_limit": 590, "supply_current": 510 }
+          { "supply_limit": 1205, "supply_current": 1180 },
+          { "supply_limit": 1190, "supply_current": 990 },
+          { "supply_limit": 1200, "supply_current": 100 }
         ]
       },
       {
-        "first_name": "Bianca",
-        "last_name": "Navarro",
-        "store_name": "Bianca's Market",
-        "location": { "latitude": 16.995, "longitude": 120.490 },
+        "first_name": "Calvin",
+        "last_name": "Ramos",
+        "store_name": "Ramos Natural Foods",
+        "location": { "latitude": 13.500, "longitude": 121.400 },
         "produce": [
-          { "supply_limit": 590, "supply_current": 300 },
-          { "supply_limit": 570, "supply_current": 380 },
-          { "supply_limit": 585, "supply_current": 565 }
+          { "supply_limit": 1220, "supply_current": 860 },
+          { "supply_limit": 1200, "supply_current": 400 },
+          { "supply_limit": 1185, "supply_current": 1150 }
         ]
       },
       {
-        "first_name": "Carlo",
-        "last_name": "Alvarez",
-        "store_name": "Carlo Local Goods",
-        "location": { "latitude": 17.020, "longitude": 120.495 },
+        "first_name": "Joy",
+        "last_name": "Araneta",
+        "store_name": "Joyful Harvest",
+        "location": { "latitude": 13.700, "longitude": 121.600 },
         "produce": [
-          { "supply_limit": 580, "supply_current": 400 },
-          { "supply_limit": 590, "supply_current": 550 },
-          { "supply_limit": 600, "supply_current": 590 }
+          { "supply_limit": 1195, "supply_current": 950 },
+          { "supply_limit": 1210, "supply_current": 1210 },
+          { "supply_limit": 1200, "supply_current": 690 }
         ]
       },
       {
-        "first_name": "Diana",
-        "last_name": "Gomez",
-        "store_name": "Diana's Daily Picks",
-        "location": { "latitude": 17.005, "longitude": 120.485 },
+        "first_name": "Samuel",
+        "last_name": "Dimalanta",
+        "store_name": "Sam's Farmshop",
+        "location": { "latitude": 13.900, "longitude": 121.300 },
         "produce": [
-          { "supply_limit": 600, "supply_current": 560 },
-          { "supply_limit": 580, "supply_current": 520 },
-          { "supply_limit": 590, "supply_current": 570 }
+          { "supply_limit": 1215, "supply_current": 1215 },
+          { "supply_limit": 1220, "supply_current": 1145 },
+          { "supply_limit": 1205, "supply_current": 300 }
         ]
       },
       {
-        "first_name": "Elias",
-        "last_name": "Dela Cruz",
-        "store_name": "Elias Mart",
-        "location": { "latitude": 17.015, "longitude": 120.500 },
+        "first_name": "Rina",
+        "last_name": "Lagman",
+        "store_name": "Rina’s Fruits",
+        "location": { "latitude": 13.100, "longitude": 121.700 },
         "produce": [
-          { "supply_limit": 585, "supply_current": 430 },
-          { "supply_limit": 575, "supply_current": 390 },
-          { "supply_limit": 595, "supply_current": 580 }
+          { "supply_limit": 1200, "supply_current": 1155 },
+          { "supply_limit": 1225, "supply_current": 1225 },
+          { "supply_limit": 1210, "supply_current": 110 }
         ]
       }
     ]
@@ -61,250 +420,58 @@
   {
     "buyers": [
       {
-        "first_name": "Alfredo",
-        "last_name": "Lopez",
-        "store_name": "Alfredo's Store",
-        "location": {
-          "latitude": 17.672935465127445,
-          "longitude": 121.64515914661546
-        },
+        "first_name": "Allan",
+        "last_name": "Magsaysay",
+        "store_name": "Allan’s AgriMart",
+        "location": { "latitude": 11.300, "longitude": 122.300 },
         "produce": [
-          { "supply_limit": 570, "supply_current": 412 },
-          { "supply_limit": 520, "supply_current": 289 },
-          { "supply_limit": 595, "supply_current": 590 }
+          { "supply_limit": 1220, "supply_current": 560 },
+          { "supply_limit": 1205, "supply_current": 870 },
+          { "supply_limit": 1180, "supply_current": 1180 }
         ]
       },
       {
-        "first_name": "Bianca",
-        "last_name": "Navarro",
-        "store_name": "Bianca's Market",
-        "location": {
-          "latitude": 17.42452775599763,
-          "longitude": 121.81021564773152
-        },
+        "first_name": "Ella",
+        "last_name": "Padilla",
+        "store_name": "Ella’s Earth Goods",
+        "location": { "latitude": 11.100, "longitude": 122.600 },
         "produce": [
-          { "supply_limit": 590, "supply_current": 330 },
-          { "supply_limit": 505, "supply_current": 57 },
-          { "supply_limit": 550, "supply_current": 449 }
+          { "supply_limit": 1210, "supply_current": 1220 },
+          { "supply_limit": 1200, "supply_current": 100 },
+          { "supply_limit": 1225, "supply_current": 350 }
         ]
       },
       {
-        "first_name": "Carlo",
-        "last_name": "Alvarez",
-        "store_name": "Carlo Local Goods",
-        "location": {
-          "latitude": 18.042664777835164,
-          "longitude": 121.43301838210652
-        },
+        "first_name": "Jay",
+        "last_name": "Verano",
+        "store_name": "Jay's Natural Mart",
+        "location": { "latitude": 11.500, "longitude": 122.800 },
         "produce": [
-          { "supply_limit": 560, "supply_current": 305 },
-          { "supply_limit": 540, "supply_current": 77 },
-          { "supply_limit": 525, "supply_current": 140 }
+          { "supply_limit": 1195, "supply_current": 1195 },
+          { "supply_limit": 1210, "supply_current": 1000 },
+          { "supply_limit": 1200, "supply_current": 400 }
         ]
       },
       {
-        "first_name": "Diana",
-        "last_name": "Gomez",
-        "store_name": "Diana's Daily Picks",
-        "location": {
-          "latitude": 17.152350716272,
-          "longitude": 121.83024816481134
-        },
+        "first_name": "Kyla",
+        "last_name": "Ocampo",
+        "store_name": "Kyla’s Local Harvest",
+        "location": { "latitude": 11.700, "longitude": 122.500 },
         "produce": [
-          { "supply_limit": 600, "supply_current": 300 },
-          { "supply_limit": 510, "supply_current": 209 },
-          { "supply_limit": 545, "supply_current": 487 }
+          { "supply_limit": 1225, "supply_current": 1225 },
+          { "supply_limit": 1200, "supply_current": 100 },
+          { "supply_limit": 1215, "supply_current": 820 }
         ]
       },
       {
-        "first_name": "Elias",
-        "last_name": "Dela Cruz",
-        "store_name": "Elias Mart",
-        "location": {
-          "latitude": 17.597417336145295,
-          "longitude": 121.37916565606639
-        },
+        "first_name": "Bryan",
+        "last_name": "Quinto",
+        "store_name": "Bryan's Produce Co.",
+        "location": { "latitude": 11.200, "longitude": 122.900 },
         "produce": [
-          { "supply_limit": 525, "supply_current": 499 },
-          { "supply_limit": 585, "supply_current": 551 },
-          { "supply_limit": 500, "supply_current": 122 }
-        ]
-      }
-    ]
-  },
-  {
-    "buyers": [
-      {
-        "first_name": "Alfredo",
-        "last_name": "Lopez",
-        "store_name": "Alfredo's Store",
-        "location": { "latitude": 15.005, "longitude": 120.915 },
-        "produce": [
-          { "supply_limit": 600, "supply_current": 570 },
-          { "supply_limit": 585, "supply_current": 580 },
-          { "supply_limit": 590, "supply_current": 590 }
-        ]
-      },
-      {
-        "first_name": "Bianca",
-        "last_name": "Navarro",
-        "store_name": "Bianca's Market",
-        "location": { "latitude": 14.990, "longitude": 120.905 },
-        "produce": [
-          { "supply_limit": 590, "supply_current": 540 },
-          { "supply_limit": 580, "supply_current": 530 },
-          { "supply_limit": 595, "supply_current": 580 }
-        ]
-      },
-      {
-        "first_name": "Carlo",
-        "last_name": "Alvarez",
-        "store_name": "Carlo Local Goods",
-        "location": { "latitude": 15.015, "longitude": 120.890 },
-        "produce": [
-          { "supply_limit": 580, "supply_current": 520 },
-          { "supply_limit": 575, "supply_current": 570 },
-          { "supply_limit": 590, "supply_current": 585 }
-        ]
-      },
-      {
-        "first_name": "Diana",
-        "last_name": "Gomez",
-        "store_name": "Diana's Daily Picks",
-        "location": { "latitude": 15.010, "longitude": 120.895 },
-        "produce": [
-          { "supply_limit": 595, "supply_current": 560 },
-          { "supply_limit": 600, "supply_current": 600 },
-          { "supply_limit": 580, "supply_current": 575 }
-        ]
-      },
-      {
-        "first_name": "Elias",
-        "last_name": "Dela Cruz",
-        "store_name": "Elias Mart",
-        "location": { "latitude": 14.995, "longitude": 120.900 },
-        "produce": [
-          { "supply_limit": 590, "supply_current": 590 },
-          { "supply_limit": 580, "supply_current": 580 },
-          { "supply_limit": 600, "supply_current": 600 }
-        ]
-      }
-    ]
-  },
-  {
-    "buyers": [
-      {
-        "first_name": "Alfredo",
-        "last_name": "Lopez",
-        "store_name": "Alfredo's Store",
-        "location": { "latitude": 14.030, "longitude": 121.135 },
-        "produce": [
-          { "supply_limit": 610, "supply_current": 580 },
-          { "supply_limit": 600, "supply_current": 590 },
-          { "supply_limit": 620, "supply_current": 600 }
-        ]
-      },
-      {
-        "first_name": "Bianca",
-        "last_name": "Navarro",
-        "store_name": "Bianca's Market",
-        "location": { "latitude": 14.045, "longitude": 121.120 },
-        "produce": [
-          { "supply_limit": 600, "supply_current": 570 },
-          { "supply_limit": 610, "supply_current": 590 },
-          { "supply_limit": 605, "supply_current": 585 }
-        ]
-      },
-      {
-        "first_name": "Carlo",
-        "last_name": "Alvarez",
-        "store_name": "Carlo Local Goods",
-        "location": { "latitude": 14.020, "longitude": 121.145 },
-        "produce": [
-          { "supply_limit": 615, "supply_current": 595 },
-          { "supply_limit": 620, "supply_current": 600 },
-          { "supply_limit": 625, "supply_current": 610 }
-        ]
-      },
-      {
-        "first_name": "Diana",
-        "last_name": "Gomez",
-        "store_name": "Diana's Daily Picks",
-        "location": { "latitude": 14.035, "longitude": 121.130 },
-        "produce": [
-          { "supply_limit": 620, "supply_current": 600 },
-          { "supply_limit": 615, "supply_current": 610 },
-          { "supply_limit": 630, "supply_current": 620 }
-        ]
-      },
-      {
-        "first_name": "Elias",
-        "last_name": "Dela Cruz",
-        "store_name": "Elias Mart",
-        "location": { "latitude": 14.025, "longitude": 121.140 },
-        "produce": [
-          { "supply_limit": 625, "supply_current": 605 },
-          { "supply_limit": 630, "supply_current": 620 },
-          { "supply_limit": 640, "supply_current": 630 }
-        ]
-      }
-    ]
-  },
-  {
-    "buyers": [
-      {
-        "first_name": "Alfredo",
-        "last_name": "Lopez",
-        "store_name": "Alfredo's Store",
-        "location": { "latitude": 11.015, "longitude": 122.505 },
-        "produce": [
-          { "supply_limit": 650, "supply_current": 620 },
-          { "supply_limit": 640, "supply_current": 630 },
-          { "supply_limit": 660, "supply_current": 640 }
-        ]
-      },
-      {
-        "first_name": "Bianca",
-        "last_name": "Navarro",
-        "store_name": "Bianca's Market",
-        "location": { "latitude": 10.995, "longitude": 122.485 },
-        "produce": [
-          { "supply_limit": 645, "supply_current": 610 },
-          { "supply_limit": 635, "supply_current": 625 },
-          { "supply_limit": 655, "supply_current": 635 }
-        ]
-      },
-      {
-        "first_name": "Carlo",
-        "last_name": "Alvarez",
-        "store_name": "Carlo Local Goods",
-        "location": { "latitude": 11.010, "longitude": 122.495 },
-        "produce": [
-          { "supply_limit": 660, "supply_current": 640 },
-          { "supply_limit": 650, "supply_current": 630 },
-          { "supply_limit": 670, "supply_current": 660 }
-        ]
-      },
-      {
-        "first_name": "Diana",
-        "last_name": "Gomez",
-        "store_name": "Diana's Daily Picks",
-        "location": { "latitude": 11.005, "longitude": 122.490 },
-        "produce": [
-          { "supply_limit": 655, "supply_current": 635 },
-          { "supply_limit": 645, "supply_current": 625 },
-          { "supply_limit": 665, "supply_current": 645 }
-        ]
-      },
-      {
-        "first_name": "Elias",
-        "last_name": "Dela Cruz",
-        "store_name": "Elias Mart",
-        "location": { "latitude": 11.000, "longitude": 122.500 },
-        "produce": [
-          { "supply_limit": 670, "supply_current": 650 },
-          { "supply_limit": 660, "supply_current": 640 },
-          { "supply_limit": 680, "supply_current": 660 }
+          { "supply_limit": 1200, "supply_current": 1100 },
+          { "supply_limit": 1185, "supply_current": 550 },
+          { "supply_limit": 1190, "supply_current": 1190 }
         ]
       }
     ]

@@ -28,7 +28,7 @@
     "penalty_distance": 1,
     "penalty_oversupply_buyer": 1,
     "penalty_undersupply_farmer": 1,
-    "main_location": { "zoom": 9, "latitude": 15.0, "longitude": 120.9 },
+    "main_location": { "zoom": 9, "latitude": 15.41888, "longitude": 120.7008 },
     "produce": [
       { "type": "Tomato", "priority": 1 },
       { "type": "Garlic", "priority": 1 },

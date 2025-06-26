@@ -12,6 +12,7 @@ import CreateBuyer from './pages/Assignment/Assignment1/CreatePage/CreateBuyer.j
 import CreateFarmer from './pages/Assignment/Assignment1/CreatePage/CreateFarmer.jsx';
 import ResultsPage from './pages/ResultPage/ResultsPage.jsx';
 import StatsPage from './pages/MetricsPage/StatsPage.jsx';
+import RegionSelectorPage from './pages/Assignment/RegionSelectPage.jsx';
 function App() {
   return (
     <>
@@ -29,6 +30,7 @@ function App() {
             <Route path="/Assignment/Initialization/CreateFarmer" element={<CreateFarmer />}></Route>
             <Route path="/Assignment/Metric/Result/" element={<ResultsPage />}></Route>
             <Route path="/Assignment/Metric/Statistics/" element={<StatsPage />}></Route>
+            <Route path="/Assignment/Region/" element={<RegionSelectorPage />}></Route>
           </Routes>
         </div>
     </>

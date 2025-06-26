@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 function GlobalConfig() {
   const { global, setGlobal, farmers, setFarmers, buyers, setBuyers } = useGlobalData();
 
+  const [regionName, setRegionName] = useState(global.region || "");
   const [penaltyDistance, setPenaltyDistance] = useState(global.penalty_distance);
   const [penaltyBuyerOversupply, setPenaltyBuyerOversupply] = useState(global.penalty_oversupply_buyer);
   const [penaltyFarmerUndersupply, setPenaltyFarmerUndersupply] = useState(global.penalty_undersupply_farmer);
@@ -21,6 +22,7 @@ function GlobalConfig() {
 
   const [canSave, setCanSave] = useState(false);
 
+  console.log(global)
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -46,8 +48,9 @@ function GlobalConfig() {
     );
 
     // Update state based on all conditions
-    setCanSave(!(penaltiesValid && locationValid && produceValid));
-  }, [penaltyDistance, penaltyBuyerOversupply, penaltyFarmerUndersupply, mainLocation, newProduce]);
+    const regionValid = typeof regionName === "string" && regionName.trim() !== "";
+    setCanSave(!(penaltiesValid && locationValid && produceValid && regionValid));
+  }, [penaltyDistance, penaltyBuyerOversupply, penaltyFarmerUndersupply, mainLocation, newProduce, regionName]);
 
   // just an rng generator
   function getRand(min = 0, max = 500) {
@@ -106,36 +109,54 @@ function GlobalConfig() {
   function handleSave() {
     if (!window.confirm('Are you sure you want to save these changes?')) return;
 
-    const tempGlobal = {
-      ...global,
-      penalty_distance: parseFloat(penaltyDistance),
-      penalty_oversupply_buyer: parseFloat(penaltyBuyerOversupply),
-      penalty_undersupply_farmer: parseFloat(penaltyFarmerUndersupply),
-      main_location: {
-        zoom,
-        latitude: mainLocation.latitude,
-        longitude: mainLocation.longitude
-      },
-      produce: newProduce,
-    };
+  const tempGlobal = {
+    ...global,
+    penalty_distance: parseFloat(penaltyDistance),
+    penalty_oversupply_buyer: parseFloat(penaltyBuyerOversupply),
+    penalty_undersupply_farmer: parseFloat(penaltyFarmerUndersupply),
+    main_location: {
+      zoom,
+      latitude: mainLocation.latitude,
+      longitude: mainLocation.longitude
+    },
+    produce: newProduce,
+    region: regionName,
+  };
+
     setGlobal(tempGlobal);
 
     // thjso took me forever omg
-    const tempFarmers = farmers.map((farmer) => ({
-      ...farmer,
-      produce: farmer.produce.map((fp, index) => ({
-        ...fp,
-        type: newProduce[index]?.type || fp.type
-      }))
-    }));
+    const tempFarmers = farmers.map((farmer) => {
+      const updatedProduce = [...farmer.produce];
+      while (updatedProduce.length < newProduce.length) {
+        updatedProduce.push({ supply: getRand(50, 300) });
+      }
+      return {
+        ...farmer,
+        produce: updatedProduce.map((fp, index) => ({
+          ...fp,
+          type: newProduce[index]?.type || fp.type,
+        })),
+      };
+    });
 
-    const tempBuyers = buyers.map((buyer) => ({
-      ...buyer,
-      produce: buyer.produce.map((bp, index) => ({
-        ...bp,
-        type: newProduce[index]?.type || bp.type
-      }))
-    }));
+
+    const tempBuyers = buyers.map((buyer) => {
+      const updatedProduce = [...buyer.produce];
+      while (updatedProduce.length < newProduce.length) {
+        updatedProduce.push({
+          supply_current: getRand(100, 400),
+          supply_limit: getRand(400, 600),
+        });
+      }
+      return {
+        ...buyer,
+        produce: updatedProduce.map((bp, index) => ({
+          ...bp,
+          type: newProduce[index]?.type || bp.type,
+        })),
+      };
+    });
 
     setFarmers(tempFarmers);
     setBuyers(tempBuyers);
@@ -154,6 +175,13 @@ function GlobalConfig() {
 
         {/* Penalties */}
         <div className='flex flex-col w-1/6 flex-grow p-5 border-2 border-neutral-300 rounded-2xl'>
+          <div>
+            <h2 className='text-3xl font-extrabold text-neutral-700'>Set Region Name</h2>
+            <TextField data={regionName} header="Region Name" setFunction={setRegionName} isRequired={true}/>
+            <p className="text-sm text-neutral-600 mb-10">
+              Name of the region you're working with. This helps label the configuration and context of the current dataset.
+            </p>
+          </div>
           <h2 className='text-3xl font-extrabold text-neutral-700'>Penalty Parameters</h2>
           <h2 className='text-sm font-medium text-neutral-700'>
             These penalties control how strongly the algorithm avoids certain undesirable outcomes. Higher values increase the cost associated with those conditions. All penalties will be normalized during the implementation.

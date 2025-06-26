@@ -26,6 +26,18 @@ function StatsPage() {
   const [bestDistanceAssignment, setBestDistanceAssignment] = useState(data.bestAssignment);
   const [bestUndersupplyAssignment, setBestUndersupplyAssignment] = useState(data.bestAssignment);
   const [bestOversupplyAssignment, setBestOversupplyAssignment] = useState(data.bestAssignment);
+  
+  // awaits the distance matrix
+  useEffect(() => {
+    async function fetchMatrixes() {
+      const matrix = await getDistanceMatrix(buyers, farmers);
+      setDistanceMatrix(matrix);
+    }
+
+    if (buyers.length > 0 && farmers.length > 0) {
+      fetchMatrixes();
+    }
+  }, [buyers, farmers]);
 
   // Gets the current cost matrix along with the perfect cost matrix per parameter
   useEffect (() => {

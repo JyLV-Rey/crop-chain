@@ -118,11 +118,16 @@ graph TD
 ## Installation and Usage
 
 ### Prerequisites
+- A machine with:
+  - At least **16 GB RAM** (recommended)
+  - **Docker** installed
+  - Stable internet connection
+- A basic terminal / shell environment (e.g. WSL2, Linux, macOS, or Git Bash on Windows)
 - Node.js 18.0 or higher
 - npm or yarn package manager
 - Modern web browser (Chrome, Firefox, Safari, Edge)
 
-### Quick Start
+### Frontend Installation
 
 ```bash
 # Clone the repository
@@ -146,6 +151,81 @@ VITE_MAP_API_KEY=your_map_api_key_here
 VITE_NOMINATIM_URL=https://nominatim.openstreetmap.org
 ```
 
+### Backend Installation: Setting Up Nominatim + Valhalla (Philippines OSM)
+
+##### Prerequisites
+##### - Docker installed
+##### - At least 16GB RAM recommended
+##### - Terminal/shell access
+
+### 1. Install Docker (Windows/macOS/Linux)
+
+#### Windows/macOS:
+Download from [here](https://www.docker.com/products/docker-desktop) and install.
+
+#### Ubuntu/Debian:
+```
+sudo apt update
+sudo apt install docker.io docker-compose -y
+sudo systemctl enable --now docker
+sudo usermod -aG docker $USER
+```
+##### (Log out and back in or reboot to apply the group change.)
+
+### 2. Download Philippines OSM data
+```
+mkdir -p ~/osm_data
+cd ~/osm_data
+wget https://download.geofabrik.de/asia/philippines-latest.osm.pbf
+```
+
+Alternatively, you can download it from [here](https://download.geofabrik.de/asia/philippines.html) manually
+
+### 3. While at the directory, Run Nominatim for the first time (Powershell or Terminal)
+```
+docker run -it \
+  --name nominatim_ph \
+  -e PBF_PATH=/app/data/philippines-latest.osm.pbf \
+  -e IMPORT_THREADS=4 \
+  -e THREADS=2 \
+  -e WEBTHREADS=2 \
+  -e UPDATES=disabled \
+  -v ~/osm_data:/app/data \
+  -p 7070:8080 \
+  mediagis/nominatim:5.1
+```
+
+
+#### *Access at: http://localhost:7070*
+
+#### 4. Renavigate to that directory on a different terminal, then run Valhalla (Powershell or Terminal)
+```
+docker run -it \
+  --name valhalla_philippines \
+  -v ~/osm_data:/data \
+  -p 8002:8002 \
+  -e "VALHALLA_TILE_DIR=/data/valhalla_tiles" \
+  -e "VALHALLA_CONCURRENCY=2" \
+  -e "VALHALLA_IMPORT=true" \
+  -e "VALHALLA_AUTO_REBUILD=true" \
+  nilsnolde/docker-valhalla:latest \
+  /data/philippines-latest.osm.pbf
+```
+
+#### *Access at: http://localhost:8002*
+---
+## Backend Setup
+The program uses 2 express applications to run both **Valhalla** and **Nominatim** respectively, you would need **2 git bash instances**
+
+Navigate to the project folder using `cd`. On each instance, run:
+```
+node ./backend/nominatim.js
+```
+```
+node ./backend/router.js
+```
+
+#### Once everything is up and running, you are good to go.
 ---
 
 ## Future Enhancements (Scope)

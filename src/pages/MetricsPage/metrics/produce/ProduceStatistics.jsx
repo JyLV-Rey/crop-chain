@@ -16,8 +16,9 @@ function getUtilizationColor(num) {
 
 function ProduceStatistics({ produceList, farmer, buyer, buyers, farmers, buyerIndex, farmerIndex }) {
   return (
-    <>
-      <div className="flex flex-row gap-3 text-xs flex-wrap h-full w-full justify-between  p-2">
+    <div className="flex flex-col gap-4 w-full">
+      {/* Per-Produce Summary */}
+      <div className="flex flex-wrap gap-4 justify-start items-stretch w-full p-2">
         {produceList.map((produce, pIndex) => {
           const farmerSupply = farmer.produce[pIndex].supply;
           const buyerCurrent = buyer.produce[pIndex].supply_current;
@@ -26,34 +27,37 @@ function ProduceStatistics({ produceList, farmer, buyer, buyers, farmers, buyerI
           const utilizationDiff = newSupply - buyerLimit;
 
           return (
-            <div key={pIndex} className="flex flex-col flex-1 min-w-0 shadow-xl/6 rounded-lg p-2">
-              <p className="font-extrabold text-lg">{produce.type}</p>
-              <p>
-                <span className="font-bold">Priority: </span>
-                {produce.priority}</p>
-              <p>
-                <span className="font-bold">Farmer Supply: </span>
-                {farmerSupply} kg</p>
-              <p><span className="font-bold">Buyer Current Supply: </span>
-              {buyerCurrent} kg</p>
-              <p><span className="font-bold">Buyer Maximum Supply: </span>
-              {buyerLimit} kg</p>
+            <div key={pIndex} className="flex flex-col flex-grow min-w-[300px] max-w-sm text-sm bg-white rounded-xl shadow-md p-4" style={{ flexBasis: "calc(33.333% - 1rem)" }}>              <p className="font-extrabold text-lg">{produce.type}</p>
+              <p><span className="font-bold">Priority: </span>{produce.priority}</p>
+              <p><span className="font-bold">Farmer Supply: </span>{farmerSupply} kg</p>
+              <p><span className="font-bold">Buyer Current Supply: </span>{buyerCurrent} kg</p>
+              <p><span className="font-bold">Buyer Maximum Supply: </span>{buyerLimit} kg</p>
               <p className={`${higherColor(newSupply, buyerLimit)} p-1 rounded-lg font-bold mt-2 w-fit`}>
-                <span className="font-bold">Buyer New Supply: </span>
-                {newSupply} kg
+                <span className="font-bold">Buyer New Supply: </span>{newSupply} kg
               </p>
               <p className={`${getUtilizationColor(utilizationDiff)} p-1 rounded-lg w-fit mt-2`}>
-                  <span className="font-bold">Utilization: </span>
-                  {Math.abs(utilizationDiff)} kg{" "}
-                  {newSupply >= buyerLimit ? "over" : "under"} the supply limit
+                <span className="font-bold">Utilization: </span>
+                {Math.abs(utilizationDiff)} kg {newSupply >= buyerLimit ? "over" : "under"} the supply limit
               </p>
-              <BuyerSupplyChart buyers={buyers} farmers={farmers} produceIndex={pIndex} buyerIndex={buyerIndex} selectedFarmerIndex={farmerIndex} />
+
+              {/* Chart container with fixed height to stabilize rendering */}
+              <div className="w-full mt-2 h-[200px] overflow-hidden">
+                <BuyerSupplyChart
+                  buyers={buyers}
+                  farmers={farmers}
+                  produceIndex={pIndex}
+                  buyerIndex={buyerIndex}
+                  selectedFarmerIndex={farmerIndex}
+                />
+              </div>
             </div>
           );
         })}
       </div>
+
+      {/* Aggregate Summary */}
       <ProduceAggregateStats produceList={produceList} buyer={buyer} farmer={farmer} />
-    </>
+    </div>
   );
 }
 

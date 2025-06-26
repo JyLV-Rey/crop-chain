@@ -42,7 +42,7 @@ function NavBar() {
             <Link to="/ViewData" className={getNavLinkClass("/ViewData")}>
               View Data
             </Link>
-            <Link to="/Assignment/Initialization" className={getNavLinkClass("/Assignment/Initialization")}>
+            <Link to="/Assignment/Region" className={getNavLinkClass("/Assignment/Initialization")}>
               Assignment
             </Link>
             <Link to="/AboutUs" className={getNavLinkClass("/AboutUs")}>
