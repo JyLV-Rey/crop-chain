@@ -24,13 +24,13 @@ function test1() {
     [3, 2, 2],
   ];
 
-  const { assignments, minCost, iterations } = assignProblemSolver(matrix);
+  const { bestAssignment, minCost, iterations } = assignProblemSolver(matrix);
   assert.strictEqual(minCost, 5, 'Total minimum cost should be 5');
-  const sortedPairs = assignments.map(([f, b]) => `[${f},${b}]`).sort().join(',');
+  const sortedPairs = bestAssignment.map(([f, b]) => `[${f},${b}]`).sort().join(',');
   assert.strictEqual(sortedPairs, '[0,1],[1,0],[2,2]', 'Optimal pairing should be ([0,1] , [1,0] , [2,2])');
   console.log('  Test 1 passed! C:');
   console.log(`   iterations explored: ${iterations}`);
-  console.log(`   best assignment    : ${JSON.stringify(assignments)}`);
+  console.log(`   best assignment    : ${JSON.stringify(bestAssignment)}`);
   console.log(`   minimum cost       : ${minCost}`);
 }
 
@@ -53,13 +53,13 @@ function test2() {
     [1, INF, 6],
     [3, 3, INF],
   ];
-  const { assignments, minCost, iterations } = assignProblemSolver(matrix);
+  const { bestAssignment, minCost, iterations } = assignProblemSolver(matrix);
   assert.strictEqual(minCost, 6, 'Total minimum cost should be 6');
-  const sortedPairs = assignments.map(([f, b]) => `[${f},${b}]`).sort().join(',');
+  const sortedPairs = bestAssignment.map(([f, b]) => `[${f},${b}]`).sort().join(',');
   assert.strictEqual(sortedPairs, '[0,2],[1,0],[2,1]', 'Expected valid assignment skipping infinities');
   console.log('  Test 2 passed! :V');
   console.log(`   iterations explored: ${iterations}`);
-  console.log(`   best assignment    : ${JSON.stringify(assignments)}`);
+  console.log(`   best assignment    : ${JSON.stringify(bestAssignment)}`);
   console.log(`   minimum cost       : ${minCost}`);
 }
 
@@ -81,13 +81,13 @@ function test3() {
     [6, 1, 8],
     [7, 3, 1],
   ];
-  const { assignments, minCost, iterations } = assignProblemSolver(matrix);
+  const { bestAssignment, minCost, iterations } = assignProblemSolver(matrix);
   assert.strictEqual(minCost, 3, 'Total minimum cost should be 3');
-  const sortedPairs = assignments.map(([f, b]) => `[${f},${b}]`).sort().join(',');
+  const sortedPairs = bestAssignment.map(([f, b]) => `[${f},${b}]`).sort().join(',');
   assert.strictEqual(sortedPairs, '[0,0],[1,1],[2,2]', 'Expected identity assignment');
   console.log('  Test 3 passed! :D');
   console.log(`   iterations explored: ${iterations}`);
-  console.log(`   best assignment    : ${JSON.stringify(assignments)}`);
+  console.log(`   best assignment    : ${JSON.stringify(bestAssignment)}`);
   console.log(`   minimum cost       : ${minCost}`);
 }
 
@@ -109,14 +109,14 @@ function test4() {
     [4.1, 2.9, 1.6],
   ];
   
-  const { assignments, minCost, iterations } = assignProblemSolver(matrix);
+  const { bestAssignment, minCost, iterations } = assignProblemSolver(matrix);
 
   assert.ok(Math.abs(minCost - 4.9) < 1e-6, 'Total minimum cost should be approximately 4.9');
-  const sortedPairs = assignments.map(([f, b]) => `[${f},${b}]`).sort().join(',');
+  const sortedPairs = bestAssignment.map(([f, b]) => `[${f},${b}]`).sort().join(',');
   assert.strictEqual(sortedPairs, '[0,0],[1,1],[2,2]', 'Expected optimal float-cost pairing');
   console.log('  Test 4 passed! :O');
   console.log(`   iterations explored: ${iterations}`);
-  console.log(`   best assignment    : ${JSON.stringify(assignments)}`);
+  console.log(`   best assignment    : ${JSON.stringify(bestAssignment)}`);
   console.log(`   minimum cost       : ${minCost}`);
 }
 
