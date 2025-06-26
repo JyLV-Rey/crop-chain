@@ -92,6 +92,35 @@ function test3() {
 }
 
 /**
+ * Test 4: Floating Point Numbers (Non-integer total cost)
+ *          Matrix:
+ *                 Buyer0   Buyer1   Buyer2
+ *          Farmer0    1.4      4.7      3.2
+ *          Farmer1    3.3      1.9      2.5
+ *          Farmer2    4.1      2.9      1.6
+ *
+ *          Cheapest assignment = (0,0 , 1,1 , 2,2)
+ *          Total cost = 1.4 + 1.9 + 1.6 = 4.9
+ */
+function test4() {
+  const matrix = [
+    [1.4, 4.7, 3.2],
+    [3.3, 1.9, 2.5],
+    [4.1, 2.9, 1.6],
+  ];
+  
+  const { assignments, minCost, iterations } = assignProblemSolver(matrix);
+
+  assert.ok(Math.abs(minCost - 4.9) < 1e-6, 'Total minimum cost should be approximately 4.9');
+  const sortedPairs = assignments.map(([f, b]) => `[${f},${b}]`).sort().join(',');
+  assert.strictEqual(sortedPairs, '[0,0],[1,1],[2,2]', 'Expected optimal float-cost pairing');
+  console.log('  Test 4 passed! :O');
+  console.log(`   iterations explored: ${iterations}`);
+  console.log(`   best assignment    : ${JSON.stringify(assignments)}`);
+  console.log(`   minimum cost       : ${minCost}`);
+}
+
+/**
  * Run All Tests
  */
 function runAllTests() {
@@ -100,6 +129,8 @@ function runAllTests() {
   test2();
   console.log('');
   test3();
+  console.log('');
+  test4();
   console.log('\n  all unit tests passed! :D');
 }
 
