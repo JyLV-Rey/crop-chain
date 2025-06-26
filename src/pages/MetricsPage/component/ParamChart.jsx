@@ -36,18 +36,14 @@ function ParamChart({ buyers, farmers, currentAssignment, bestAssignment, matrix
 
   const options = {
     responsive: true,
-    interaction: {
-      mode: 'index',
-      intersect: false,
-    },
     plugins: {
       legend: { position: "top" },
-      tooltip: { mode: "index", intersect: false },
     },
     scales: {
       y: {
         beginAtZero: true,
-        title: { display: true, text: "Produce Amount" },
+        max: 100,
+        title: { display: true, text: "Fulfillment (%)" },
       },
     },
   };

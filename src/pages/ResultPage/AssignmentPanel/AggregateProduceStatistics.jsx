@@ -24,7 +24,7 @@ function ProduceAggregateStats({ produceList, buyer, farmer }) {
   const maxUnder = Math.min(...stats.map(s => s.utilizationDiff));
 
   return (
-    <div className="flex flex-col shadow-xl rounded-lg p-4 text-sm gap-1 bg-neutral-100">
+    <div className="flex flex-col shadow-xl rounded-lg p-4 w-full text-sm gap-1 bg-neutral-100">
       <p className="text-xl font-bold mb-2">Aggregate Produce Statistics</p>
       <p><span className="font-bold">Oversupply %:</span> {(oversupplied.length / stats.length * 100).toFixed(1)}%</p>
       <p><span className="font-bold">Average Utilization:</span> {avgUtilization.toFixed(1)}%</p>

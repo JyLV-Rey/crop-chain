@@ -5,10 +5,8 @@ import { useGlobalData } from "../../default-data/DefaultGlobalData";
 import getCostMatrix from "../../algorithms/CostMatrixComputation";
 import assignProblemSolver from "../../algorithms/assignmentProblem";
 import data from '../ResultPage/mock-output.json'
-import HeatmapChart from "./component/HeatMap";
-import DistanceChart from "./component/ParamChart";
-import pureDistanceCostMatrix from "../../algorithms/CostMatrixDistance";
-import DistanceStats from "./metrics/DistanceStats";
+import DistanceStats from "./metrics/distance/DistanceStats";
+import BuyerSaturationStats from "./metrics/oversupply/OversupplyStats";
 import EachProduce from "./metrics/produce/EachProduce";
 
 function StatsPage() {
@@ -74,30 +72,29 @@ function StatsPage() {
         <NavBar/>
         <div className="w-full mt-20 p-5">
           <div className="flex flex-col gap-10 text-neutral-700 text-lg font-medium">
-            <p className="font-extrabold text-5xl">Statistics</p>
-            <p className="font-semibold text-2xl">Here are the statistics of the current session:</p>
+            <div>
+              <p className="font-extrabold text-5xl text-center">Statistics</p>
+              <p className="font-semibold text-2xl text-center">Here are the statistics of the current session</p>
+            </div>
+
               <div>
-                <p className="font-bold text-xl">Best Distance Comparison</p>
+                <p className="font-bold text-3xl">Best Distance Comparison</p>
                 <p>The theoretical perfect distance assignment is given by the blue data, the red data is the current assignment. This is to show how close/far the current assignment is from the perfect assignment in terms of distance</p>
                   <DistanceStats buyers={buyers} farmers={farmers} bestAssignment={bestAssignment} bestDistanceAssignment={bestDistanceAssignment} distanceMatrix={distanceMatrix}/>
               </div>
 
               <div>
-                <p className="font-bold text-xl">Best Undersupply Comparison</p>
-                <p>This is the metric of the how much the produce is distributed to the buyers, in relation to the utilization and efficiency</p>
-                <DistanceStats buyers={buyers} farmers={farmers} bestAssignment={bestAssignment} bestDistanceAssignment={bestUndersupplyAssignment} distanceMatrix={distanceMatrix}/>
+              <p className="font-bold text-3xl">Best Oversupply Comparison</p>
+              <p className="">
+                This section compares how much more produce buyers are receiving than they can handle. It shows how the current assignment leads to excess delivery (oversupply), and how the optimal assignment reduces that waste while still meeting demand.
+              </p>
+                <BuyerSaturationStats buyers={buyers} farmers={farmers} bestAssignment={bestAssignment} bestUndersupplyAssignment={bestOversupplyAssignment} />
               </div>
 
               <div>
-                <p className="font-bold text-xl">Best Oversupply Comparison</p>
+                <p className="font-bold text-3xl">Produce Distribution</p>
                 <p>This is the metric of the how much the produce is distributed to the buyers, in relation to the utilization and efficiency</p>
-
-              </div>
-
-              <div>
-                <p className="font-bold text-xl">Produce Distribution</p>
-                <p>This is the metric of the how much the produce is distributed to the buyers, in relation to the utilization and efficiency</p>
-
+                <EachProduce farmers={farmers} buyers={buyers} global={global} currentAssignment={bestAssignment} />
               </div>
 
           </div>
