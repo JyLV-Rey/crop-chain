@@ -5,7 +5,7 @@ import { useGlobalData } from "../../default-data/DefaultGlobalData"
 import costMatrix from "../../algorithms/CostMatrixComputation"
 import assignProblemSolver from "../../algorithms/assignmentProblem"
 import data from "../ResultPage/mock-output.json"
-import AssignmentSummary from "./component/AssignmentSummary"
+import AssignmentSummary from "./components/AssignmentSummary"
 
 function StatsPage() {
   const { farmers, buyers, global } = useGlobalData()
