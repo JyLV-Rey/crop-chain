@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { ChevronRight } from "lucide-react";
 
 /**
  * HerooSection Component
@@ -28,7 +29,7 @@ function HeroSection() {
             to="/Assignment/Initialization"
             className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
           >
-            Get Started →
+            Get Started <ChevronRight className="inline-block ml-2" />
           </Link>
           <Link
             to="/Overview"

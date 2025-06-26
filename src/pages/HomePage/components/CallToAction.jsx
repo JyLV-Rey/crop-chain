@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { ChevronRight } from "lucide-react";
 
 /**
  * CallToAction Component
@@ -16,7 +17,7 @@ function CallToAction() {
             to="/Assignment/Initialization"
             className="bg-white hover:bg-gray-100 text-emerald-600 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
           >
-            Get Started Now →
+            Get Started <ChevronRight className="inline-block ml-2" />
           </Link>
           <Link
             to="/Overview"
