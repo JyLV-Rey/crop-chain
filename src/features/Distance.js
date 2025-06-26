@@ -67,7 +67,7 @@ export default async function getDistanceMatrix(buyers, farmers) {
 
     for (const farmer of farmers) {
       const farmerLocationName = await reverseGeocode(farmer.location);
-      const valhallaData = await getDistanceValhalla(buyer.location, farmer.location);
+      const valhallaData = await getDistanceValhalla(farmer.location, buyer.location);
 
       row.push({
         ...valhallaData,

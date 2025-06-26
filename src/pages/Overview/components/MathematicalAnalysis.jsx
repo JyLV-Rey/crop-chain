@@ -1,4 +1,5 @@
 import { Calculator } from "lucide-react";
+import { BlockMath, InlineMath } from "react-katex";
 
 function MathematicalAnalysis() {
   return (
@@ -24,42 +25,40 @@ function MathematicalAnalysis() {
         </li>
         </ul>
         <p className="text-gray-600 mb-4">
-        There are only <strong>5</strong> farmers and buyers, indicated by n=5. We can declare mutually
-        exclusive function-scoped inputs i, j to access the data of each farmer and buyer, respectively. Where 0
+        We can declare mutually exclusive function-scoped inputs i, j to access the data of each farmer and buyer, respectively. Where 0
         ≤ i,j &lt; n
         </p>
 
         <div className="bg-gray-50 p-6 rounded-lg">
         <h4 className="font-bold text-gray-700 mb-3">We can then define the following matrices/arrays:</h4>
         <ul className="list-disc list-inside text-gray-600 space-y-2">
-            <li>
-            <code className="bg-gray-200 px-2 py-1 rounded">farmer_supply[i][f]</code> - supply in kg per fruit
-            f per farmer i
-            </li>
-            <li>
-            <code className="bg-gray-200 px-2 py-1 rounded">buyer_stock[j][f]</code> - current stock in kg per
-            fruit f per buyer j
-            </li>
-            <li>
-            <code className="bg-gray-200 px-2 py-1 rounded">distance[i][j]</code> - distance from farmer i to
-            buyer j (independent of fruit)
-            </li>
-            <li>
-            <code className="bg-gray-200 px-2 py-1 rounded">B_max[f]</code> - maximum stock per fruit f for the
-            buyer (for overstock)
-            </li>
-            <li>
-            <code className="bg-gray-200 px-2 py-1 rounded">W_f[f]</code> - priority level of the fruit f
-            </li>
-            <li>
-            <code className="bg-gray-200 px-2 py-1 rounded">F_total</code> - total types of fruit
-            </li>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+        <li>
+            <InlineMath math="farmer\_supply[i][f]" /> — supply in kg per fruit <InlineMath math="f" /> per farmer <InlineMath math="i" />
+        </li>
+        <li>
+            <InlineMath math="buyer\_stock[j][f]" /> — current stock in kg per fruit <InlineMath math="f" /> per buyer <InlineMath math="j" />
+        </li>
+        <li>
+            <InlineMath math="distance[i][j]" /> — distance from farmer <InlineMath math="i" /> to buyer <InlineMath math="j" /> (independent of fruit)
+        </li>
+        <li>
+            <InlineMath math="buyer\_stock\_max[j][f]" /> — maximum stock per fruit <InlineMath math="f" /> for buyer <InlineMath math="j" /> (for overstock calculation)
+        </li>
+        <li>
+            <InlineMath math="W_f[f]" /> — priority level of the fruit <InlineMath math="f" />
+        </li>
+        <li>
+            <InlineMath math="F_{\text{total}}" /> — total number of fruit types
+        </li>
+        </ul>
+
         </ul>
         </div>
 
         <p className="text-gray-600 mt-4">
-        Depending on the complexity, the website aims to integrate a function to call a built-in{" "}
-        <strong>Multi-Level Dijkstra</strong> to calculate the actual distance from the farmers to each market.
+        The website integrates a function to call a built-in{" "}
+        <strong>Multi-Level Dijkstra</strong> to calculate the actual distance from the farmers to each buyers using <strong>Valhalla</strong>.
         </p>
     </div>
 
@@ -71,104 +70,67 @@ function MathematicalAnalysis() {
         </p>
 
         <div className="bg-blue-50 p-6 rounded-lg mb-4">
-        <div className="text-center text-xl font-mono text-black">
-            C<sub>ijf</sub> = d<sup>β</sup><sub>ij</sub> × (1 + δ × (b<sub>jf</sub> / b<sub>f</sub>))
-            <sup>max</sup>)) / s<sub>if</sub>
-            <sup>α</sup>
-        </div>
+            <div className="text-center text-xl font-mono text-black">
+                <BlockMath math={`C_{ijf} = \\frac{d_{ij}^{\\beta} \\cdot \\left(1 +  \\frac{b_{jf}}{b_f^{\\text{max}}}^{\\delta} \\right)}{s_{if}^\\alpha}`} />
+            </div>
         </div>
 
-        <div className="bg-gray-50 p-6 rounded-lg">
-        <h4 className="font-bold text-gray-700 mb-3">Where:</h4>
-        <ul className="list-disc list-inside text-gray-600 space-y-1">
-            <li>
-            <strong>
-                d<sub>ij</sub>
-            </strong>{" "}
-            — distance between farmer i and buyer j
-            </li>
-            <li>
-            <strong>
-                s<sub>if</sub>
-            </strong>{" "}
-            — supply of fruit f from farmer i
-            </li>
-            <li>
-            <strong>
-                b<sub>jf</sub>
-            </strong>{" "}
-            — current stock of fruit f at buyer j
-            </li>
-            <li>
-            <strong>
-                b<sub>f</sub>
-                <sup>max</sup>
-            </strong>{" "}
-            — max target stock for fruit f (used for normalization)
-            </li>
-            <li>
-            <strong>α</strong> — exponent controlling effect of supply on cost
-            </li>
-            <li>
-            <strong>δ</strong> — penalty multiplier for buyer oversupply
-            </li>
+        <div className="bg-gray-50 text-gray-700 p-6 rounded-lg">
+        <h4 className="font-bold  mb-3">Where:</h4>
+        <ul className="list-disc pl-4 space-y-1">
+            <li><InlineMath math="d_{ij}" /> — distance between farmer <InlineMath math="i" /> and buyer <InlineMath math="j" /></li>
+            <li><InlineMath math="\beta" /> — exponent controlling effect of distance on cost</li>
+            <li><InlineMath math="s_{if}" /> — supply of fruit <InlineMath math="f" /> from farmer <InlineMath math="i" /></li>
+            <li><InlineMath math="b_{jf}" /> — current stock of fruit <InlineMath math="f" /> at buyer <InlineMath math="j" /></li>
+            <li><InlineMath math="b_f^{\text{max}}" /> — max target stock for fruit <InlineMath math="f" /> (used for normalization)</li>
+            <li><InlineMath math="\alpha" /> — exponent controlling effect of farmer supply on cost</li>
+            <li><InlineMath math="\delta" /> — penalty multiplier for buyer oversupply</li>
         </ul>
         </div>
     </div>
 
     {/* Combined Costs */}
-    <div className="mb-8">
+        <div className="mb-8">
         <h3 className="text-2xl font-bold text-gray-700 mb-4">Combine Costs Across Fruits</h3>
+
         <p className="text-gray-600 mb-4">
-        For each farmer–buyer pair, compute the total cost across all fruits:
+            For each farmer–buyer pair, compute the total cost across all fruit types:
         </p>
 
         <div className="bg-green-50 p-6 rounded-lg mb-4">
-        <div className="text-center text-xl font-mono text-black">
-            C<sub>ij</sub>
-            <sup>total</sup> = Σ<sub>f=0</sub>
-            <sup>F-1</sup> (W<sub>f</sub> / F) × C<sub>ijf</sub>
-        </div>
+            <div className="text-center text-xl font-mono text-black">
+            <BlockMath math={"C_{ij}^{\\text{total}} = \\sum_{f=0}^{F-1} \\frac{1}{W_f} \\cdot C_{ijf}"} />
+            </div>
         </div>
 
         <div className="bg-gray-50 p-6 rounded-lg">
-        <h4 className="font-bold text-gray-700 mb-3">Where:</h4>
-        <ul className="list-disc list-inside text-gray-600 space-y-1">
+            <h4 className="font-bold text-gray-700 mb-3">Where:</h4>
+            <ul className="list-disc list-inside text-gray-600 space-y-1">
+            <li><strong>F</strong> — total number of fruit types</li>
             <li>
-            <strong>F</strong> - total number of fruit types
+                <strong><InlineMath math="C_{ijf}" /></strong> — cost for farmer <InlineMath math="i" /> to buyer <InlineMath math="j" /> for fruit <InlineMath math="f" />
             </li>
             <li>
-            <strong>
-                C<sub>ijf</sub>
-            </strong>{" "}
-            — cost for farmer i to buyer j for fruit f
+                <strong><InlineMath math="W_f" /></strong> — priority level of fruit <InlineMath math="f" /> (higher means more important). The reciprocal is used to reduce cost for high-priority fruits.
             </li>
-            <li>
-            <strong>
-                W<sub>f</sub>
-            </strong>{" "}
-            - priority level of the fruit, higher number means higher priority, set to 1 if all fruits should be
-            treated equally. Should NOT equal 0.
-            </li>
-        </ul>
+            </ul>
         </div>
 
         <p className="text-gray-600 mt-4">
-        We divide the current priority W<sub>f</sub> by F to normalize the values. This is so Σ<sub>f=0</sub>
-        <sup>F-1</sup> W<sub>f</sub> = 1.
+            Each fruit’s cost is scaled by its inverse priority to emphasize important fruits. That is, the lower the <InlineMath math="W_f" />, the higher the priority and the lower the resulting cost.
         </p>
+
         <p className="text-gray-600 mt-2">
-        This yields a single unified cost matrix if the model assumes one truck or one delivery per farmer–buyer
-        pair. We can finalize the matrix into a two-dimensional matrix G, where G[i][j] will be the cost of
-        assigning farmer i to buyer j.
+            This yields a single unified cost matrix assuming one truck or delivery per farmer–buyer pair. The final matrix <InlineMath math="G[i][j]" /> represents the total cost of assigning farmer <InlineMath math="i" /> to buyer <InlineMath math="j" />.
         </p>
-    </div>
+        </div>
+
 
     {/* Parameter Importance */}
     <div className="mb-8">
         <h3 className="text-2xl font-bold text-gray-700 mb-4">Importance of the α and δ Parameters</h3>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="flex flex-row gap-6">
         <div className="bg-orange-50 p-6 rounded-lg">
             <h4 className="font-bold text-orange-800 mb-3">Effect of α (Farmer Oversupply Prioritization)</h4>
             <p className="text-orange-700 mb-3">
@@ -202,6 +164,35 @@ function MathematicalAnalysis() {
             </li>
             </ul>
         </div>
+        <div className="flex-grow w-full bg-purple-50 p-6 rounded-lg">
+            <h4 className="font-bold text-blue-800 mb-3">
+                Effect of <InlineMath math="\beta" /> (Distance Penalty)
+            </h4>
+            <p className="text-blue-700 mb-3">
+                The exponent <InlineMath math="\beta" /> controls how much distance affects the cost:
+            </p>
+            <div className="text-center text-lg font-mono mb-3">
+                <InlineMath math="d_{ij}^{\beta}" />
+            </div>
+            <ul className="list-disc list-inside text-blue-700 text-sm space-y-1">
+                <li>
+                <InlineMath math="\beta = 0" />: Distance does not affect cost; all farmer–buyer routes are equal.
+                </li>
+                <li>
+                <InlineMath math="0 < \beta < 1" />: Mild penalty for farther distances.
+                </li>
+                <li>
+                <InlineMath math="\beta = 1" />: Cost scales linearly with distance.
+                </li>
+                <li>
+                <InlineMath math="\beta > 1" />: Sharp penalty for longer distances, emphasizing locality.
+                </li>
+            </ul>
+            <p className="text-blue-700 text-sm mt-3">
+                This parameter allows tuning the importance of proximity in the delivery network.
+            </p>
+        </div>
+
         </div>
     </div>
 
@@ -258,7 +249,7 @@ function MathematicalAnalysis() {
         </p>
 
         <div className="bg-yellow-50 p-6 rounded-lg mb-4">
-        <div className="text-center text-xl font-mono text-black">5! = 5×4×3×2×1 = 120</div>
+        <div className="text-center text-xl font-mono text-black">5! = 5x4x3x2x1 = 120</div>
         </div>
 
         <p className="text-gray-600 mb-4">

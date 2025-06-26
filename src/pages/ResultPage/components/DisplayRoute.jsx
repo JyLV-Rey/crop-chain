@@ -68,7 +68,7 @@ function DisplayRoute({ route, buyer, farmer }) {
 
   if (!route || !route.shape) return null;
   return (
-    <div style={{ height: "400px", width: "100%", marginTop: "10px", borderRadius: "12px", overflow: "hidden" }}>
+    <div style={{ height: "400px", width: "100%", marginTop: "10px", borderRadius: "12px", overflow: "hidden" }} className="z-0">
       <MapContainer
         center={buyerLatLng}
         zoom={13}

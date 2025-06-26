@@ -5,10 +5,13 @@ import { Link } from "react-router-dom";
  */
 function HeroSection() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-emerald-100 flex flex-col items-center justify-center px-6 pt-20">
-      <div className="max-w-6xl mx-auto text-center">
+    <div className="min-h-screen bg-gradient-to-br to-yellow-200 from-green-300 flex flex-col items-center justify-center px-6 pt-20">
+      <div className="max-w-6xl flex flex-col mx-auto justify-center text-center">
         {/* CropChain Logo */}
-        <img src="/logos/CropChain.png" className="w-32 h-auto mx-auto mb-8" alt="CropChain Logo" />
+        <div className="bg-white rounded-full p-4 w-fit self-center mb-8">
+          <img src="/logos/CropChain.png" className="w-32 h-32 mx-auto" alt="CropChain Logo" />
+        </div>
+        
         {/* Main Title */}
         <h1 className="text-7xl font-bold text-emerald-800 mb-4">CropChain</h1>
         {/* Tagline */}

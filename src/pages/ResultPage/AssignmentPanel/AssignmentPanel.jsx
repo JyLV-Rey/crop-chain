@@ -9,7 +9,7 @@ function AssignmentPanel( {farmers, buyers, distanceMatrix, global, bestAssignme
       <div className="flex flex-col flex-wrap justify-around gap-4 mt-10">
         { bestAssignment.bestAssignment != undefined && bestAssignment.bestAssignment.map((assignment, index) => (
           <div key={index} className="flex flex-col w-full text-sm justify-between p-5 rounded-lg shadow-xl/8 bg-neutral-100 text-neutral-800 font-medium ">
-            <p className="text-xl font-extrabold text-center">Assignment {index + 1}</p>
+            <p className="text-3xl font-extrabold text-center">Assignment {index + 1}</p>
             <p className="font-bold text-center">{farmers[assignment[0]].farm_name} <span className="font-medium"> delivers to </span>{buyers[assignment[1]].store_name}</p>
 
             <div className="flex flex-row w-full justify-between gap-2">

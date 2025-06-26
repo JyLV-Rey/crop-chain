@@ -85,7 +85,6 @@ function ResultsPage() {
               <p className="text-lg">These are the resulting assignments of buyers to farmers based on the minimum cost calculated by the assignment algorithm.</p>
               <AssignmentPanel farmers={farmers} buyers={buyers} distanceMatrix={distanceMatrix} global={global} bestAssignment={bestAssignment} costMatrix={finalCostMatrix} />
             </div>
-
           </div>
         </div>
       </div>
