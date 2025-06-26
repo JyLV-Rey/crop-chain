@@ -130,7 +130,7 @@ const FrancesGraph = () => {
               borderRadius: 4,
             }}
           />
-          <span>Moderate 75%–90%</span>
+          <span>Moderate 75%-90%</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <div
