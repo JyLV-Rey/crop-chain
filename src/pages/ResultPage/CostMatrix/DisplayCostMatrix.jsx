@@ -64,7 +64,7 @@ function DisplayCostMatrix({ costMatrix, buyers, farmers, global, distanceMatrix
             <>
               <p className="text-lg"><span className="font-bold">Total Recursive Iterations</span> = {bestAssignment.iteration}</p>
               <p className="text-lg p-2 bg-blue-100 w-fit text-blue-800 rounded-xl"><span className="font-bold">Total Minimum Cost</span> = {bestAssignment.minCost.toFixed(2)}</p>
-              <p className="text-sm font-extrabold mt-5 text-neutral-700">View Computation (f)</p>
+              <p className="text-sm font-extrabold mt-5 text-neutral-700">View Computation (p)</p>
               <div className="flex flex-row justify-between gap-2 items-center text-neutral-600 font-semibold">
                 <button onClick={() => {setSelectedSolution(-1)}} className="bg-neutral-100 flex-grow shadow-lg p-2 hover:scale-105 duration-200 ease-(--my-beizer) hover:bg-emerald-100 hover:text-emerald-700 font-bold hover:font-extrabold cursor-pointer">Total Computation</button>
                 {

@@ -11,11 +11,11 @@ function MathematicalAnalysis() {
 
     {/* Input Structure */}
     <div className="mb-8">
-        <h3 className="text-2xl font-bold text-gray-700 mb-4">Input Structure per Fruit</h3>
+        <h3 className="text-2xl font-bold text-gray-700 mb-4">Input Structure per produce</h3>
         <p className="text-gray-600 mb-4">Assume the following variables:</p>
         <ul className="list-disc list-inside text-gray-600 mb-4 space-y-1">
         <li>
-            <strong>F</strong> — number of fruit types
+            <strong>F</strong> — number of produce types
         </li>
         <li>
             <strong>N</strong> — number of farmers
@@ -34,22 +34,22 @@ function MathematicalAnalysis() {
         <ul className="list-disc list-inside text-gray-600 space-y-2">
         <ul className="list-disc list-inside text-gray-700 space-y-2">
         <li>
-            <InlineMath math="farmer\_supply[i][f]" /> — supply in kg per fruit <InlineMath math="f" /> per farmer <InlineMath math="i" />
+            <InlineMath math="farmer\_supply[i][f]" /> — supply in kg per produce <InlineMath math="f" /> per farmer <InlineMath math="i" />
         </li>
         <li>
-            <InlineMath math="buyer\_stock[j][f]" /> — current stock in kg per fruit <InlineMath math="f" /> per buyer <InlineMath math="j" />
+            <InlineMath math="buyer\_stock[j][f]" /> — current stock in kg per produce <InlineMath math="f" /> per buyer <InlineMath math="j" />
         </li>
         <li>
-            <InlineMath math="distance[i][j]" /> — distance from farmer <InlineMath math="i" /> to buyer <InlineMath math="j" /> (independent of fruit)
+            <InlineMath math="distance[i][j]" /> — distance from farmer <InlineMath math="i" /> to buyer <InlineMath math="j" /> (independent of produce)
         </li>
         <li>
-            <InlineMath math="buyer\_stock\_max[j][f]" /> — maximum stock per fruit <InlineMath math="f" /> for buyer <InlineMath math="j" /> (for overstock calculation)
+            <InlineMath math="buyer\_stock\_max[j][f]" /> — maximum stock per produce <InlineMath math="f" /> for buyer <InlineMath math="j" /> (for overstock calculation)
         </li>
         <li>
-            <InlineMath math="W_f[f]" /> — priority level of the fruit <InlineMath math="f" />
+            <InlineMath math="P_f[f]" /> — priority level of the produce <InlineMath math="f" />
         </li>
         <li>
-            <InlineMath math="F_{\text{total}}" /> — total number of fruit types
+            <InlineMath math="F_{\text{total}}" /> — total number of produce types
         </li>
         </ul>
 
@@ -58,20 +58,49 @@ function MathematicalAnalysis() {
 
         <p className="text-gray-600 mt-4">
         The website integrates a function to call a built-in{" "}
-        <strong>Multi-Level Dijkstra</strong> to calculate the actual distance from the farmers to each buyers using <strong>Valhalla</strong>.
+        <strong>Multi-Level Dijkstra</strong> to calculate the actual distance from the farmers to each buyers using <a href="https://github.com/valhalla/valhalla" target="_blank" className="text-blue-700"><strong>Valhalla Open Routing System</strong></a>.
         </p>
+    </div>
+
+    {/* Normalization Techniques */}
+    <div className="mb-8">
+    <h3 className="text-2xl font-bold text-gray-700 mb-4">Normalization Techniques</h3>
+    <p className="text-gray-600 mb-4">
+        To ensure that distances and supply values contribute proportionally to the final cost, we normalize them using
+        <strong> Max Normalization</strong>. This allows all values to be scaled between 0 and 1 before applying exponents.
+    </p>
+
+    <div className="bg-yellow-50 p-6 rounded-lg mb-4">
+        <h4 className="font-bold text-yellow-800 mb-2">Normalized Distance</h4>
+        <div className="text-center text-lg font-mono text-black mb-2">
+        <BlockMath math={"\\tilde{d}_{ij} = \\frac{d_{ij}}{\\max_k (d_{ik})}"} />
+        </div>
+        <p className="text-yellow-700">
+        Distance between farmer <InlineMath math="i" /> and buyer <InlineMath math="j" /> is divided by the maximum distance from farmer <InlineMath math="i" /> to all buyers. This ensures relative proximity is captured.
+        </p>
+    </div>
+
+    <div className="bg-yellow-50 p-6 rounded-lg">
+        <h4 className="font-bold text-yellow-800 mb-2">Normalized Farmer Supply</h4>
+        <div className="text-center text-lg font-mono text-black mb-2">
+        <BlockMath math={"\\tilde{s}_{if} = \\frac{s_{if}}{\\max_k (s_{ik})}"} />
+        </div>
+        <p className="text-yellow-700">
+        Supply of produce <InlineMath math="f" /> from farmer <InlineMath math="i" /> is normalized against the maximum supply of any produce by that farmer, so that produce types are weighted fairly across limited or abundant harvests.
+        </p>
+    </div>
     </div>
 
     {/* Cost Formula */}
     <div className="mb-8">
-        <h3 className="text-2xl font-bold text-gray-700 mb-4">Cost Formula per Fruit Type</h3>
+        <h3 className="text-2xl font-bold text-gray-700 mb-4">Cost Formula per produce Type</h3>
         <p className="text-gray-600 mb-4">
-        For each fruit type F, compute the cost of assigning farmer i to buyer j:
+        For each produce type F, compute the cost of assigning farmer i to buyer j:
         </p>
 
         <div className="bg-blue-50 p-6 rounded-lg mb-4">
             <div className="text-center text-xl font-mono text-black">
-                <BlockMath math={`C_{ijf} = \\frac{d_{ij}^{\\beta} \\cdot \\left(1 +  \\frac{b_{jf}}{b_f^{\\text{max}}}^{\\delta} \\right)}{s_{if}^\\alpha}`} />
+                <BlockMath math={`C_{ijf} = \\frac{d_{ij}^{\\beta} \\cdot \\left(1 +  \\frac{b_{jf}}{b_f^{\\text{max}}}^{\\delta} \\right)}{1 + s_{if}^\\alpha}`} />
             </div>
         </div>
 
@@ -80,9 +109,9 @@ function MathematicalAnalysis() {
         <ul className="list-disc pl-4 space-y-1">
             <li><InlineMath math="d_{ij}" /> — distance between farmer <InlineMath math="i" /> and buyer <InlineMath math="j" /></li>
             <li><InlineMath math="\beta" /> — exponent controlling effect of distance on cost</li>
-            <li><InlineMath math="s_{if}" /> — supply of fruit <InlineMath math="f" /> from farmer <InlineMath math="i" /></li>
-            <li><InlineMath math="b_{jf}" /> — current stock of fruit <InlineMath math="f" /> at buyer <InlineMath math="j" /></li>
-            <li><InlineMath math="b_f^{\text{max}}" /> — max target stock for fruit <InlineMath math="f" /> (used for normalization)</li>
+            <li><InlineMath math="s_{if}" /> — supply of produce <InlineMath math="f" /> from farmer <InlineMath math="i" /></li>
+            <li><InlineMath math="b_{jf}" /> — current stock of produce <InlineMath math="f" /> at buyer <InlineMath math="j" /></li>
+            <li><InlineMath math="b_f^{\text{max}}" /> — max target stock for produce <InlineMath math="f" /> (used for normalization)</li>
             <li><InlineMath math="\alpha" /> — exponent controlling effect of farmer supply on cost</li>
             <li><InlineMath math="\delta" /> — penalty multiplier for buyer oversupply</li>
         </ul>
@@ -91,33 +120,33 @@ function MathematicalAnalysis() {
 
     {/* Combined Costs */}
         <div className="mb-8">
-        <h3 className="text-2xl font-bold text-gray-700 mb-4">Combine Costs Across Fruits</h3>
+        <h3 className="text-2xl font-bold text-gray-700 mb-4">Combine Costs Across Produce</h3>
 
         <p className="text-gray-600 mb-4">
-            For each farmer–buyer pair, compute the total cost across all fruit types:
+            For each farmer–buyer pair, compute the total cost across all produce types:
         </p>
 
         <div className="bg-green-50 p-6 rounded-lg mb-4">
             <div className="text-center text-xl font-mono text-black">
-            <BlockMath math={"C_{ij}^{\\text{total}} = \\sum_{f=0}^{F-1} \\frac{1}{W_f} \\cdot C_{ijf}"} />
+            <BlockMath math={"C_{ij}^{\\text{total}} = \\sum_{f=0}^{F-1} \\frac{1}{P_f} \\cdot C_{ijf}"} />
             </div>
         </div>
 
         <div className="bg-gray-50 p-6 rounded-lg">
             <h4 className="font-bold text-gray-700 mb-3">Where:</h4>
             <ul className="list-disc list-inside text-gray-600 space-y-1">
-            <li><strong>F</strong> — total number of fruit types</li>
+            <li><strong>F</strong> — total number of produce types</li>
             <li>
-                <strong><InlineMath math="C_{ijf}" /></strong> — cost for farmer <InlineMath math="i" /> to buyer <InlineMath math="j" /> for fruit <InlineMath math="f" />
+                <strong><InlineMath math="C_{ijf}" /></strong> — cost for farmer <InlineMath math="i" /> to buyer <InlineMath math="j" /> for produce <InlineMath math="f" />
             </li>
             <li>
-                <strong><InlineMath math="W_f" /></strong> — priority level of fruit <InlineMath math="f" /> (higher means more important). The reciprocal is used to reduce cost for high-priority fruits.
+                <strong><InlineMath math="P_f" /></strong> — priority level of produce <InlineMath math="f" /> (higher means more important). The reciprocal is used to reduce cost for high-priority produce.
             </li>
             </ul>
         </div>
 
         <p className="text-gray-600 mt-4">
-            Each fruit’s cost is scaled by its inverse priority to emphasize important fruits. That is, the lower the <InlineMath math="W_f" />, the higher the priority and the lower the resulting cost.
+            Each produce’s cost is scaled by its inverse priority to emphasize important produce. That is, the lower the <InlineMath math="P_f" />, the higher the priority and the lower the resulting cost.
         </p>
 
         <p className="text-gray-600 mt-2">
@@ -128,10 +157,14 @@ function MathematicalAnalysis() {
 
     {/* Parameter Importance */}
     <div className="mb-8">
-        <h3 className="text-2xl font-bold text-gray-700 mb-4">Importance of the α and δ Parameters</h3>
+        <h3 className="text-2xl font-bold text-gray-700 mb-4">Importance of the Tuning Parameters</h3>
 
-        <div className="flex flex-row gap-6">
-        <div className="bg-orange-50 p-6 rounded-lg">
+        <p className="text-gray-600 mb-4">
+        The following parameters control the behavior of the optimization algorithm, they simply adjust the sensitivity to change for the different input variables. This allows for customizability depending on the dynamic prioritization based on certain conditions rendered by the user:
+        </p>
+
+        <div className="flex flex-row flex-wrap gap-6">
+        <div className="bg-orange-50 p-6 rounded-lg w-1/3">
             <h4 className="font-bold text-orange-800 mb-3">Effect of α (Farmer Oversupply Prioritization)</h4>
             <p className="text-orange-700 mb-3">
             The exponent α controls how strongly the farmer's supply s<sub>if</sub> influences the cost:
@@ -148,7 +181,7 @@ function MathematicalAnalysis() {
             </ul>
         </div>
 
-        <div className="bg-purple-50 p-6 rounded-lg">
+        <div className="bg-purple-50 p-6 rounded-lg w-1/2">
             <h4 className="font-bold text-purple-800 mb-3">Effect of δ (Buyer Oversupply Penalty)</h4>
             <p className="text-purple-700 mb-3">
             The multiplier δ controls how much the buyer's current stock affects the cost:
