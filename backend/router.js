@@ -23,5 +23,5 @@ app.post('/api/route', async (req, res) => {
 });
 
 app.listen(3001, () => {
-  console.log('Proxy running on http://localhost:3001');
+  console.log('Valhalla Proxy running on http://localhost:3001');
 });

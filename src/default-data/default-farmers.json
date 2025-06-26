@@ -1,82 +1,233 @@
 [
   {
-    "first_name": "Maria",
-    "last_name": "Santos",
-    "farm_name": "Santos Orchard",
-    "location": {
-      "latitude": 14.25500,
-      "longitude": 121.40300
-    },
-    "produce": [
-      { "supply": 150 },
-      { "supply": 230 },
-      { "supply": 180 },
-      { "supply": 275 },
-      { "supply": 210 }
+    "farmers": [
+      {
+        "first_name": "Maria",
+        "last_name": "Santos",
+        "farm_name": "Santos Farm",
+        "location": { "latitude": 17.005, "longitude": 120.495 },
+        "produce": [{ "supply": 200 }, { "supply": 210 }, { "supply": 195 }]
+      },
+      {
+        "first_name": "Carlos",
+        "last_name": "Reyes",
+        "farm_name": "Reyes Farm",
+        "location": { "latitude": 17.010, "longitude": 120.510 },
+        "produce": [{ "supply": 180 }, { "supply": 220 }, { "supply": 200 }]
+      },
+      {
+        "first_name": "Elena",
+        "last_name": "Cruz",
+        "farm_name": "Cruz Farm",
+        "location": { "latitude": 16.995, "longitude": 120.505 },
+        "produce": [{ "supply": 190 }, { "supply": 200 }, { "supply": 180 }]
+      },
+      {
+        "first_name": "Ricardo",
+        "last_name": "Torres",
+        "farm_name": "Torres Farm",
+        "location": { "latitude": 17.015, "longitude": 120.480 },
+        "produce": [{ "supply": 170 }, { "supply": 190 }, { "supply": 210 }]
+      },
+      {
+        "first_name": "Luz",
+        "last_name": "Garcia",
+        "farm_name": "Garcia Farm",
+        "location": { "latitude": 17.020, "longitude": 120.500 },
+        "produce": [{ "supply": 200 }, { "supply": 185 }, { "supply": 220 }]
+      }
     ]
   },
   {
-    "first_name": "Carlos",
-    "last_name": "Reyes",
-    "farm_name": "Reyes Farm",
-    "location": {
-      "latitude": 14.23900,
-      "longitude": 121.42000
-    },
-    "produce": [
-      { "supply": 195 },
-      { "supply": 165 },
-      { "supply": 300 },
-      { "supply": 215 },
-      { "supply": 130 }
+  "farmers": 
+    [
+      {
+        "first_name": "Maria",
+        "last_name": "Santos",
+        "farm_name": "Santos Farm",
+        "location": {
+          "latitude": 17.51535082530711,
+          "longitude": 121.67009628244811
+        },
+        "produce": [
+          { "supply": 150 },
+          { "supply": 230 },
+          { "supply": 180 }
+        ]
+      },
+      {
+        "first_name": "Carlos",
+        "last_name": "Reyes",
+        "farm_name": "Reyes Farm",
+        "location": {
+          "latitude": 17.32982429728841,
+          "longitude": 121.44100597959813
+        },
+        "produce": [
+          { "supply": 195 },
+          { "supply": 165 },
+          { "supply": 300 }
+        ]
+      },
+      {
+        "first_name": "Elena",
+        "last_name": "Cruz",
+        "farm_name": "Cruz Farm",
+        "location": {
+          "latitude": 17.8041092343822,
+          "longitude": 121.71395439122406
+        },
+        "produce": [
+          { "supply": 220 },
+          { "supply": 140 },
+          { "supply": 190 }
+        ]
+      },
+      {
+        "first_name": "Ricardo",
+        "last_name": "Torres",
+        "farm_name": "Torres Farm",
+        "location": {
+          "latitude": 17.54391074828281,
+          "longitude": 121.85954503182857
+        },
+        "produce": [
+          { "supply": 175 },
+          { "supply": 290 },
+          { "supply": 200 }
+        ]
+      },
+      {
+        "first_name": "Luz",
+        "last_name": "Garcia",
+        "farm_name": "Garcia Farm",
+        "location": {
+          "latitude": 17.73342687022163,
+          "longitude": 121.49686541408303
+        },
+        "produce": [
+          { "supply": 120 },
+          { "supply": 260 },
+          { "supply": 240 }
+        ]
+      }
     ]
   },
   {
-    "first_name": "Elena",
-    "last_name": "Cruz",
-    "farm_name": "Cruz Harvest Fields",
-    "location": {
-      "latitude": 14.25300,
-      "longitude": 121.41900
-    },
-    "produce": [
-      { "supply": 220 },
-      { "supply": 140 },
-      { "supply": 190 },
-      { "supply": 260 },
-      { "supply": 155 }
+    "farmers": [
+      {
+        "first_name": "Maria",
+        "last_name": "Santos",
+        "farm_name": "Santos Farm",
+        "location": { "latitude": 15.005, "longitude": 120.905 },
+        "produce": [{ "supply": 250 }, { "supply": 230 }, { "supply": 220 }]
+      },
+      {
+        "first_name": "Carlos",
+        "last_name": "Reyes",
+        "farm_name": "Reyes Farm",
+        "location": { "latitude": 14.995, "longitude": 120.890 },
+        "produce": [{ "supply": 240 }, { "supply": 220 }, { "supply": 210 }]
+      },
+      {
+        "first_name": "Elena",
+        "last_name": "Cruz",
+        "farm_name": "Cruz Farm",
+        "location": { "latitude": 15.010, "longitude": 120.915 },
+        "produce": [{ "supply": 235 }, { "supply": 200 }, { "supply": 225 }]
+      },
+      {
+        "first_name": "Ricardo",
+        "last_name": "Torres",
+        "farm_name": "Torres Farm",
+        "location": { "latitude": 14.990, "longitude": 120.880 },
+        "produce": [{ "supply": 245 }, { "supply": 215 }, { "supply": 195 }]
+      },
+      {
+        "first_name": "Luz",
+        "last_name": "Garcia",
+        "farm_name": "Garcia Farm",
+        "location": { "latitude": 15.015, "longitude": 120.895 },
+        "produce": [{ "supply": 255 }, { "supply": 225 }, { "supply": 205 }]
+      }
     ]
   },
   {
-    "first_name": "Ricardo",
-    "last_name": "Torres",
-    "farm_name": "Torres Tropicals",
-    "location": {
-      "latitude": 14.23700,
-      "longitude": 121.40500
-    },
-    "produce": [
-      { "supply": 175 },
-      { "supply": 290 },
-      { "supply": 200 },
-      { "supply": 185 },
-      { "supply": 250 }
+    "farmers": [
+      {
+        "first_name": "Maria",
+        "last_name": "Santos",
+        "farm_name": "Santos Farm",
+        "location": { "latitude": 14.035, "longitude": 121.130 },
+        "produce": [{ "supply": 260 }, { "supply": 240 }, { "supply": 250 }]
+      },
+      {
+        "first_name": "Carlos",
+        "last_name": "Reyes",
+        "farm_name": "Reyes Farm",
+        "location": { "latitude": 14.025, "longitude": 121.145 },
+        "produce": [{ "supply": 255 }, { "supply": 235 }, { "supply": 245 }]
+      },
+      {
+        "first_name": "Elena",
+        "last_name": "Cruz",
+        "farm_name": "Cruz Farm",
+        "location": { "latitude": 14.040, "longitude": 121.120 },
+        "produce": [{ "supply": 265 }, { "supply": 225 }, { "supply": 230 }]
+      },
+      {
+        "first_name": "Ricardo",
+        "last_name": "Torres",
+        "farm_name": "Torres Farm",
+        "location": { "latitude": 14.020, "longitude": 121.150 },
+        "produce": [{ "supply": 245 }, { "supply": 255 }, { "supply": 235 }]
+      },
+      {
+        "first_name": "Luz",
+        "last_name": "Garcia",
+        "farm_name": "Garcia Farm",
+        "location": { "latitude": 14.045, "longitude": 121.135 },
+        "produce": [{ "supply": 275 }, { "supply": 215 }, { "supply": 240 }]
+      }
     ]
   },
   {
-    "first_name": "Luz",
-    "last_name": "Garcia",
-    "farm_name": "Garcia's Grove",
-    "location": {
-      "latitude": 14.25000,
-      "longitude": 121.42300
-    },
-    "produce": [
-      { "supply": 120 },
-      { "supply": 260 },
-      { "supply": 240 },
-      { "supply": 160 },
-      { "supply": 300 }
+    "farmers": [
+      {
+        "first_name": "Maria",
+        "last_name": "Santos",
+        "farm_name": "Santos Farm",
+        "location": { "latitude": 11.010, "longitude": 122.495 },
+        "produce": [{ "supply": 300 }, { "supply": 280 }, { "supply": 275 }]
+      },
+      {
+        "first_name": "Carlos",
+        "last_name": "Reyes",
+        "farm_name": "Reyes Farm",
+        "location": { "latitude": 10.990, "longitude": 122.510 },
+        "produce": [{ "supply": 290 }, { "supply": 260 }, { "supply": 265 }]
+      },
+      {
+        "first_name": "Elena",
+        "last_name": "Cruz",
+        "farm_name": "Cruz Farm",
+        "location": { "latitude": 11.005, "longitude": 122.520 },
+        "produce": [{ "supply": 310 }, { "supply": 250 }, { "supply": 255 }]
+      },
+      {
+        "first_name": "Ricardo",
+        "last_name": "Torres",
+        "farm_name": "Torres Farm",
+        "location": { "latitude": 11.015, "longitude": 122.485 },
+        "produce": [{ "supply": 280 }, { "supply": 270 }, { "supply": 260 }]
+      },
+      {
+        "first_name": "Luz",
+        "last_name": "Garcia",
+        "farm_name": "Garcia Farm",
+        "location": { "latitude": 10.995, "longitude": 122.505 },
+        "produce": [{ "supply": 295 }, { "supply": 275 }, { "supply": 285 }]
+      }
     ]
   }
 ]

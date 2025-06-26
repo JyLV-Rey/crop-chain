@@ -1,37 +1,62 @@
+[
   {
+    "region": "I",
     "penalty_distance": 1,
     "penalty_oversupply_buyer": 1,
     "penalty_undersupply_farmer": 1,
-
-    "main_location":
-    {
-      "zoom": 13,
-      "latitude": 14.24679,
-      "longitude": 121.41244
-    },
-
-    "produce":
-    [
-      {
-        "type": "Cauliflower",
-        "priority": 1
-      },
-      {
-        "type": "Mango",
-        "priority": 1
-      },
-      {
-        "type": "Corn",
-        "priority": 1
-      },
-      {
-        "type": "Banana",
-        "priority": 1
-      },
-      {
-        "type": "Rice",
-        "priority": 1
-      }
+    "main_location": { "zoom": 9, "latitude": 17.0, "longitude": 120.5 },
+    "produce": [
+      { "type": "Cauliflower", "priority": 1 },
+      { "type": "Mango", "priority": 1 },
+      { "type": "Corn", "priority": 1 }
+    ]
+  },
+  {
+    "region": "II",
+    "penalty_distance": 1,
+    "penalty_oversupply_buyer": 1,
+    "penalty_undersupply_farmer": 1,
+    "main_location": { "zoom": 9, "latitude": 17.5, "longitude": 121.5 },
+    "produce": [
+      { "type": "Tobacco", "priority": 1 },
+      { "type": "Rice", "priority": 1 },
+      { "type": "Mangosteen", "priority": 1 }
+    ]
+  },
+  {
+    "region": "III",
+    "penalty_distance": 1,
+    "penalty_oversupply_buyer": 1,
+    "penalty_undersupply_farmer": 1,
+    "main_location": { "zoom": 9, "latitude": 15.0, "longitude": 120.9 },
+    "produce": [
+      { "type": "Tomato", "priority": 1 },
+      { "type": "Garlic", "priority": 1 },
+      { "type": "Onion", "priority": 1 }
+    ]
+  },
+  {
+    "region": "IV-A",
+    "penalty_distance": 1,
+    "penalty_oversupply_buyer": 1,
+    "penalty_undersupply_farmer": 1,
+    "main_location": { "zoom": 9, "latitude": 14.04, "longitude": 121.14 },
+    "produce": [
+      { "type": "Pineapple", "priority": 1 },
+      { "type": "Rice", "priority": 1 },
+      { "type": "Banana", "priority": 1 }
+    ]
+  },
+  {
+    "region": "VI",
+    "penalty_distance": 1,
+    "penalty_oversupply_buyer": 1,
+    "penalty_undersupply_farmer": 1,
+    "main_location": { "zoom": 9, "latitude": 11.0, "longitude": 122.5 },
+    "produce": [
+      { "type": "Sugarcane", "priority": 1 },
+      { "type": "Mango", "priority": 1 },
+      { "type": "Rice", "priority": 1 }
     ]
   }
-
+]

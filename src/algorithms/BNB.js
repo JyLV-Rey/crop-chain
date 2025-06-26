@@ -1,4 +1,4 @@
-function findBestAssignment(G) {
+export default function findBestAssignment(G) {
   const n = G.length;
   let minCost = Infinity;
   let bestAssignment = [];
