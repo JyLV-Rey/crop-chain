@@ -74,6 +74,7 @@ function DisplayRoute({ route, buyer, farmer }) {
         scrollWheelZoom={false}
         style={{ height: "100%", width: "100%" }}
       >
+
         <TileLayer
           attribution='&copy; <a href="https://osm.org/copyright">OpenStreetMap</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

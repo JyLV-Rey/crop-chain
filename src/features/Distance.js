@@ -1,4 +1,5 @@
 // getDistanceMatrix.js
+// til maps existed
 const nominatimCache = new Map(); // To avoid redundant lookups
 
 async function reverseGeocode({ latitude, longitude }) {

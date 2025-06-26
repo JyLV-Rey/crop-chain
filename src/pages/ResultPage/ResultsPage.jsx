@@ -6,26 +6,36 @@ import { useGlobalData } from "../../default-data/DefaultGlobalData";
 import costMatrix from "../../algorithms/CostMatrixComputation";
 import DisplayCostMatrix from "./CostMatrix/DisplayCostMatrix";
 import { BlockMath, InlineMath } from "react-katex";
+import findBestAssignment from "../../algorithms/BNB";
+import AssignmentPanel from "./AssignmentPanel/AssignmentPanel";
 
 function ResultsPage() {
   const { farmers, buyers, global } = useGlobalData();
 
   const [distanceMatrix , setDistanceMatrix] = useState([]);
   const [finalCostMatrix, setFinalCostMatrix] = useState([]);
+  const [bestAssignment, setBestAssignment] = useState([]);
 
   useEffect(() => {
     async function fetchMatrixes() {
       const matrix = await getDistanceMatrix(buyers, farmers);
-
       setDistanceMatrix(matrix);
-      ;
     }
-    fetchMatrixes();
-  }, []);
+
+    if (buyers.length > 0 && farmers.length > 0) {
+      fetchMatrixes();
+    }
+  }, [buyers, farmers]);
 
   useEffect (() => {
     if (distanceMatrix.length > 0) setFinalCostMatrix(costMatrix(farmers, buyers, distanceMatrix, global));
-  }, [distanceMatrix]);
+  }, [buyers, distanceMatrix, farmers, global]);
+
+  useEffect (() => {
+    if (finalCostMatrix.length > 0) setBestAssignment(findBestAssignment(finalCostMatrix));
+  }, [finalCostMatrix]);
+
+  if (distanceMatrix.length !== 0) console.log("Distance Matrix", distanceMatrix);
 
   return(
     <>
@@ -63,6 +73,12 @@ function ResultsPage() {
 
             <div className="mt-5 self-center">
               <DisplayCostMatrix costMatrix={finalCostMatrix} buyers={buyers} farmers={farmers} global={global} distanceMatrix={distanceMatrix} />
+            </div>
+
+            <div className='flex flex-col text-neutral-800'>
+              <h1 className="text-3xl font-extrabold">Results</h1>
+              <p className="text-lg">These are the resulting assignments of buyers to farmers based on the minimum cost calculated by the assignment algorithm.</p>
+              <AssignmentPanel farmers={farmers} buyers={buyers} distanceMatrix={distanceMatrix} global={global} bestAssignment={bestAssignment} costMatrix={finalCostMatrix} />
             </div>
           </div>
 

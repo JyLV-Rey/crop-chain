@@ -41,7 +41,7 @@ function AssignmentInitialization() {
         <h1 className="text-xl font-extrabold text-neutral-600 text-center">Edit The Data</h1>
         <p className="text-smfont-extrabold text-neutral-400 text-center">Select a field to edit their data and supply</p>
         <Link to="EditGlobal">
-          <button className="hover:text-emerald-500 hover:font-extrabold hover:border-2 hover:border-emerald-400 hover:bg-emerald-200 p-2 rounded-xl hover:scale-105 text-emerald-50 text-smborder-emerald-50 bg-emerald-500 duration-200 ease-(--my-beizer) m-5">Edit Global Parameters</button>
+          <button className="hover:text-emerald-500 hover:font-extrabold hover:border-2 hover:border-emerald-400 hover:bg-emerald-200 p-2 rounded-xl hover:scale-105 text-emerald-50 text-smborder-emerald-50 bg-emerald-500 duration-200 ease-(--my-beizer) m-5">Edit Regional Parameters</button>
         </Link>
 
         <div className="flex flex-col border-2 border-neutral-300 m-2 rounded-2xl p-2">

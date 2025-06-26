@@ -50,14 +50,14 @@ function DisplayDistanceMatrix( {distanceMatrix, buyers, farmers} ) {
           { displayIndex.buyer_index !== undefined && displayIndex.farmer_index !== undefined &&
               <div className="flex flex-col mt-2 gap-2 text-neutral-800 font-medium p-2  bg-neutral-100 rounded-md shadow-xl">
                 <p>
-                  <span className="font-bold">Buyer:</span> {buyers[displayIndex.buyer_index].store_name} <br />
-                  <span className="font-bold">Location:</span> {buyers[displayIndex.buyer_index].location.latitude.toFixed(4)}, {buyers[displayIndex.buyer_index].location.longitude.toFixed(4)} <br /> 
-                  <span className="font-bold">Address:</span> {distanceMatrix[displayIndex.buyer_index][displayIndex.farmer_index].farmer_location_name}  <br /> <br />
-                  
                   <span className="font-bold">Farmer:</span> {farmers[displayIndex.farmer_index].farm_name} <br />
                   <span className="font-bold">Location:</span> {farmers[displayIndex.farmer_index].location.latitude.toFixed(4)}, {farmers[displayIndex.farmer_index].location.longitude.toFixed(4)} <br />
-                  <span className="font-bold">Address:</span> {distanceMatrix[displayIndex.buyer_index][displayIndex.farmer_index].buyer_location_name} <br /> <br />
-                  
+                  <span className="font-bold">Address:</span> {distanceMatrix[displayIndex.buyer_index][displayIndex.farmer_index].farmer_location_name} <br /> <br />
+
+                  <span className="font-bold">Buyer:</span> {buyers[displayIndex.buyer_index].store_name} <br />
+                  <span className="font-bold">Location:</span> {buyers[displayIndex.buyer_index].location.latitude.toFixed(4)}, {buyers[displayIndex.buyer_index].location.longitude.toFixed(4)} <br /> 
+                  <span className="font-bold">Address:</span> {distanceMatrix[displayIndex.buyer_index][displayIndex.farmer_index].buyer_location_name}  <br /> <br />
+
                   <span className="font-bold">Distance:</span> {distanceMatrix[displayIndex.buyer_index][displayIndex.farmer_index].distance.toFixed(2)} km <br />
                   <span className="font-bold">Time:</span> {((distanceMatrix[displayIndex.buyer_index][displayIndex.farmer_index].time)/60).toFixed(2)} min
                 </p>
@@ -66,15 +66,14 @@ function DisplayDistanceMatrix( {distanceMatrix, buyers, farmers} ) {
         </div>
         {
           displayIndex.buyer_index !== undefined && displayIndex.farmer_index !== undefined &&
-            <div className="flex flex-col w-150 gap-2  text-neutral-800 font-medium p-2 bg-neutral-100 rounded-md shadow-xl">
-                <p className="font-extrabold">Route</p>
-                <DisplayRoute route={distanceMatrix[displayIndex.buyer_index][displayIndex.farmer_index]} farmer={farmers[displayIndex.farmer_index]} buyer={buyers[displayIndex.buyer_index]}></DisplayRoute>
-            </div>
+          <div className="flex flex-col w-150 gap-2  text-neutral-800 font-medium p-2 bg-neutral-100 rounded-md shadow-xl">
+              <p className="font-extrabold">Route</p>
+              <DisplayRoute route={distanceMatrix[displayIndex.buyer_index][displayIndex.farmer_index]} farmer={farmers[displayIndex.farmer_index]} buyer={buyers[displayIndex.buyer_index]}></DisplayRoute>
+          </div>
         }
       </div>
     </>
   )
-  
 }
 
 export default DisplayDistanceMatrix
