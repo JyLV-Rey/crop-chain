@@ -81,13 +81,14 @@ function ResultsPage() {
               <DisplayCostMatrix costMatrix={finalCostMatrix} buyers={buyers} farmers={farmers} global={global} distanceMatrix={distanceMatrix} bestAssignment={bestAssignment} />
             </div>
 
+            <Link to="/Assignment/Metric/Statistics/" className="hover:text-2xl hover:text-purple-500 font-bold hover:font-extrabold hover:border-2 hover:border-purple-400 hover:bg-purple-200 p-8 rounded-xl hover:scale-105 text-purple-50 text-xl border-purple-50 bg-purple-500 text-center self-center w-fit duration-200 ease-(--my-beizer) m-15">
+              View Running Statistics
+            </Link>
+            
             <div className='flex flex-col text-neutral-800 mt-10'>
               <h1 className="text-3xl font-extrabold">Results</h1>
               <p className="text-lg">These are the resulting assignments of buyers to farmers based on the minimum cost calculated by the assignment algorithm.</p>
               <p>If you wish to view the statistics and the performace of the program please proceed to the statistics page.</p>
-              <Link to="/Assignment/Metric/Statistics/" className="hover:text-2xl hover:text-purple-500 font-bold hover:font-extrabold hover:border-2 hover:border-purple-400 hover:bg-purple-200 p-5 rounded-xl hover:scale-105 text-purple-50 text-xl border-purple-50 bg-purple-500 text-center self-center w-fit duration-200 ease-(--my-beizer) m-5">
-                View Running Statistics
-              </Link>
               <AssignmentPanel farmers={farmers} buyers={buyers} distanceMatrix={distanceMatrix} global={global} bestAssignment={bestAssignment} costMatrix={finalCostMatrix} />
             </div>
           </div>
