@@ -12,7 +12,6 @@ import CreateBuyer from './pages/Assignment/Assignment1/CreatePage/CreateBuyer.j
 import CreateFarmer from './pages/Assignment/Assignment1/CreatePage/CreateFarmer.jsx';
 import ResultsPage from './pages/ResultPage/ResultsPage.jsx';
 import StatsPage from './pages/MetricsPage/StatsPage.jsx';
-
 function App() {
   return (
     <>
