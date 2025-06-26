@@ -1,18 +1,243 @@
-# CropChain
+<div align="center">
 
-This is the repository for an experimental project for my school, where we assign fixed numbers of farmers to their respective buyers
+# CropChain - Smart Agricultural Supply Chain Optimizer
 
-## Made with
+</div>
 
-- Vite
-- React
-- Tailwind
-- Javascript
-- Node
-- Express
-- Docker
-- Valhalla
-- ChartJS
-- KaTeX
+<div align="center">
+  <img src="https://img.shields.io/badge/Status-Active-brightgreen" alt="Status">
+  <img src="https://img.shields.io/badge/Version-0.1.0-blue" alt="Version">
+  <img src="https://img.shields.io/badge/License-MIT-yellow" alt="License">
+  <img src="https://img.shields.io/badge/Contributors-9-orange" alt="Contributors">
+</div>
 
+<div align="center">
+  <h3>Revolutionizing Agricultural Supply Chain Management Through Intelligent Optimization</h3>
+  <p><em>Connecting farmers and buyers with data-driven precision</em></p>
+</div>
 
+---
+
+## About CropChain
+
+**CropChain** is a prototype web-based platform designed to connect farmers directly to the market through optimal and efficient pairing. By providing a platform for efficient crop handling and trade, CropChain empowers farmers and ensures that they get fair access to buyers, reduce post-harvest losses, and improve overall market efficiency
+
+Our platform transforms the traditional, often inefficient agricultural marketplace into a smart, data-driven ecosystem that benefits both producers and consumers.
+
+---
+
+## Tech Stack
+
+<div align="center">
+
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| [![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://react.dev/) | `18.2.0` | Frontend Framework |
+| [![Vite](https://img.shields.io/badge/Vite-4.4.5-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/) | `4.4.5` | Build Tool & Dev Server |
+| [![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript) | `ES6+` | Programming Language |
+| [![Chart.js](https://img.shields.io/badge/Chart.js-4.4.0-FF6384?style=for-the-badge&logo=chart.js&logoColor=white)](https://www.chartjs.org/) | `4.4.0` | Data Visualization |
+| [![Leaflet](https://img.shields.io/badge/Leaflet-1.9.4-199900?style=for-the-badge&logo=leaflet&logoColor=white)](https://leafletjs.com/) | `1.9.4` | Interactive Maps |
+| [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.3.0-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/) | `3.3.0` | Styling Framework |
+| [![Node.js](https://img.shields.io/badge/Node.js-18.0+-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/en) | `18.0+` | Runtime Environment |
+| [![Express.js](https://img.shields.io/badge/Express.js-4.18.0-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/) | `4.18.0` | Backend Framework |
+
+</div>
+
+---
+
+## Problem Statement
+
+### The Challenge
+
+Agricultural supply chains in the Philippines are inefficient:
+
+* **Mismatched Supply & Demand**: Farmers can’t find reliable buyers, leading to wasted crops and lost income. Buyers face inconsistent supply and delivery.
+* **Poor Logistics**: Remote farmers lack market access. Weak infrastructure causes up to 30% crop waste and high transport costs.
+* **Unfair Pricing**: Oversupply crashes prices below production costs. Manual systems and middlemen often result in unfair deals.
+* **Post-Harvest Losses**: Slow distribution leads to spoilage and waste.
+* **Lack of Market Info**: Farmers have little visibility into market needs or prices.
+
+---
+
+### Our Solution: CropChain
+
+* **Smart Matching**: Uses algorithms to pair farmers with buyers based on crop availability, demand, location, and logistics.
+* **Cost Analysis**: Calculates transport and supply costs using a flexible, heuristic-based model.
+* **Transparent Outputs**: Shows clear farmer-buyer assignments, transport costs, and crop summaries—plus planned routing maps.
+* **Data Tools for Farmers & Policy Makers**: Helps farmers access markets directly, reduce waste, and boost efficiency. Scalable for use by the Department of Agriculture.
+
+---
+
+## Features
+
+### Core Functionality
+- **Smart Assignment Algorithm**: Branch and Bound Assignment Problem Solver implementation for optimal farmer-buyer matching
+- **Dynamic Cost Matrix**: Real-time calculation based on distance, supply, and demand factors
+- **Interactive Parameter Tuning**: Adjustable alpha (supply influence) and delta (oversupply penalty)
+- **Multi-Produce Support**: Handle various crop types with different weights and priorities
+
+### Advanced Analytics
+- **Parameter Sensitivity Analysis**: Line charts showing cost variations with parameter changes  
+- **Assignment Comparison**: Grouped bar charts highlighting optimal vs alternative assignments
+- **Geographic Visualization**: Interactive maps with route optimization display
+
+---
+
+## How it Works
+
+### Workflow Overview
+
+```mermaid
+graph TD
+    A[Input Data] --> B[Cost Matrix Generation]
+    B --> C[Branch and Bound Assignment Problem Algorithm]
+    C --> D[Results]
+    D --> E[Visualization & Analysis]
+    
+    A1[Farmer Data] --> A
+    A2[Buyer Data] --> A
+    A3[Global Parameters] --> A
+    
+    B1[Distance Calculation] --> B
+    B2[Supply-Demand Analysis] --> B
+```
+
+### Step-by-Step Process
+
+1. **Data Input**: Users input farmer locations, produce quantities, buyer requirements, and preferences
+2. **Cost Calculation**: System computes comprehensive cost matrix considering:
+   - Geographic distance between farmers and buyers
+   - Supply-demand matching efficiency
+   - Transportation and logistics costs
+   - Market-specific parameters
+3. **Optimization**: BNB assignment problem algorithm finds the minimum-cost assignment solution
+4. **Analysis**: Advanced visualizations reveal insights about the optimal solution
+
+---
+
+## Installation and Usage
+
+### Prerequisites
+- Node.js 18.0 or higher
+- npm or yarn package manager
+- Modern web browser (Chrome, Firefox, Safari, Edge)
+
+### Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/cropchain.git
+cd cropchain
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
+### Environment Setup
+
+Create a `.env` file in the root directory:
+
+```env
+VITE_API_BASE_URL=http://localhost:3000
+VITE_MAP_API_KEY=your_map_api_key_here
+VITE_NOMINATIM_URL=https://nominatim.openstreetmap.org
+```
+
+---
+
+## Future Enhancements (Scope)
+
+### Short-term Goals (3-6 months)
+- **User Authentication**: Secure login system for farmers and buyers
+- **Real-time Communication**: In-app messaging between matched parties
+- **Mobile Application**: Native iOS and Android apps
+- **Multi-language Support**: Localization for global markets
+
+### Medium-term Goals (6-12 months)
+- **Machine Learning Integration**: Predictive analytics for demand forecasting
+- **Payment Gateway**: Integrated financial transactions
+- **Advanced Analytics**: Business intelligence dashboard for stakeholders
+
+### Long-term Vision (1-2 years)
+- **Global Marketplace**: International supply chain optimization
+- **IoT Integration**: Real-time tracking of shipments and produce quality
+- **Market Prediction**: AI-powered price and demand forecasting
+- **Partnership Network**: Integration with logistics and financial service providers
+
+---
+
+## Contributors
+
+<div align="center">
+
+### Meet Our Amazing Team
+
+<table>
+<tr>
+<td align="center">
+<img src="public/about-us/group_members/cabral.png" width="294px;" height="215px;" alt="Shikina Cabral"/><br />
+<sub><b>Shikina Cabral</b></sub><br />
+</td>
+<td align="center">
+<img src="./public/about-us/group_members/dela_cruz.png" width="294px;" height="210px;" alt="Luis Miguel Dela Cruz"/><br />
+<sub><b>Luis Miguel Dela Cruz</b></sub><br />
+</td>
+<td align="center">
+<img src="./public/about-us/group_members/exconde.png" width="294px;" height="210px;" alt="Matan John Exconde"/><br />
+<sub><b>Matan John Exconde</b></sub><br />
+</td>
+</tr>
+<tr>
+<td align="center">
+<img src="./public/about-us/group_members/lenar.png" width="294px;" height="210px;" alt="Jorelle Cybee Lenar"/><br />
+<sub><b>Jorelle Cybee Lenar</b></sub><br />
+</td>
+<td align="center">
+<img src="./public/about-us/group_members/montemayor.png" width="294px;" height="210px;" alt="Frances Lorraine Montemayor"/><br />
+<sub><b>Frances Lorraine Montemayor</b></sub><br />
+</td>
+<td align="center">
+<img src="./public/about-us/group_members/nataba.png" width="294px;" height="210px;" alt="Jen Patrick Nataba"/><br />
+<sub><b>Jen Patrick Nataba</b></sub><br />
+</td>
+</tr>
+<tr>
+<td align="center">
+<img src="./public/about-us/group_members/padauan.png" width="294px;" height="210px;" alt="Princess Padauan"/><br />
+<sub><b>Princess Padauan</b></sub><br />
+</td>
+<td align="center">
+<img src="./public/about-us/group_members/samilliano.png" width="294px;" height="210px;" alt="John Eric Samillano"/><br />
+<sub><b>John Eric Samillano</sub><br />
+</td>
+<td align="center">
+<img src="./public/about-us/group_members/velasco.png" width="294px;" height="210px;" alt="Jyeshua Rey Velasco"/><br />
+<sub><b>Jyeshua Rey Velasco</b></sub><br />
+</td>
+</tr>
+</table>
+
+</div>
+
+---
+
+<div align="center">
+
+### Star this repository if you found it helpful!
+
+<img src="https://img.shields.io/github/stars/JyLV-Rey/crop-chain?style=social" alt="GitHub stars">
+
+**Made with ❤️ by the CropChain Team**
+
+[Report Bug](https://github.com/JyLV-Rey/crop-chain/issues) • [Request Feature](https://github.com/JyLV-Rey/crop-chain/issues) • [Documentation](https://github.com/JyLV-Rey//cropchain/wiki)
+
+</div>
+
+---
+
+<div align="center">
+<sub>© 2024 CropChain. All rights reserved. | Licensed under MIT License</sub>
+</div>

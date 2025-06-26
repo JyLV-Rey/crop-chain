@@ -33,7 +33,7 @@ function test1() {
   console.log(`   best assignment    : ${JSON.stringify(bestAssignment)}`);
   console.log(`   minimum cost       : ${minCost}`);
 }
-sd
+
 /**
  * Test 2: Infeasible Pairing (Infinity Penalty)
  *          Matrix:

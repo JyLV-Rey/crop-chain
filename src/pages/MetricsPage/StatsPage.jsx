@@ -10,7 +10,7 @@ import BuyerSaturationStats from "./metrics/oversupply/OversupplyStats";
 import EachProduce from "./metrics/produce/EachProduce";
 
 function StatsPage() {
-  const { farmers, buyers, global } = useGlobalData();
+  const { farmers, buyers, global } = useGlobalData()
 
   const [distanceMatrix , setDistanceMatrix] = useState(data.distanceMatrix);
   const [costMatrix, setCostMatrix] = useState(data.finalCostMatrix);
@@ -26,14 +26,31 @@ function StatsPage() {
 
   useEffect(() => {
     async function fetchMatrixes() {
-      const matrix = await getDistanceMatrix(buyers, farmers);
-      setDistanceMatrix(matrix);
+      setIsLoading(true)
+      try 
+      {
+        const matrix = await getDistanceMatrix(buyers, farmers)
+        setDistanceMatrix(matrix)
+      } 
+      catch (error) 
+      {
+        console.error("Error fetching distance matrix:", error)
+      } 
+      finally 
+      {
+        setIsLoading(false)
+      }
     }
 
-    if (buyers.length > 0 && farmers.length > 0) {
-      fetchMatrixes();
+    if (buyers.length > 0 && farmers.length > 0) 
+    {
+      fetchMatrixes()
+    } 
+    else 
+    {
+      setIsLoading(false)
     }
-  }, [buyers, farmers]);
+  }, [buyers, farmers])
 
   // Gets the current cost matrix along with the perfect cost matrix per parameter
   useEffect (() => {
