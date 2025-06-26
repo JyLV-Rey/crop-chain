@@ -73,8 +73,8 @@ function assignProblemSolver(G) {
    * Step 4:  Package the answer   *
    */
   return {
-    iterations: iteration,                // # of iterations
-    assignments: bestAssignment,          // stays as list of [i, j] pairs
+    iteration,                // # of iterations
+    bestAssignment,          // stays as list of [i, j] pairs
     minCost                               // total minimum cost
   };
 }

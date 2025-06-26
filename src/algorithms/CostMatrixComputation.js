@@ -13,10 +13,9 @@ function costMatrix(farmers, buyers, distanceMatrix, global) {
 
          farmer.produce.forEach((produce, produceIndex) => {
 
-         // Distances and Normalization
+         // Distances
          const { distance } = distanceMatrix[buyerIndex][farmerIndex];
          const rowDistances = distanceMatrix[buyerIndex].map(cell => cell.distance);
-
          const distance_cost = distance/Math.max(...rowDistances);
 
          // Priority of the Produce
@@ -33,7 +32,7 @@ function costMatrix(farmers, buyers, distanceMatrix, global) {
 
          // Normalization Methods
          const normalized_distance = Math.pow(distance_cost, penalty_distance);
-         const normalized_priority = 1 / (priority + 1e-6); // higher priority = lower cost
+         const normalized_priority = 1 / (priority); // higher priority = lower cost
          const farmer_supply_normalized = farmer_supply/farmer_supply_max;
 
          // Finalizing the Costs

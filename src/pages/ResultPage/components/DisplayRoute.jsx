@@ -58,7 +58,7 @@ const farmerIcon = new L.Icon({
 
 // --- MAIN COMPONENT ---
 function DisplayRoute({ route, buyer, farmer }) {
-  if (!route || !route.shape) return null;
+
 
   const buyerLatLng = [buyer.location.latitude, buyer.location.longitude];
   const farmerLatLng = [farmer.location.latitude, farmer.location.longitude];
@@ -66,6 +66,7 @@ function DisplayRoute({ route, buyer, farmer }) {
   const routeCoords = useMemo(() => decodeValhallaPolyline(route.shape), [route.shape]);
   const allPositions = useMemo(() => [buyerLatLng, farmerLatLng, ...routeCoords], [buyerLatLng, farmerLatLng, routeCoords]);
 
+  if (!route || !route.shape) return null;
   return (
     <div style={{ height: "400px", width: "100%", marginTop: "10px", borderRadius: "12px", overflow: "hidden" }}>
       <MapContainer

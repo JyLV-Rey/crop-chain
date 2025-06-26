@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import DisplayRoute from "./DisplayRoute";
+import DisplayRoute from "../components/DisplayRoute";
 
 function DisplayDistanceMatrix( {distanceMatrix, buyers, farmers} ) {
   const [displayIndex , setDisplayIndex] = useState({});
@@ -55,7 +55,7 @@ function DisplayDistanceMatrix( {distanceMatrix, buyers, farmers} ) {
                   <span className="font-bold">Address:</span> {distanceMatrix[displayIndex.buyer_index][displayIndex.farmer_index].farmer_location_name} <br /> <br />
 
                   <span className="font-bold">Buyer:</span> {buyers[displayIndex.buyer_index].store_name} <br />
-                  <span className="font-bold">Location:</span> {buyers[displayIndex.buyer_index].location.latitude.toFixed(4)}, {buyers[displayIndex.buyer_index].location.longitude.toFixed(4)} <br /> 
+                  <span className="font-bold">Location:</span> {buyers[displayIndex.buyer_index].location.latitude.toFixed(4)}, {buyers[displayIndex.buyer_index].location.longitude.toFixed(4)} <br />
                   <span className="font-bold">Address:</span> {distanceMatrix[displayIndex.buyer_index][displayIndex.farmer_index].buyer_location_name}  <br /> <br />
 
                   <span className="font-bold">Distance:</span> {distanceMatrix[displayIndex.buyer_index][displayIndex.farmer_index].distance.toFixed(2)} km <br />
