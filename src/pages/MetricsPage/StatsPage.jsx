@@ -8,6 +8,9 @@ import data from '../ResultPage/mock-output.json'
 import DistanceStats from "./metrics/distance/DistanceStats";
 import BuyerSaturationStats from "./metrics/oversupply/OversupplyStats";
 import EachProduce from "./metrics/produce/EachProduce";
+import AssignmentSummary from "./component/AssignmentSummary";
+import GroupedBarChart from "./component/GroupedBarChart";
+import LineChart from "./component/LineChart";
 
 function StatsPage() {
   const { farmers, buyers, global } = useGlobalData()
@@ -23,34 +26,6 @@ function StatsPage() {
   const [bestDistanceAssignment, setBestDistanceAssignment] = useState(data.bestAssignment);
   const [bestUndersupplyAssignment, setBestUndersupplyAssignment] = useState(data.bestAssignment);
   const [bestOversupplyAssignment, setBestOversupplyAssignment] = useState(data.bestAssignment);
-
-  useEffect(() => {
-    async function fetchMatrixes() {
-      setIsLoading(true)
-      try 
-      {
-        const matrix = await getDistanceMatrix(buyers, farmers)
-        setDistanceMatrix(matrix)
-      } 
-      catch (error) 
-      {
-        console.error("Error fetching distance matrix:", error)
-      } 
-      finally 
-      {
-        setIsLoading(false)
-      }
-    }
-
-    if (buyers.length > 0 && farmers.length > 0) 
-    {
-      fetchMatrixes()
-    } 
-    else 
-    {
-      setIsLoading(false)
-    }
-  }, [buyers, farmers])
 
   // Gets the current cost matrix along with the perfect cost matrix per parameter
   useEffect (() => {
@@ -108,6 +83,13 @@ function StatsPage() {
                 <BuyerSaturationStats buyers={buyers} farmers={farmers} bestAssignment={bestAssignment} bestUndersupplyAssignment={bestOversupplyAssignment} />
               </div>
 
+              <div>
+                <div className="flex flex-row">
+                    <GroupedBarChart farmers={farmers} buyers={buyers} finalCostMatrix={costMatrix} bestAssignment={bestAssignment} />
+                    <LineChart farmers={farmers} buyers={buyers} costMatrix={costMatrix} distanceMatrix={distanceMatrix } global={global} />
+                </div>
+                <AssignmentSummary bestAssignment={bestAssignment} farmers={farmers} buyers={buyers} finalCostMatrix={costMatrix} />
+              </div>
               <div>
                 <p className="font-bold text-3xl">Produce Distribution</p>
                 <p>This is the metric of the how much the produce is distributed to the buyers, in relation to the utilization and efficiency</p>

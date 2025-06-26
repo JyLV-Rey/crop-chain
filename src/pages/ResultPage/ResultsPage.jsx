@@ -48,7 +48,7 @@ function ResultsPage() {
     <>
       <div>
         <NavBar />
-        <div className="flex flex-col gap-10 mt-10 p-10">
+        <div className="flex flex-col gap-10 mt-10 p-10 min-w-screen">
 
           <div className="flex flex-col text-neutral-700">
             <h1 className="text-3xl font-extrabold">Distance Matrix</h1>

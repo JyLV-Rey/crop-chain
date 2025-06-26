@@ -40,7 +40,7 @@ function AssignmentPanel( {farmers, buyers, distanceMatrix, global, bestAssignme
                   </div>
               </div>
 
-              <div className='flex flex-col justify-between gap1 text-xs shadow-xl/10 p-2 rounded-xl'>
+              <div className='flex flex-col justify-between gap1 text-xs shadow-xl/10 p-2 w-2/5 rounded-xl'>
                   <p className="font-bold text-xl">Directions</p>
                   <div className="flex flex-col gap-1 self-start items-start h-full">
                     {
