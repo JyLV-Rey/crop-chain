@@ -9,9 +9,11 @@ function SampleOutputPreview() {
         <h2 className="text-3xl font-bold text-gray-800">Sample Output Preview</h2>
       </div>
       <div className="bg-gray-100 p-8 rounded-lg">
-        <div className="text-center text-gray-500">
-          <p className="text-lg">Output will be displayed here after calculation.</p>
-        </div>
+        <img
+          src="/sample_output.png" 
+          alt="Sample Output"
+          className="max-w-full h-auto block mx-auto rounded-md shadow-sm"
+        />
       </div>
     </div>
   );
