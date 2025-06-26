@@ -8,8 +8,8 @@ function DisplaySolution({ farmerIndex, buyerIndex, solutionIndex = 0, distanceM
   const beta = global.penalty_distance;
   const delta = global.penalty_oversupply_buyer;
 
-  const distance = distanceMatrix[buyerIndex][farmerIndex].distance;
-  const rowDistances = distanceMatrix[buyerIndex].map(cell => cell.distance);
+  const distance = distanceMatrix[farmerIndex][buyerIndex].distance;
+  const rowDistances = distanceMatrix[farmerIndex].map(cell => cell.distance);
   const normalized_distance = distance / Math.max(...rowDistances);
 
   if (solutionIndex === -1) {

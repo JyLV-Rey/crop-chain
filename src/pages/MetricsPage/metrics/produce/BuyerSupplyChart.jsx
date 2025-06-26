@@ -5,6 +5,13 @@ ChartJS.register(BarElement, CategoryScale, LinearScale, LineElement, PointEleme
 
 function BuyerSupplyChart({ buyers, farmers, buyerIndex, produceIndex, selectedFarmerIndex }) {
 
+console.log({
+  farmers,
+  buyers,
+  buyerIndex,
+  produceIndex,
+  selectedFarmerIndex
+});
  
   const farmer_names = farmers.map((farmer) => farmer.farm_name);
 

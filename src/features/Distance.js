@@ -1,5 +1,3 @@
-// getDistanceMatrix.js
-// til maps existed
 const nominatimCache = new Map(); // To avoid redundant lookups
 
 async function reverseGeocode({ latitude, longitude }) {
@@ -59,14 +57,13 @@ async function getDistanceValhalla(start, end) {
 export default async function getDistanceMatrix(buyers, farmers) {
   const matrix = [];
 
-  for (const buyer of buyers) {
+  for (const farmer of farmers) {
     const row = [];
 
-    // Get buyer's location name (cached)
-    const buyerLocationName = await reverseGeocode(buyer.location);
+    const farmerLocationName = await reverseGeocode(farmer.location);
 
-    for (const farmer of farmers) {
-      const farmerLocationName = await reverseGeocode(farmer.location);
+    for (const buyer of buyers) {
+      const buyerLocationName = await reverseGeocode(buyer.location);
       const valhallaData = await getDistanceValhalla(farmer.location, buyer.location);
 
       row.push({
@@ -76,7 +73,7 @@ export default async function getDistanceMatrix(buyers, farmers) {
       });
     }
 
-    matrix.push(row);
+    matrix.push(row); // Now farmer is outer, buyer is inner
   }
 
   return matrix;

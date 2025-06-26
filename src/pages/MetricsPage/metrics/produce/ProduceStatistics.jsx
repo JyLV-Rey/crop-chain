@@ -1,4 +1,8 @@
 // components/ProduceStatistics.jsx
+import ProduceAggregateStats from "../../../ResultPage/AssignmentPanel/AggregateProduceStatistics";
+import AggregateProduceSummary from "./AggregateProduceSummary";
+import BuyerSupplyChart from "./BuyerSupplyChart";
+
 function higherColor(newSupply, maxSupply) {
   if (newSupply >= maxSupply) return "bg-red-100 text-red-800";
   else if (newSupply === maxSupply) return "bg-amber-100 text-amber-800";
@@ -10,9 +14,10 @@ function getUtilizationColor(num) {
   return "bg-emerald-100 text-emerald-800";
 }
 
-function ProduceStatistics({ produceList, farmer, buyer}) {
+function ProduceStatistics({ produceList, farmer, buyer, buyers, farmers, buyerIndex, farmerIndex }) {
   return (
-      <div className="flex flex-col gap-3 text-xs h-full justify-between">
+    <>
+      <div className="flex flex-row gap-3 text-xs h-full justify-between  p-2">
         {produceList.map((produce, pIndex) => {
           const farmerSupply = farmer.produce[pIndex].supply;
           const buyerCurrent = buyer.produce[pIndex].supply_current;
@@ -21,7 +26,7 @@ function ProduceStatistics({ produceList, farmer, buyer}) {
           const utilizationDiff = newSupply - buyerLimit;
 
           return (
-            <div key={pIndex} className="flex flex-col justify-between shadow-xl/6 rounded-lg p-2">
+            <div key={pIndex} className="flex flex-col flex-1 min-w-0 shadow-xl/6 rounded-lg p-2">
               <p className="font-extrabold text-lg">{produce.type}</p>
               <p>
                 <span className="font-bold">Priority: </span>
@@ -42,10 +47,13 @@ function ProduceStatistics({ produceList, farmer, buyer}) {
                   {Math.abs(utilizationDiff)} kg{" "}
                   {newSupply >= buyerLimit ? "over" : "under"} the supply limit
               </p>
+              <BuyerSupplyChart buyers={buyers} farmers={farmers} produceIndex={pIndex} buyerIndex={buyerIndex} selectedFarmerIndex={farmerIndex} />
             </div>
           );
         })}
       </div>
+      <ProduceAggregateStats produceList={produceList} buyer={buyer} farmer={farmer} />
+    </>
   );
 }
 
