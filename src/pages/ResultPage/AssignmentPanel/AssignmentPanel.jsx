@@ -1,10 +1,8 @@
-function AssignmentPanel( {farmers, buyers, distanceMatrix, global, bestAssignment, costMatrix } ) {
+import DisplayRoute from "../components/DisplayRoute";
+import ProduceStatistics from "./ProduceStatistics";
+import AggregateProduceStatistics from "./AggregateProduceStatistics";
 
-  function higherColor(newSupply, maxSupply) {
-    if (newSupply >= maxSupply) return "bg-red-100 text-red-800"
-    else if (newSupply === maxSupply) return "bg-amber-100 text-amber-800"
-    else return "bg-emerald-100 text-emerald-800"
-  }
+function AssignmentPanel( {farmers, buyers, distanceMatrix, global, bestAssignment, costMatrix } ) {
 
   return(
     <>
@@ -12,41 +10,49 @@ function AssignmentPanel( {farmers, buyers, distanceMatrix, global, bestAssignme
         { bestAssignment.bestAssignment != undefined && bestAssignment.bestAssignment.map((assignment, index) => (
           <div key={index} className="flex flex-col w-full text-sm justify-between p-5 rounded-lg shadow-xl/8 bg-neutral-100 text-neutral-800 font-medium ">
             <p className="text-xl font-extrabold text-center">Assignment {index + 1}</p>
-            <p className="font-bold text-center">{farmers[assignment[1]].farm_name} <span className="font-medium"> delivers to </span>{buyers[assignment[0]].store_name}</p>            
-            
-            <div className="flex flex-row gap-2">
+            <p className="font-bold text-center">{farmers[assignment[0]].farm_name} <span className="font-medium"> delivers to </span>{buyers[assignment[1]].store_name}</p>
 
-              <div className='flex flex-col p-2 gap-1 text-xs'>
-                <p className='font-bold text-xl'>Information</p>
-                <p><span className='font-bold'>Farmer:</span> {farmers[assignment[1]].first_name} {farmers[assignment[1]].last_name}</p>
-                <p><span className='font-bold'>Location:</span> {farmers[assignment[1]].location.latitude.toFixed(4)}, {farmers[assignment[1]].location.longitude.toFixed(4)}</p>
-                <p><span className='font-bold'>Address:</span> {distanceMatrix[assignment[0]][assignment[1]].farmer_location_name}</p>
+            <div className="flex flex-row w-full justify-between gap-2">
 
-                <br /><br /> <br />
+              <div className="flex flex-col justify-between h-auto shadow-xl/10 p-2 rounded-xl">
+                <p className="font-bold text-xl">Produce Statistics</p>
+                <ProduceStatistics produceList={global.produce} farmer={farmers[assignment[0]]} buyer={buyers[assignment[1]]} />
+              </div>
 
-                <p><span className='font-bold'>Buyer:</span> {buyers[assignment[0]].first_name} {buyers[assignment[0]].last_name}</p>
-                <p><span className='font-bold'>Location:</span> {buyers[assignment[0]].location.latitude.toFixed(4)}, {buyers[assignment[0]].location.longitude.toFixed(4)}</p>
-                <p><span className='font-bold'>Address:</span> {distanceMatrix[assignment[0]][assignment[1]].buyer_location_name}</p>
+              <div className="flex flex-col flex-grow shadow-xl/10 p-2 rounded-xl">
+                  <p className="font-bold text-xl">Routes and Location</p>
+                  <DisplayRoute buyer={buyers[assignment[1]]} farmer={farmers[assignment[0]]} route={distanceMatrix[assignment[1]][assignment[0]]}/>
 
-                <div className="flex flex-col shadow-xl rounded-lg p-2">
-                  <p className='font-bold text-xl'>Produce Statistics</p>
-                  <div className='flex flex-col gap-3 text-xs'>
+                  <div className='flex flex-col p-2 gap-1 text-xs'>
+
+                    <p className="text-xl"><span className='font-bold'>Distance:</span> {distanceMatrix[assignment[1]][assignment[0]].distance}km</p>
+                    <p className="text-xl mb-2"><span className='font-bold'>Estimate Travel Duration:</span> {(distanceMatrix[assignment[1]][assignment[0]].time/60).toFixed(2)}min</p>
+
+                    <p className="font-bold text-xl">Destination:</p>
+                    <p><span className='font-bold'>Buyer Name:</span> {farmers[assignment[0]].farm_name}</p>
+                    <p><span className='font-bold'>Location:</span> {farmers[assignment[0]].location.latitude.toFixed(4)}, {farmers[assignment[0]].location.longitude.toFixed(4)}</p>
+                    <p><span className='font-bold'>Address:</span> {distanceMatrix[assignment[1]][assignment[0]].farmer_location_name}</p>
+
+                    <p className="font-bold text-xl">Origin:</p>
+                    <p><span className='font-bold'>Buyer Name:</span> {buyers[assignment[1]].store_name}</p>
+                    <p><span className='font-bold'>Location:</span> {buyers[assignment[1]].location.latitude.toFixed(4)}, {buyers[assignment[1]].location.longitude.toFixed(4)}</p>
+                    <p><span className='font-bold'>Address:</span> {distanceMatrix[assignment[1]][assignment[0]].buyer_location_name}</p>
+                  </div>
+              </div>
+
+              <div className='flex flex-col justify-between gap1 text-xs shadow-xl/10 p-2 rounded-xl'>
+                  <p className="font-bold text-xl">Directions</p>
+                  <div className="flex flex-col gap-1 self-start items-start h-full">
                     {
-                      global.produce.map((produce, pIndex) => (
-                        <div key={pIndex} className="flex flex-col justify-between shadow-xl/6 rounded-lg p-2">
-                          <p className='font-extrabold text-lg'>{produce.type}</p>
-                          <p><span className='font-bold'>Priority:</span> {produce.priority}</p>
-                          <p><span className='font-bold'>Farmer Supply:</span> {farmers[assignment[1]].produce[pIndex].supply} kg</p>
-                          <p><span className='font-bold'>Buyer Current Supply:</span> {buyers[assignment[0]].produce[pIndex].supply_current} kg</p>
-                          <p><span className='font-bold'>Buyer Maximum Supply:</span> {buyers[assignment[0]].produce[pIndex].supply_limit} kg</p>
-                          <p className={`${higherColor(buyers[assignment[0]].produce[pIndex].supply_limit + farmers[assignment[1]].produce[pIndex].supply, buyers[assignment[0]].produce[pIndex].supply_limit)} p-1 rounded-lg font-bold w-fit`}><span className='font-bold '>Buyer New Supply:</span> {buyers[assignment[0]].produce[pIndex].supply_limit + farmers[assignment[1]].produce[pIndex].supply} kg</p>
+                      distanceMatrix[assignment[1]][assignment[0]].maneuvers != undefined && distanceMatrix[assignment[1]][assignment[0]].maneuvers.map((maneuver, index) => (
+                        <div key={index} >
+                          <p>{index + 1}. {maneuver.instruction} {maneuver.verbal_post_transition_instruction}</p>
                         </div>
                       ))
                     }
                   </div>
+                  <AggregateProduceStatistics produceList={global.produce} farmer={farmers[assignment[0]]} buyer={buyers[assignment[1]]} />
                 </div>
-
-              </div>
             </div>
           </div>
         ))

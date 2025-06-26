@@ -6,8 +6,10 @@ import { useGlobalData } from "../../default-data/DefaultGlobalData";
 import costMatrix from "../../algorithms/CostMatrixComputation";
 import DisplayCostMatrix from "./CostMatrix/DisplayCostMatrix";
 import { BlockMath, InlineMath } from "react-katex";
-import findBestAssignment from "../../algorithms/BNB";
 import AssignmentPanel from "./AssignmentPanel/AssignmentPanel";
+import assignProblemSolver from "../../algorithms/assignmentProblem";
+import BuyerSupplyChart from "./Charts/BuyerSupplyChart";
+import BuyerProduceChart from "./Charts/BuyerSupplyChart";
 
 function ResultsPage() {
   const { farmers, buyers, global } = useGlobalData();
@@ -32,10 +34,14 @@ function ResultsPage() {
   }, [buyers, distanceMatrix, farmers, global]);
 
   useEffect (() => {
-    if (finalCostMatrix.length > 0) setBestAssignment(findBestAssignment(finalCostMatrix));
+    if (finalCostMatrix.length > 0) setBestAssignment(assignProblemSolver(finalCostMatrix));
   }, [finalCostMatrix]);
 
-  if (distanceMatrix.length !== 0) console.log("Distance Matrix", distanceMatrix);
+  if (bestAssignment.length !== 0) {
+    console.log("Distance Matrix", distanceMatrix)
+    console.log("Final Cost Matrix", finalCostMatrix)
+    console.log("Best Assignment", bestAssignment)
+  };
 
   return(
     <>
@@ -70,18 +76,17 @@ function ResultsPage() {
               </div>
             </div>
 
-
             <div className="mt-5 self-center">
-              <DisplayCostMatrix costMatrix={finalCostMatrix} buyers={buyers} farmers={farmers} global={global} distanceMatrix={distanceMatrix} />
+              <DisplayCostMatrix costMatrix={finalCostMatrix} buyers={buyers} farmers={farmers} global={global} distanceMatrix={distanceMatrix} bestAssignment={bestAssignment} />
             </div>
 
-            <div className='flex flex-col text-neutral-800'>
+            <div className='flex flex-col text-neutral-800 mt-10'>
               <h1 className="text-3xl font-extrabold">Results</h1>
               <p className="text-lg">These are the resulting assignments of buyers to farmers based on the minimum cost calculated by the assignment algorithm.</p>
               <AssignmentPanel farmers={farmers} buyers={buyers} distanceMatrix={distanceMatrix} global={global} bestAssignment={bestAssignment} costMatrix={finalCostMatrix} />
             </div>
-          </div>
 
+          </div>
         </div>
       </div>
     </>

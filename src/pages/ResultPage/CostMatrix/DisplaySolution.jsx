@@ -95,7 +95,7 @@ function DisplaySolution({ farmerIndex, buyerIndex, solutionIndex = 0, distanceM
           <InlineMath math={`b = ${buyerCurrent}`} />
           <InlineMath math={`b^{max} = ${buyerLimit}`} />
           <InlineMath math={`P_{${produceType}} = ${priority}`} />
-          <InlineMath math={`\\tilde{P}_{${produceType}} = \\frac{1}{${priority} + 10^{-6}} = ${normalizedPriority.toFixed(4)}`} />
+          <InlineMath math={`\\tilde{P}_{${produceType}} = \\frac{1}{${priority}} = ${normalizedPriority.toFixed(4)}`} />
         </div>
 
         <div className="flex flex-col mt-2">
