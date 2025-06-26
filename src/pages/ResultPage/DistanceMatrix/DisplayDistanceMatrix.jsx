@@ -37,7 +37,7 @@ function DisplayDistanceMatrix( {distanceMatrix, buyers, farmers} ) {
                 </div>
                 {
                   row.map((distance, index) => (
-                    <button key={index} onClick={() => {(displayIndex.buyer_index === rowIndex && displayIndex.farmer_index === index) ? setDisplayIndex({}) : setDisplayIndex({buyer_index: rowIndex, farmer_index: index})}} className="hover:scale-105 duration-200 ease-(--my-beizer) hover:bg-amber-100 hover:text-amber-700 shadow-lg font-bold cursor-pointer rounded-md w-25 text-bold p-2 text-center">
+                    <button key={index} onClick={() => {(displayIndex.buyer_index === rowIndex && displayIndex.farmer_index === index) ? setDisplayIndex({}) : setDisplayIndex({buyer_index: rowIndex, farmer_index: index})}} className="hover:scale-120 duration-200 ease-(--my-beizer) hover:bg-amber-100 hover:text-amber-700 shadow-lg font-bold cursor-pointer rounded-md w-25 text-bold p-2 text-center">
                       <p>
                         {distance.distance.toFixed(2)}
                       </p>

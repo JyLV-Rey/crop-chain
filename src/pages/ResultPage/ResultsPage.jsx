@@ -31,7 +31,7 @@ function ResultsPage() {
     <>
       <div>
         <NavBar />
-        <div className="flex flex-col gap-10 mt-20 p-10">
+        <div className="flex flex-col gap-10 mt-10 p-10">
 
           <div className="flex flex-col text-neutral-700">
             <h1 className="text-3xl font-extrabold">Distance Matrix</h1>
@@ -45,6 +45,7 @@ function ResultsPage() {
 
             <h1 className="text-3xl font-extrabold">Cost Matrix</h1>
             <p className="text-lg">These are the costs between each farmer and buyer assigned by our heuristic function. Tap the cost to view the solution and the formula used to calculate the cost.</p>
+            <p className="italic">(Note: The costs are multiplied by 100 to scale for visual purposes only.)</p>
 
             <div className="flex flex-row justify-center align-top gap-5">
               <div className="mt-2 flex flex-col w-fit   self-center text-center">
@@ -55,7 +56,7 @@ function ResultsPage() {
               </div>
               <div className="mt-2 flex flex-col w-fit text-lg self-center text-center">
                 <p className="text-lg font-extrabold mb-5">Formula:</p>
-                <InlineMath math={`C_{ijf} = \\frac{d_{ij}^\\beta \\cdot \\left(1 + \\left( \\frac{b_{jf}}{b_f^{\\text{max}}} \\right)^\\delta \\right)}{(s_{if} + 1)^\\alpha}`} />
+                <InlineMath math={`C_{bfp} = \\frac{d_{bf}^\\beta \\cdot \\left(1 + \\left( \\frac{b_{bp}}{b_p^{\\text{max}}} \\right)^\\delta \\right)}{(s_{bp} + 1)^\\alpha}`} />
               </div>
             </div>
 
