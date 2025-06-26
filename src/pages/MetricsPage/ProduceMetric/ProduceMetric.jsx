@@ -1,8 +1,0 @@
-function ProduceMetric() {
-  return(
-    <>
-    
-    </>
-  );
-}
-

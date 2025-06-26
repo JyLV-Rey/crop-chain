@@ -5,7 +5,7 @@ import DisplayDistanceMatrix from "./DistanceMatrix/DisplayDistanceMatrix";
 import { useGlobalData } from "../../default-data/DefaultGlobalData";
 import costMatrix from "../../algorithms/CostMatrixComputation";
 import DisplayCostMatrix from "./CostMatrix/DisplayCostMatrix";
-import { BlockMath, InlineMath } from "react-katex";
+import { InlineMath } from "react-katex";
 import AssignmentPanel from "./AssignmentPanel/AssignmentPanel";
 import assignProblemSolver from "../../algorithms/assignmentProblem";
 import data from './mock-output.json'
@@ -92,18 +92,8 @@ function ResultsPage() {
             </div>
           </div>
         </div>
-        <p style={{ marginTop: '1rem', fontSize: '1rem', maxWidth: '800px' }}>
-          This interactive bubble chart displays all possible <strong>farmer–buyer combinations</strong> for the selected crop.
-          Use the dropdown to filter by fruit type.  
-          <ul style={{ marginLeft: '1rem' }}>
-            <li><strong>X-axis:</strong> Distance in kilometers between farmer and buyer</li>
-            <li><strong>Y-axis:</strong> Total computed cost based on supply and stock conditions</li>
-            <li><strong>Bubble Size:</strong> Farmer’s available supply for the selected crop</li>
-          </ul>
-          This helps visualize trade-offs between logistics cost and crop supply availability per crop category.
-        </p>
-      </section>
-    </div>
+      </div>
+    </>
   );
 }
 
