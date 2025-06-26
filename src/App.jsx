@@ -10,6 +10,7 @@ import EditBuyer from './pages/Assignment/Assignment1/EditPage/EditBuyer.jsx';
 import GlobalConfig from './pages/Assignment/GlobalConfig/GlobalConfig.jsx';
 import CreateBuyer from './pages/Assignment/Assignment1/CreatePage/CreateBuyer.jsx';
 import CreateFarmer from './pages/Assignment/Assignment1/CreatePage/CreateFarmer.jsx';
+import ResultsPage from './pages/ResultPage/ResultsPage.jsx';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="/Assignment/Initialization/EditBuyer" element={<EditBuyer />}></Route>
             <Route path="/Assignment/Initialization/CreateBuyer" element={<CreateBuyer />}></Route>
             <Route path="/Assignment/Initialization/CreateFarmer" element={<CreateFarmer />}></Route>
+            <Route path="/results" element={<ResultsPage />} />
           </Routes>
         </div>
     </>

@@ -1,6 +1,7 @@
 import NavBar from "../../features/NavBar"
 import { Link } from "react-router-dom"
 import { Users, BarChart, MapPin, CheckCircle, CircleUserRound, Leaf, RefreshCcw, Truck, ArrowRight, Handshake, Store, Warehouse, Landmark } from "lucide-react";
+import React from 'react';
 
 function HomePage() {
   return (
