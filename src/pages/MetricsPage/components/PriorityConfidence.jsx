@@ -130,7 +130,7 @@ function PriorityConfidenceChart({ global, farmers, bestAssignment }) {
       <Bar data={chartData} options={options} />
 
       <p className="mt-4 text-center text-neutral-500 text-sm">
-        Blue = delivery (kg), Green = normalized priority (0–1), Yellow = confidence score (%)
+        Blue = delivery (kg), Green = normalized priority (0-1), Yellow = confidence score (%)
       </p>
       <p className="mt-2 text-center text-neutral-500 text-xs">
         Confidence = <code>1 - |normalized delivery - normalized priority|</code><br />

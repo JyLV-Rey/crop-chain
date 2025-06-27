@@ -18,6 +18,7 @@ function costMatrix(farmers, buyers, distanceMatrix, global, disregardDistance =
     penalty_oversupply = 0;
   }
 
+  // note to self always ddouble check the indexes, it's hard to debug
   // Outer loop is now farmers (rows of the matrix)
   farmers.forEach((farmer, farmerIndex) => {
     const innerMatrix = [];
@@ -29,13 +30,13 @@ function costMatrix(farmers, buyers, distanceMatrix, global, disregardDistance =
       farmer.produce.forEach((produce, produceIndex) => {
 
         // Distances
-        const { distance } = distanceMatrix[farmerIndex][buyerIndex]; // still [buyer][farmer] shape
+        const { distance } = distanceMatrix[farmerIndex][buyerIndex];
         const rowDistances = distanceMatrix[buyerIndex].map(cell => cell.distance);
         const distance_cost = distance / Math.max(...rowDistances);
 
         // Priority of the Produce
         let priority = global.produce[produceIndex].priority || 1;
-        if(disregardOversupply && disregardUndersupply) priority = 1;
+        if(disregardOversupply && disregardUndersupply) priority = 1; // perfect assignment disregarding the priorities
 
         // Supply of Buyer
         const buyer_supply = buyer.produce[produceIndex];
@@ -60,7 +61,7 @@ function costMatrix(farmers, buyers, distanceMatrix, global, disregardDistance =
         // Adding the total fruit costs
         total_fruit_cost += total_cost;
       });
-
+      // append outerr row 
       innerMatrix.push(total_fruit_cost * 100);
     });
 

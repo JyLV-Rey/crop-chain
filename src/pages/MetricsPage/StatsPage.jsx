@@ -12,7 +12,6 @@ import AssignmentSummary from "./components/AssignmentSummary";
 import GroupedBarChart from "./components/GroupedBarChart";
 import LineChart from "./components/LineChart";
 import GlobalSummaryStats from "./metrics/produce/TotalProduceAggregation";
-import getDistanceOnlyCostMatrix from "../../algorithms/CalculateDistance";
 import PriorityUtilizationChart from "./components/PriorityUtilization";
 import PriorityConfidenceChart from "./components/PriorityConfidence";
 

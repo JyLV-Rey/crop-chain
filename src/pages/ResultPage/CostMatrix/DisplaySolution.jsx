@@ -10,7 +10,8 @@ function DisplaySolution({ farmerIndex, buyerIndex, solutionIndex = 0, distanceM
 
   const distance = distanceMatrix[farmerIndex][buyerIndex].distance;
   const rowDistances = distanceMatrix[farmerIndex].map(cell => cell.distance);
-  const normalized_distance = distance / Math.max(...rowDistances);
+  const rawNormalizedDistance = distance / Math.max(...rowDistances);
+  const normalizedDistance = Math.pow(rawNormalizedDistance, beta);
 
   const farmer = farmers[farmerIndex];
   const buyer = buyers[buyerIndex];
@@ -25,7 +26,7 @@ function DisplaySolution({ farmerIndex, buyerIndex, solutionIndex = 0, distanceM
     global.produce.forEach((produce, produceIndex) => {
       const type = produce.type;
       const priority = produce.priority || 1;
-      const normalizedPriority = 1 / (priority + 1e-6);
+      const normalizedPriority = 1 / priority; // match costMatrix
 
       const supplyFarmer = farmer.produce[produceIndex].supply;
       const buyerCurrent = buyer.produce[produceIndex].supply_current;
@@ -35,8 +36,9 @@ function DisplaySolution({ farmerIndex, buyerIndex, solutionIndex = 0, distanceM
       const buyerCost = 1 + Math.pow(buyerCurrent / buyerLimit, delta);
       const farmerCost = 1 + Math.pow(normalizedFarmerSupply, alpha);
 
-      const cost = normalizedPriority *
-        (Math.pow(normalized_distance, beta) * buyerCost) /
+      const cost =
+        normalizedPriority *
+        (normalizedDistance * buyerCost) /
         farmerCost;
 
       symbolicSum += `C_{${type}} + `;
@@ -59,26 +61,29 @@ function DisplaySolution({ farmerIndex, buyerIndex, solutionIndex = 0, distanceM
         <BlockMath math={`${symbolicSum}`} />
         <BlockMath math={`= ${numericSum}`} />
         <BlockMath math={`C_{total} = ${sum.toFixed(4)}`} />
-        <BlockMath math={`C_{total} \\texttt{(scaled)} = ${(sum * 100).toFixed(4)}`} />
+        <BlockMath math={`C_{total}^{\\text{scaled}} = ${(sum * 100).toFixed(4)}`} />
+        <BlockMath math={`\\text{Compared to Table Value: } ${totalCost.toFixed(2)}`} />
       </div>
     );
   }
 
   // Single-produce view
-  const produceType = global.produce[solutionIndex].type;
+  const produce = global.produce[solutionIndex];
+  const produceType = produce.type;
+  const priority = produce.priority || 1;
+  const normalizedPriority = 1 / priority;
+
   const supplyFarmer = farmer.produce[solutionIndex].supply;
   const buyerCurrent = buyer.produce[solutionIndex].supply_current;
   const buyerLimit = buyer.produce[solutionIndex].supply_limit;
 
   const normalizedFarmerSupply = supplyFarmer / farmerSupplyMax;
-  const priority = global.produce[solutionIndex].priority || 1;
-  const normalizedPriority = 1 / (priority + 1e-6);
   const buyerCost = 1 + Math.pow(buyerCurrent / buyerLimit, delta);
   const farmerCost = 1 + Math.pow(normalizedFarmerSupply, alpha);
 
   const cost =
     normalizedPriority *
-    (Math.pow(normalized_distance, beta) * buyerCost) /
+    (normalizedDistance * buyerCost) /
     farmerCost;
 
   return (
@@ -91,7 +96,7 @@ function DisplaySolution({ farmerIndex, buyerIndex, solutionIndex = 0, distanceM
       <div className="flex flex-row gap-2">
         <div className="flex flex-col mt-2 w-45 text-xs gap-2">
           <InlineMath math={`d = ${distance.toFixed(2)}`} />
-          <InlineMath math={`\\tilde{d} = \\frac{${distance.toFixed(2)}}{${Math.max(...rowDistances).toFixed(2)}} = ${normalized_distance.toFixed(4)}`} />
+          <InlineMath math={`\\tilde{d} = \\frac{${distance.toFixed(2)}}{${Math.max(...rowDistances).toFixed(2)}} = ${rawNormalizedDistance.toFixed(4)}`} />
           <InlineMath math={`s = ${supplyFarmer}`} />
           <InlineMath math={`\\tilde{s} = \\frac{${supplyFarmer}}{${farmerSupplyMax.toFixed(2)}} = ${normalizedFarmerSupply.toFixed(4)}`} />
           <InlineMath math={`b = ${buyerCurrent}`} />
@@ -102,11 +107,10 @@ function DisplaySolution({ farmerIndex, buyerIndex, solutionIndex = 0, distanceM
 
         <div className="flex flex-col text-sm mt-2">
           <BlockMath
-            math={`C_{${produceType}} = ${normalizedPriority.toFixed(4)} \\cdot \\frac{${normalized_distance.toFixed(4)}^{${beta}} \\cdot \\left(1 + \\left( \\frac{${buyerCurrent}}{${buyerLimit}} \\right)^{${delta}} \\right)}{${normalizedFarmerSupply.toFixed(4)}^{${alpha}}}`}
+            math={`C_{${produceType}} = ${normalizedPriority.toFixed(4)} \\cdot \\frac{${rawNormalizedDistance.toFixed(4)}^{${beta}} \\cdot \\left(1 + \\left( \\frac{${buyerCurrent}}{${buyerLimit}} \\right)^{${delta}} \\right)}{${normalizedFarmerSupply.toFixed(4)}^{${alpha}}}`}
           />
-          <div className="t">
-            <BlockMath math={`C_{${produceType}} = ${cost.toFixed(4)}`} />
-          </div>
+          <BlockMath math={`C_{${produceType}} = ${cost.toFixed(4)}`} />
+          <BlockMath math={`C_{${produceType}}^{\\text{scaled}} = ${(cost * 100).toFixed(2)}`} />
         </div>
       </div>
     </div>

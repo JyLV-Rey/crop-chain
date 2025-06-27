@@ -1,3 +1,5 @@
+// LEGACY FUNCTION THAT COMPUTES FOR THE COST MATRIX BUT THE VALUES ARE UNNORMALIZED
+
 function costMatrix(
   farmers,
   buyers,
