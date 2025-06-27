@@ -4,7 +4,7 @@ import React from "react";
 function GlobalSummaryStats({ buyers, farmers, bestAssignment, global }) {
   const produceList = global.produce;
 
-  const stats = produceList.map((_, pIndex) => {
+  const stats = produceList.map((produce, pIndex) => {
     const totals = {
       totalBuyerLimit: 0,
       totalBuyerCurrent: 0,
@@ -13,6 +13,7 @@ function GlobalSummaryStats({ buyers, farmers, bestAssignment, global }) {
       oversupplied: 0,
       undersupplied: 0,
       totalUtilizationDiff: 0,
+      priorityWeightedOversupplied: 0,
     };
 
     bestAssignment.bestAssignment.forEach(([farmerIndex, buyerIndex]) => {
@@ -26,6 +27,9 @@ function GlobalSummaryStats({ buyers, farmers, bestAssignment, global }) {
       const newSupply = buyerCurrent + farmerSupply;
       const utilizationDiff = newSupply - buyerLimit;
 
+      const priority = produce.priority || 1;
+      const oversupplyWeight = 1 / priority;
+
       totals.totalBuyerLimit += buyerLimit;
       totals.totalBuyerCurrent += buyerCurrent;
       totals.totalFarmerSupply += farmerSupply;
@@ -34,13 +38,15 @@ function GlobalSummaryStats({ buyers, farmers, bestAssignment, global }) {
 
       if (utilizationDiff > 0) {
         totals.oversupplied += utilizationDiff;
+        totals.priorityWeightedOversupplied += utilizationDiff * oversupplyWeight;
       } else {
         totals.undersupplied += -utilizationDiff;
       }
     });
 
     return {
-      produce: produceList[pIndex].type,
+      produce: produce.type,
+      priority: produce.priority || 1,
       ...totals,
       avgUtilization: (totals.totalNewSupply / totals.totalBuyerLimit) * 100,
     };
@@ -49,14 +55,11 @@ function GlobalSummaryStats({ buyers, farmers, bestAssignment, global }) {
   const totalAssignments = bestAssignment.bestAssignment.length;
   const totalProduceTypes = stats.length;
   const totalOversupply = stats.reduce((sum, s) => sum + s.oversupplied, 0);
+  const totalWeightedOversupply = stats.reduce((sum, s) => sum + s.priorityWeightedOversupplied, 0);
   const totalUndersupply = stats.reduce((sum, s) => sum + s.undersupplied, 0);
-  const averageUtilization =
-    stats.reduce((sum, s) => sum + s.avgUtilization, 0) / totalProduceTypes;
+  const averageUtilization = stats.reduce((sum, s) => sum + s.avgUtilization, 0) / totalProduceTypes;
 
-  const totalFarmerContributions = stats.reduce(
-    (sum, s) => sum + (Number(s.totalFarmerSupply) || 0),
-    0
-  );
+  const totalFarmerContributions = stats.reduce((sum, s) => sum + s.totalFarmerSupply, 0);
   const totalBuyerLimits = stats.reduce((sum, s) => sum + s.totalBuyerLimit, 0);
 
   return (
@@ -70,7 +73,7 @@ function GlobalSummaryStats({ buyers, farmers, bestAssignment, global }) {
           {stats.map((s, index) => (
             <div key={index} className="mb-3">
               <p className="text-blue-900 text-lg font-semibold">
-                {s.produce}: {s.totalFarmerSupply} kg delivered
+                {s.produce} (Priority {s.priority}): {s.totalFarmerSupply} kg delivered
               </p>
               <p className="text-sm text-blue-700">
                 Avg Utilization: {s.avgUtilization.toFixed(1)}%
@@ -103,9 +106,16 @@ function GlobalSummaryStats({ buyers, farmers, bestAssignment, global }) {
           <h3 className="text-xl font-bold text-yellow-800 mb-2">Global Utilization Stats</h3>
 
           <p className="text-yellow-900 text-lg">
-            <strong>Oversupply:</strong> {totalOversupply.toFixed(2)} kg
+            <strong>Raw Oversupply:</strong> {totalOversupply.toFixed(2)} kg
           </p>
-          <p className="text-sm text-yellow-700">Exceeds buyer limits.</p>
+          <p className="text-sm text-yellow-700">Exceeds buyer limits before adjustment.</p>
+
+          <p className="text-yellow-900 text-lg mt-2">
+            <strong>Priority-Weighted Oversupply:</strong> {totalWeightedOversupply.toFixed(2)} kg
+          </p>
+          <p className="text-sm text-yellow-700">
+            Adjusted to favor high-priority produce.
+          </p>
 
           <p className="text-yellow-900 text-lg mt-2">
             <strong>Undersupply:</strong> {totalUndersupply.toFixed(2)} kg

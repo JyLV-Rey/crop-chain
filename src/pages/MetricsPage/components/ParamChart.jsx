@@ -4,24 +4,34 @@ import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, LineElement, 
 ChartJS.register(BarElement, CategoryScale, LinearScale, LineElement, PointElement);
 
 function ParamChart({ buyers, farmers, currentAssignment, bestAssignment, matrix }) {
-  const farmer_names = farmers.map((farmer, index) => `${farmer.farm_name} to ${buyers[index].store_name}`);
+  // Build label→value maps
+  const labelDistanceMap = (assignment) =>
+    assignment.bestAssignment.reduce((acc, [f_index, b_index]) => {
+      const label = `${farmers[f_index].farm_name} → ${buyers[b_index].store_name}`;
+      acc[label] = matrix[f_index][b_index].distance;
+      return acc;
+    }, {});
 
-  const current_data = currentAssignment.bestAssignment.map(([f_index, b_index]) => matrix[f_index][b_index].distance);
-  const best_data = bestAssignment.bestAssignment.map(([f_index, b_index]) => matrix[f_index][b_index].distance);
+  const currentMap = labelDistanceMap(currentAssignment);
+  const bestMap = labelDistanceMap(bestAssignment);
 
-  // Compute dynamic Y max
+  // Unique combined label set
+  const labels = Array.from(new Set([...Object.keys(currentMap), ...Object.keys(bestMap)]));
+
+  const current_data = labels.map(label => currentMap[label] ?? 0);
+  const best_data = labels.map(label => bestMap[label] ?? 0);
+
   const maxValue = Math.max(...current_data.concat(best_data));
-  const dynamicMax = Math.ceil(maxValue + 50); // Add 50 buffer and round up
+  const dynamicMax = Math.ceil(maxValue + 50);
 
   const data = {
-    labels: farmer_names,
+    labels,
     datasets: [
       {
         label: "Best Assignment by Distance",
         data: best_data,
         backgroundColor: "rgba(209, 255, 236, 0.87)",
         borderColor: "rgba(1, 255, 149, 0.87)",
-        pointRadius: 4,
         borderWidth: 1,
       },
       {
@@ -29,7 +39,6 @@ function ParamChart({ buyers, farmers, currentAssignment, bestAssignment, matrix
         data: current_data,
         backgroundColor: "rgba(255, 99, 132, 0.2)",
         borderColor: "rgba(255, 99, 132, 1)",
-        pointRadius: 4,
         borderWidth: 1,
       },
     ],
@@ -49,9 +58,8 @@ function ParamChart({ buyers, farmers, currentAssignment, bestAssignment, matrix
     },
   };
 
-  return (
-    <Bar data={data} options={options} />
-  );
+  return <Bar data={data} options={options} />;
 }
+
 
 export default ParamChart;

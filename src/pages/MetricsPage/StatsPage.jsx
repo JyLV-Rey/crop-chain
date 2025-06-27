@@ -47,7 +47,7 @@ function StatsPage() {
   useEffect (() => {
     if (distanceMatrix.length > 0) {
       setCostMatrix(getCostMatrix(farmers, buyers, distanceMatrix, global))
-      setBestDistance(getDistanceOnlyCostMatrix(farmers, buyers, distanceMatrix));
+      setBestDistance(getCostMatrix(farmers, buyers, distanceMatrix, global, false, true, true));
       setBestUndersupply(getCostMatrix(farmers, buyers, distanceMatrix, global, true, false, true));
       setBestOversupply(getCostMatrix(farmers, buyers, distanceMatrix, global, true, true, false));
     };
@@ -80,6 +80,7 @@ function StatsPage() {
         <NavBar/>
         <div className="w-full mt-20 p-5">
           <div className="flex flex-col gap-10 text-neutral-700 text-lg font-medium">
+
             <div>
               <p className="font-extrabold text-5xl text-center">Statistics</p>
               <p className="font-semibold text-2xl text-center">Here are the statistics of the current session</p>
