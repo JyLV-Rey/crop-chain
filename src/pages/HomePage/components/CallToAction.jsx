@@ -14,7 +14,7 @@ function CallToAction() {
         </p>
         <div className="flex gap-6 justify-center flex-wrap">
           <Link
-            to="/Assignment/Initialization"
+            to="/Assignment/Region"
             className="bg-white hover:bg-gray-100 text-emerald-600 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
           >
             Get Started <ChevronRight className="inline-block ml-2" />

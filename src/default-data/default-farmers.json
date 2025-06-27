@@ -103,8 +103,6 @@
   }
 ] 
 
-
-
   },
   {
     "farmers": [
@@ -317,80 +315,212 @@
   },
   {
     "farmers": [
+  {
+    "first_name": "Nicolas",
+    "last_name": "Silva",
+    "farm_name": "Silva Orchards",
+    "location": {
+      "latitude": 14.235,
+      "longitude": 121.03
+    },
+    "produce": [
       {
-        "first_name": "Nicolas",
-        "last_name": "Silva",
-        "farm_name": "Silva Orchards",
-        "location": { "latitude": 14.235, "longitude": 121.030 },
-        "produce": [{ "supply": 420 }, { "supply": 380 }, { "supply": 390 }]
+        "supply": 420
       },
       {
-        "first_name": "Olivia",
-        "last_name": "Mendoza",
-        "farm_name": "Mendoza Vineyards",
-        "location": { "latitude": 13.825, "longitude": 121.345 },
-        "produce": [{ "supply": 405 }, { "supply": 395 }, { "supply": 385 }]
+        "supply": 380
       },
       {
-        "first_name": "Pablo",
-        "last_name": "Rios",
-        "farm_name": "Rios Plantation",
-        "location": { "latitude": 14.440, "longitude": 120.920 },
-        "produce": [{ "supply": 435 }, { "supply": 355 }, { "supply": 370 }]
-      },
-      {
-        "first_name": "Quinn",
-        "last_name": "Navarro",
-        "farm_name": "Navarro Groves",
-        "location": { "latitude": 13.920, "longitude": 121.250 },
-        "produce": [{ "supply": 385 }, { "supply": 425 }, { "supply": 365 }]
-      },
-      {
-        "first_name": "Rosa",
-        "last_name": "Iglesias",
-        "farm_name": "Iglesias Fields",
-        "location": { "latitude": 14.145, "longitude": 121.135 },
-        "produce": [{ "supply": 415 }, { "supply": 375 }, { "supply": 405 }]
+        "supply": 390
       }
     ]
   },
   {
-    "farmers": [
+    "first_name": "Olivia",
+    "last_name": "Mendoza",
+    "farm_name": "Mendoza Vineyards",
+    "location": {
+      "latitude": 13.736335925515494,
+      "longitude": 121.1744472384453
+    },
+    "produce": [
       {
-        "first_name": "Samuel",
-        "last_name": "Cordero",
-        "farm_name": "Cordero Estates",
-        "location": { "latitude": 11.310, "longitude": 122.395 },
-        "produce": [{ "supply": 480 }, { "supply": 440 }, { "supply": 455 }]
+        "supply": 405
       },
       {
-        "first_name": "Teresa",
-        "last_name": "Paredes",
-        "farm_name": "Paredes Acres",
-        "location": { "latitude": 10.690, "longitude": 122.710 },
-        "produce": [{ "supply": 465 }, { "supply": 425 }, { "supply": 435 }]
+        "supply": 395
       },
       {
-        "first_name": "Ulises",
-        "last_name": "Salazar",
-        "farm_name": "Salazar Gardens",
-        "location": { "latitude": 11.505, "longitude": 122.320 },
-        "produce": [{ "supply": 510 }, { "supply": 410 }, { "supply": 390 }]
-      },
-      {
-        "first_name": "Valeria",
-        "last_name": "Vega",
-        "farm_name": "Vega Homestead",
-        "location": { "latitude": 11.115, "longitude": 122.685 },
-        "produce": [{ "supply": 440 }, { "supply": 460 }, { "supply": 420 }]
-      },
-      {
-        "first_name": "William",
-        "last_name": "Cortes",
-        "farm_name": "Cortes Ranch",
-        "location": { "latitude": 10.895, "longitude": 122.505 },
-        "produce": [{ "supply": 495 }, { "supply": 435 }, { "supply": 475 }]
+        "supply": 385
       }
     ]
+  },
+  {
+    "first_name": "Pablo",
+    "last_name": "Rios",
+    "farm_name": "Rios Plantation",
+    "location": {
+      "latitude": 14.44,
+      "longitude": 120.92
+    },
+    "produce": [
+      {
+        "supply": 435
+      },
+      {
+        "supply": 355
+      },
+      {
+        "supply": 370
+      }
+    ]
+  },
+  {
+    "first_name": "Quinn",
+    "last_name": "Navarro",
+    "farm_name": "Navarro Groves",
+    "location": {
+      "latitude": 14.159784134533183,
+      "longitude": 121.23277940920424
+    },
+    "produce": [
+      {
+        "supply": 385
+      },
+      {
+        "supply": 425
+      },
+      {
+        "supply": 365
+      }
+    ]
+  },
+  {
+    "first_name": "Rosa",
+    "last_name": "Iglesias",
+    "farm_name": "Iglesias Fields",
+    "location": {
+      "latitude": 14.54548085177295,
+      "longitude": 121.23774941478457
+    },
+    "produce": [
+      {
+        "supply": 415
+      },
+      {
+        "supply": 375
+      },
+      {
+        "supply": 405
+      }
+    ]
+  }
+]
+
+  },
+  {
+    "farmers": [
+  {
+    "first_name": "Samuel",
+    "last_name": "Cordero",
+    "farm_name": "Cordero Estates",
+    "location": {
+      "latitude": 11.31,
+      "longitude": 122.395
+    },
+    "produce": [
+      {
+        "supply": 480
+      },
+      {
+        "supply": 440
+      },
+      {
+        "supply": 455
+      }
+    ]
+  },
+  {
+    "first_name": "Teresa",
+    "last_name": "Paredes",
+    "farm_name": "Paredes Acres",
+    "location": {
+      "latitude": 10.60854795235455,
+      "longitude": 122.03465057270871
+    },
+    "produce": [
+      {
+        "supply": 465
+      },
+      {
+        "supply": 425
+      },
+      {
+        "supply": 435
+      }
+    ]
+  },
+  {
+    "first_name": "Ulises",
+    "last_name": "Salazar",
+    "farm_name": "Salazar Gardens",
+    "location": {
+      "latitude": 11.505,
+      "longitude": 122.32
+    },
+    "produce": [
+      {
+        "supply": 510
+      },
+      {
+        "supply": 410
+      },
+      {
+        "supply": 390
+      }
+    ]
+  },
+  {
+    "first_name": "Valeria",
+    "last_name": "Vega",
+    "farm_name": "Vega Homestead",
+    "location": {
+      "latitude": 10.985875855824979,
+      "longitude": 122.0936366915703
+    },
+    "produce": [
+      {
+        "supply": 440
+      },
+      {
+        "supply": 460
+      },
+      {
+        "supply": 420
+      }
+    ]
+  },
+  {
+    "first_name": "William",
+    "last_name": "Cortes",
+    "farm_name": "Cortes Ranch",
+    "location": {
+      "latitude": 10.895,
+      "longitude": 122.505
+    },
+    "produce": [
+      {
+        "supply": 495
+      },
+      {
+        "supply": 435
+      },
+      {
+        "supply": 475
+      }
+    ]
+  }
+]
+
   }
 ]

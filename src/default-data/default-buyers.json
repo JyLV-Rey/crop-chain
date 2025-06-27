@@ -360,120 +360,242 @@
   },
   {
     "buyers": [
+  {
+    "first_name": "Patricia",
+    "last_name": "Quintos",
+    "store_name": "Patricia's Produce",
+    "location": {
+      "latitude": 14.028618775576108,
+      "longitude": 121.61921915199075
+    },
+    "produce": [
       {
-        "first_name": "Patricia",
-        "last_name": "Quintos",
-        "store_name": "Patricia's Produce",
-        "location": { "latitude": 13.200, "longitude": 121.100 },
-        "produce": [
-          { "supply_limit": 1205, "supply_current": 1180 },
-          { "supply_limit": 1190, "supply_current": 990 },
-          { "supply_limit": 1200, "supply_current": 100 }
-        ]
+        "supply_limit": 1205,
+        "supply_current": 1180
       },
       {
-        "first_name": "Calvin",
-        "last_name": "Ramos",
-        "store_name": "Ramos Natural Foods",
-        "location": { "latitude": 13.500, "longitude": 121.400 },
-        "produce": [
-          { "supply_limit": 1220, "supply_current": 860 },
-          { "supply_limit": 1200, "supply_current": 400 },
-          { "supply_limit": 1185, "supply_current": 1150 }
-        ]
+        "supply_limit": 1190,
+        "supply_current": 990
       },
       {
-        "first_name": "Joy",
-        "last_name": "Araneta",
-        "store_name": "Joyful Harvest",
-        "location": { "latitude": 13.700, "longitude": 121.600 },
-        "produce": [
-          { "supply_limit": 1195, "supply_current": 950 },
-          { "supply_limit": 1210, "supply_current": 1210 },
-          { "supply_limit": 1200, "supply_current": 690 }
-        ]
-      },
-      {
-        "first_name": "Samuel",
-        "last_name": "Dimalanta",
-        "store_name": "Sam's Farmshop",
-        "location": { "latitude": 13.900, "longitude": 121.300 },
-        "produce": [
-          { "supply_limit": 1215, "supply_current": 1215 },
-          { "supply_limit": 1220, "supply_current": 1145 },
-          { "supply_limit": 1205, "supply_current": 300 }
-        ]
-      },
-      {
-        "first_name": "Rina",
-        "last_name": "Lagman",
-        "store_name": "Rina’s Fruits",
-        "location": { "latitude": 13.100, "longitude": 121.700 },
-        "produce": [
-          { "supply_limit": 1200, "supply_current": 1155 },
-          { "supply_limit": 1225, "supply_current": 1225 },
-          { "supply_limit": 1210, "supply_current": 110 }
-        ]
+        "supply_limit": 1200,
+        "supply_current": 100
       }
     ]
   },
   {
-    "buyers": [
+    "first_name": "Calvin",
+    "last_name": "Ramos",
+    "store_name": "Ramos Natural Foods",
+    "location": {
+      "latitude": 14.260960615636085,
+      "longitude": 120.8539690822363
+    },
+    "produce": [
       {
-        "first_name": "Allan",
-        "last_name": "Magsaysay",
-        "store_name": "Allan’s AgriMart",
-        "location": { "latitude": 11.300, "longitude": 122.300 },
-        "produce": [
-          { "supply_limit": 1220, "supply_current": 560 },
-          { "supply_limit": 1205, "supply_current": 870 },
-          { "supply_limit": 1180, "supply_current": 1180 }
-        ]
+        "supply_limit": 1220,
+        "supply_current": 860
       },
       {
-        "first_name": "Ella",
-        "last_name": "Padilla",
-        "store_name": "Ella’s Earth Goods",
-        "location": { "latitude": 11.100, "longitude": 122.600 },
-        "produce": [
-          { "supply_limit": 1210, "supply_current": 1220 },
-          { "supply_limit": 1200, "supply_current": 100 },
-          { "supply_limit": 1225, "supply_current": 350 }
-        ]
+        "supply_limit": 1200,
+        "supply_current": 400
       },
       {
-        "first_name": "Jay",
-        "last_name": "Verano",
-        "store_name": "Jay's Natural Mart",
-        "location": { "latitude": 11.500, "longitude": 122.800 },
-        "produce": [
-          { "supply_limit": 1195, "supply_current": 1195 },
-          { "supply_limit": 1210, "supply_current": 1000 },
-          { "supply_limit": 1200, "supply_current": 400 }
-        ]
-      },
-      {
-        "first_name": "Kyla",
-        "last_name": "Ocampo",
-        "store_name": "Kyla’s Local Harvest",
-        "location": { "latitude": 11.700, "longitude": 122.500 },
-        "produce": [
-          { "supply_limit": 1225, "supply_current": 1225 },
-          { "supply_limit": 1200, "supply_current": 100 },
-          { "supply_limit": 1215, "supply_current": 820 }
-        ]
-      },
-      {
-        "first_name": "Bryan",
-        "last_name": "Quinto",
-        "store_name": "Bryan's Produce Co.",
-        "location": { "latitude": 11.200, "longitude": 122.900 },
-        "produce": [
-          { "supply_limit": 1200, "supply_current": 1100 },
-          { "supply_limit": 1185, "supply_current": 550 },
-          { "supply_limit": 1190, "supply_current": 1190 }
-        ]
+        "supply_limit": 1185,
+        "supply_current": 1150
       }
     ]
+  },
+  {
+    "first_name": "Joy",
+    "last_name": "Araneta",
+    "store_name": "Joyful Harvest",
+    "location": {
+      "latitude": 14.398198870055879,
+      "longitude": 121.53577537408898
+    },
+    "produce": [
+      {
+        "supply_limit": 1195,
+        "supply_current": 950
+      },
+      {
+        "supply_limit": 1210,
+        "supply_current": 1210
+      },
+      {
+        "supply_limit": 1200,
+        "supply_current": 690
+      }
+    ]
+  },
+  {
+    "first_name": "Samuel",
+    "last_name": "Dimalanta",
+    "store_name": "Sam's Farmshop",
+    "location": {
+      "latitude": 13.9,
+      "longitude": 121.3
+    },
+    "produce": [
+      {
+        "supply_limit": 1215,
+        "supply_current": 1215
+      },
+      {
+        "supply_limit": 1220,
+        "supply_current": 1145
+      },
+      {
+        "supply_limit": 1205,
+        "supply_current": 300
+      }
+    ]
+  },
+  {
+    "first_name": "Rina",
+    "last_name": "Lagman",
+    "store_name": "Rina’s Fruits",
+    "location": {
+      "latitude": 13.869064290221178,
+      "longitude": 120.9572928824595
+    },
+    "produce": [
+      {
+        "supply_limit": 1200,
+        "supply_current": 1155
+      },
+      {
+        "supply_limit": 1225,
+        "supply_current": 1225
+      },
+      {
+        "supply_limit": 1210,
+        "supply_current": 110
+      }
+    ]
+  }
+]
+
+  },
+  {
+    "buyers": [
+  {
+    "first_name": "Allan",
+    "last_name": "Magsaysay",
+    "store_name": "Allan’s AgriMart",
+    "location": {
+      "latitude": 11.230362079546673,
+      "longitude": 122.15244843491486
+    },
+    "produce": [
+      {
+        "supply_limit": 1220,
+        "supply_current": 560
+      },
+      {
+        "supply_limit": 1205,
+        "supply_current": 870
+      },
+      {
+        "supply_limit": 1180,
+        "supply_current": 1180
+      }
+    ]
+  },
+  {
+    "first_name": "Ella",
+    "last_name": "Padilla",
+    "store_name": "Ella’s Earth Goods",
+    "location": {
+      "latitude": 11.1,
+      "longitude": 122.6
+    },
+    "produce": [
+      {
+        "supply_limit": 1210,
+        "supply_current": 1220
+      },
+      {
+        "supply_limit": 1200,
+        "supply_current": 100
+      },
+      {
+        "supply_limit": 1225,
+        "supply_current": 350
+      }
+    ]
+  },
+  {
+    "first_name": "Jay",
+    "last_name": "Verano",
+    "store_name": "Jay's Natural Mart",
+    "location": {
+      "latitude": 11.5,
+      "longitude": 122.8
+    },
+    "produce": [
+      {
+        "supply_limit": 1195,
+        "supply_current": 1195
+      },
+      {
+        "supply_limit": 1210,
+        "supply_current": 1000
+      },
+      {
+        "supply_limit": 1200,
+        "supply_current": 400
+      }
+    ]
+  },
+  {
+    "first_name": "Kyla",
+    "last_name": "Ocampo",
+    "store_name": "Kyla’s Local Harvest",
+    "location": {
+      "latitude": 11.698090354775253,
+      "longitude": 122.2404698495354
+    },
+    "produce": [
+      {
+        "supply_limit": 1225,
+        "supply_current": 1225
+      },
+      {
+        "supply_limit": 1200,
+        "supply_current": 100
+      },
+      {
+        "supply_limit": 1215,
+        "supply_current": 820
+      }
+    ]
+  },
+  {
+    "first_name": "Bryan",
+    "last_name": "Quinto",
+    "store_name": "Bryan's Produce Co.",
+    "location": {
+      "latitude": 11.2,
+      "longitude": 122.9
+    },
+    "produce": [
+      {
+        "supply_limit": 1200,
+        "supply_current": 1100
+      },
+      {
+        "supply_limit": 1185,
+        "supply_current": 550
+      },
+      {
+        "supply_limit": 1190,
+        "supply_current": 1190
+      }
+    ]
+  }
+] 
+
   }
 ]
