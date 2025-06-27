@@ -303,7 +303,7 @@ node ./backend/router.js
 
 **Made with ❤️ by the CropChain Team**
 
-[Report Bug](https://github.com/JyLV-Rey/crop-chain/issues) • [Request Feature](https://github.com/JyLV-Rey/crop-chain/issues) • [Documentation](https://github.com/JyLV-Rey//cropchain/wiki)
+[Report Bug](https://github.com/JyLV-Rey/crop-chain/issues) • [Request Feature](https://github.com/JyLV-Rey/crop-chain/issues) • [Documentation]([https://github.com/JyLV-Rey//cropchain/wiki](https://drive.google.com/file/d/1XeDTHi1VTj8z4dx5jEqw6f6NTI5jTHa_/view?usp=sharing))
 
 </div>
 
