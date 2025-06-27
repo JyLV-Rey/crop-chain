@@ -127,7 +127,8 @@ graph TD
 - npm or yarn package manager
 - Modern web browser (Chrome, Firefox, Safari, Edge)
 
-### Frontend Installation
+### Quick Start
+should insert docker setup here
 
 ```bash
 # Clone the repository
@@ -139,16 +140,6 @@ npm install
 
 # Start development server
 npm run dev
-```
-
-### Environment Setup
-
-Create a `.env` file in the root directory:
-
-```env
-VITE_API_BASE_URL=http://localhost:3000
-VITE_MAP_API_KEY=your_map_api_key_here
-VITE_NOMINATIM_URL=https://nominatim.openstreetmap.org
 ```
 
 ### Backend Installation: Setting Up Nominatim + Valhalla (Philippines OSM)
