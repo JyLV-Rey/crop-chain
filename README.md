@@ -93,10 +93,11 @@ graph TD
     B --> C[Branch and Bound Assignment Problem Algorithm]
     C --> D[Results]
     D --> E[Visualization & Analysis]
-    
+    A --> B1
+
     A1[Farmer Data] --> A
     A2[Buyer Data] --> A
-    A3[Global Parameters] --> A
+    A3[Global Parameters] --> B2
     
     B1[Distance Calculation] --> B
     B2[Supply-Demand Analysis] --> B
