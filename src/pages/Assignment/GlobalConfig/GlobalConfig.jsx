@@ -59,7 +59,7 @@ function GlobalConfig() {
 
   function updateProducePriority(index, priority) {
     const updatedProduce = [...newProduce];
-    updatedProduce[index].priority = priority;
+    updatedProduce[index].priority = Number(priority);
     setNewProduce(updatedProduce);
   }
 

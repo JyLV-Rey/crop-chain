@@ -12,6 +12,9 @@ import AssignmentSummary from "./components/AssignmentSummary";
 import GroupedBarChart from "./components/GroupedBarChart";
 import LineChart from "./components/LineChart";
 import GlobalSummaryStats from "./metrics/produce/TotalProduceAggregation";
+import getDistanceOnlyCostMatrix from "../../algorithms/CalculateDistance";
+import PriorityUtilizationChart from "./components/PriorityUtilization";
+import PriorityConfidenceChart from "./components/PriorityConfidence";
 
 function StatsPage() {
   const { farmers, buyers, global } = useGlobalData()
@@ -44,7 +47,7 @@ function StatsPage() {
   useEffect (() => {
     if (distanceMatrix.length > 0) {
       setCostMatrix(getCostMatrix(farmers, buyers, distanceMatrix, global))
-      setBestDistance(getCostMatrix(farmers, buyers, distanceMatrix, global, false, true, true));
+      setBestDistance(getDistanceOnlyCostMatrix(farmers, buyers, distanceMatrix));
       setBestUndersupply(getCostMatrix(farmers, buyers, distanceMatrix, global, true, false, true));
       setBestOversupply(getCostMatrix(farmers, buyers, distanceMatrix, global, true, true, false));
     };
@@ -103,6 +106,24 @@ function StatsPage() {
                 </div>
                 <AssignmentSummary bestAssignment={bestAssignment} farmers={farmers} buyers={buyers} finalCostMatrix={costMatrix} />
               </div>
+              <div>
+                <div className="flex flex-row w-full items-center">
+                  <PriorityConfidenceChart farmers={farmers} buyers={buyers} bestAssignment={bestAssignment} global={global} />
+                  <PriorityUtilizationChart farmers={farmers} buyers={buyers} bestAssignment={bestAssignment} global={global} />
+                </div>
+                <p className="mt-6 text-center text-neutral-500 text-sm italic">
+                  The <strong>Priority Utilization Score</strong> tells us whether, overall, the deliveries leaned toward
+                  high-priority produce — it's like a weighted average based on how much was sent.
+                  <br />
+                  Meanwhile, the <strong>Confidence Score</strong> evaluates each produce type individually:
+                  did it get delivered *in proportion* to both its total supply and its importance?
+                </p>
+                <p className="mt-2 text-center text-neutral-400 text-xs">
+                  Together, they offer both a big-picture view (utilization) and a per-item accuracy check (confidence).
+                  High utilization with low confidence may suggest imbalance — e.g. high totals, but not targeted to priority.
+                </p>
+              </div>
+              
               <GlobalSummaryStats buyers={buyers} farmers={farmers} bestAssignment={bestAssignment} global={global} />
               <div>
                 <p className="font-bold text-3xl">Produce Distribution</p>

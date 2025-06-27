@@ -49,13 +49,13 @@ function EditBuyer() {
     if(updateKey == 'supply_limit') {
       setProduce(prevProduce => {
         const newProduce = [...prevProduce];
-        newProduce[key] = { ...newProduce[key], supply_limit: value };
+        newProduce[key] = { ...newProduce[key], supply_limit: Number(value) };
         return newProduce;
     })}
     else {
       setProduce(prevProduce => {
         const newProduce = [...prevProduce];
-        newProduce[key] = { ...newProduce[key], supply_current: value };
+        newProduce[key] = { ...newProduce[key], supply_current: Number(value) };
         return newProduce;})
     }
   }

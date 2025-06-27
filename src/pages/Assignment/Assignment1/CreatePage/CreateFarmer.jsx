@@ -38,7 +38,7 @@ function EditFarmer() {
     const value = e.target.value;
     setProduce(prevProduce => {
       const newProduce = [...prevProduce];
-      newProduce[key] = { ...newProduce[key], supply: value };
+      newProduce[key] = { ...newProduce[key], supply: Number(value) };
       return newProduce;
     });
   }

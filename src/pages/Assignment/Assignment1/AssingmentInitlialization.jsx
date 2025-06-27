@@ -20,6 +20,7 @@ function AssignmentInitialization() {
   // console logs and stringytfys farmers and buyers
    console.log(JSON.stringify(farmers, null, 2));
    console.log(JSON.stringify(buyers, null, 2));
+   console.log(JSON.stringify(global, null, 2));
  
   function disableAssignment() {
     if (buyers.length === 0 || farmers.length === 0) {

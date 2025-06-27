@@ -10,7 +10,7 @@ function SampleOutputPreview() {
       </div>
       <div className="bg-gray-100 p-8 rounded-lg">
         <img
-          src="/sample_output.png" 
+          src="/assets/sample_output.png" 
           alt="Sample Output"
           className="max-w-full h-auto block mx-auto rounded-md shadow-sm"
         />

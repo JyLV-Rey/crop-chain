@@ -25,69 +25,87 @@ const loadFromLocalStorage = (key, defaultValue) => {
 };
 
 export const GlobalProvider = ({ children }) => {
-  // Load or default to region 0
+  // Load or default to region 1
   const [regionIndex, setRegionIndex] = useState(() =>
     loadFromLocalStorage(LOCAL_KEYS.region, 1)
   );
 
-  // Load specific region's farmers/buyers/global data
+  // Keys specific to region
+  const regionFarmersKey = `${LOCAL_KEYS.farmers}_region${regionIndex}`;
+  const regionBuyersKey = `${LOCAL_KEYS.buyers}_region${regionIndex}`;
+  const regionGlobalKey = `${LOCAL_KEYS.global}_region${regionIndex}`;
+
   const [farmers, setFarmers] = useState(() =>
-    loadFromLocalStorage(LOCAL_KEYS.farmers, farmersRegions[regionIndex]?.farmers || [])
+    loadFromLocalStorage(regionFarmersKey, farmersRegions[regionIndex]?.farmers || [])
   );
 
   const [buyers, setBuyers] = useState(() =>
-    loadFromLocalStorage(LOCAL_KEYS.buyers, buyersRegions[regionIndex]?.buyers || [])
+    loadFromLocalStorage(regionBuyersKey, buyersRegions[regionIndex]?.buyers || [])
   );
 
   const [global, setGlobal] = useState(() =>
-    loadFromLocalStorage(LOCAL_KEYS.global, globalRegions[regionIndex] || {})
+    loadFromLocalStorage(regionGlobalKey, globalRegions[regionIndex] || {})
   );
 
   const [distance, setDistance] = useState(() =>
     loadFromLocalStorage(LOCAL_KEYS.distance, distanceData)
   );
 
-  // Sync data to localStorage
+  // Save current region index
   useEffect(() => {
     localStorage.setItem(LOCAL_KEYS.region, JSON.stringify(regionIndex));
   }, [regionIndex]);
 
+  // Save farmers per region
   useEffect(() => {
-    localStorage.setItem(LOCAL_KEYS.farmers, JSON.stringify(farmers));
-  }, [farmers]);
+    const key = `${LOCAL_KEYS.farmers}_region${regionIndex}`;
+    localStorage.setItem(key, JSON.stringify(farmers));
+  }, [farmers, regionIndex]);
 
+  // Save buyers per region
   useEffect(() => {
-    localStorage.setItem(LOCAL_KEYS.buyers, JSON.stringify(buyers));
-  }, [buyers]);
+    const key = `${LOCAL_KEYS.buyers}_region${regionIndex}`;
+    localStorage.setItem(key, JSON.stringify(buyers));
+  }, [buyers, regionIndex]);
 
+  // Save global parameters per region
   useEffect(() => {
-    localStorage.setItem(LOCAL_KEYS.global, JSON.stringify(global));
-  }, [global]);
+    const key = `${LOCAL_KEYS.global}_region${regionIndex}`;
+    localStorage.setItem(key, JSON.stringify(global));
+  }, [global, regionIndex]);
 
+  // Save distance (global, not region-specific)
   useEffect(() => {
     localStorage.setItem(LOCAL_KEYS.distance, JSON.stringify(distance));
   }, [distance]);
 
-  // Function to switch regions (and override all localStorage)
+  // Function to load a specific region
   const loadRegion = (index) => {
     setRegionIndex(index);
-    const newFarmers = farmersRegions[index]?.farmers || [];
-    const newBuyers = buyersRegions[index]?.buyers || [];
-    const newGlobal = globalRegions[index] || {};
+
+    const regionFarmersKey = `${LOCAL_KEYS.farmers}_region${index}`;
+    const regionBuyersKey = `${LOCAL_KEYS.buyers}_region${index}`;
+    const regionGlobalKey = `${LOCAL_KEYS.global}_region${index}`;
+
+    const savedFarmers = loadFromLocalStorage(regionFarmersKey, null);
+    const savedBuyers = loadFromLocalStorage(regionBuyersKey, null);
+    const savedGlobal = loadFromLocalStorage(regionGlobalKey, null);
+
+    const newFarmers = savedFarmers || farmersRegions[index]?.farmers || [];
+    const newBuyers = savedBuyers || buyersRegions[index]?.buyers || [];
+    const newGlobal = savedGlobal || globalRegions[index] || {};
 
     setFarmers(newFarmers);
     setBuyers(newBuyers);
     setGlobal(newGlobal);
-    localStorage.setItem(LOCAL_KEYS.farmers, JSON.stringify(newFarmers));
-    localStorage.setItem(LOCAL_KEYS.buyers, JSON.stringify(newBuyers));
-    localStorage.setItem(LOCAL_KEYS.global, JSON.stringify(newGlobal));
+
     localStorage.setItem(LOCAL_KEYS.region, JSON.stringify(index));
   };
 
-  console.log("Farmers :",farmers);
-  console.log("Buyers: ",buyers);
-  console.log("Global: ",global);
-  console.log("Region: ",regionIndex);
+  console.log("Farmers:", farmers);
+  console.log("Buyers:", buyers);
+  console.log("Global:", global);
+  console.log("Region:", regionIndex);
 
   return (
     <GlobalContext.Provider

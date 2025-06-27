@@ -29,8 +29,8 @@ function AssignmentSummary({ bestAssignment, farmers, buyers, finalCostMatrix })
     maxPossibleCost > 0 ? (((maxPossibleCost - bestAssignment.minCost) / maxPossibleCost) * 100).toFixed(1) : "0"
 
   return (
-    <div className="bg-white p-8 rounded-lg shadow-lg border border-neutral-200">
-      <h2 className="text-2xl font-bold text-neutral-800 mb-6 flex items-center">
+    <div className="bg-neutral-600 p-8 rounded-lg shadow-lg border border-neutral-200">
+      <h2 className="text-2xl font-bold text-neutral-50 mb-6 flex items-center">
         Assignment Summary
       </h2>
 

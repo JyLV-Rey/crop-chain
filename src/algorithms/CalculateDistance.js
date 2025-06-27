@@ -10,9 +10,8 @@ function getDistanceOnlyCostMatrix(farmers, buyers, distanceMatrix) {
 
     buyers.forEach((buyer, buyerIndex) => {
       const { distance } = distanceMatrix[farmerIndex][buyerIndex];
-      const normalized_distance = distance / maxDistance;
 
-      innerMatrix.push(normalized_distance * 100); // scaled to be consistent
+      innerMatrix.push(distance); // scaled to be consistent
     });
 
     matrix.push(innerMatrix);
