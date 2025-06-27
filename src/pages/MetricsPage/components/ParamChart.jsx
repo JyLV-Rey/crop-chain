@@ -1,16 +1,17 @@
 import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, LineElement, PointElement } from "chart.js";
-import { BetweenVerticalStart } from "lucide-react";
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, LineElement, PointElement);
 
 function ParamChart({ buyers, farmers, currentAssignment, bestAssignment, matrix }) {
-
   const farmer_names = farmers.map((farmer, index) => `${farmer.farm_name} to ${buyers[index].store_name}`);
-
 
   const current_data = currentAssignment.bestAssignment.map(([f_index, b_index]) => matrix[f_index][b_index].distance);
   const best_data = bestAssignment.bestAssignment.map(([f_index, b_index]) => matrix[f_index][b_index].distance);
+
+  // Compute dynamic Y max
+  const maxValue = Math.max(...current_data.concat(best_data));
+  const dynamicMax = Math.ceil(maxValue + 50); // Add 50 buffer and round up
 
   const data = {
     labels: farmer_names,
@@ -42,12 +43,11 @@ function ParamChart({ buyers, farmers, currentAssignment, bestAssignment, matrix
     scales: {
       y: {
         beginAtZero: true,
-        max: 100,
-        title: { display: true, text: "Fulfillment (%)" },
+        max: dynamicMax,
+        title: { display: true, text: "Distance (km)" },
       },
     },
   };
-
 
   return (
     <Bar data={data} options={options} />

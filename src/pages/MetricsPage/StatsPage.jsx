@@ -11,6 +11,7 @@ import EachProduce from "./metrics/produce/EachProduce";
 import AssignmentSummary from "./components/AssignmentSummary";
 import GroupedBarChart from "./components/GroupedBarChart";
 import LineChart from "./components/LineChart";
+import GlobalSummaryStats from "./metrics/produce/TotalProduceAggregation";
 
 function StatsPage() {
   const { farmers, buyers, global } = useGlobalData()
@@ -102,9 +103,11 @@ function StatsPage() {
                 </div>
                 <AssignmentSummary bestAssignment={bestAssignment} farmers={farmers} buyers={buyers} finalCostMatrix={costMatrix} />
               </div>
+              <GlobalSummaryStats buyers={buyers} farmers={farmers} bestAssignment={bestAssignment} global={global} />
               <div>
                 <p className="font-bold text-3xl">Produce Distribution</p>
                 <p>This is the metric of the how much the produce is distributed to the buyers, in relation to the utilization and efficiency</p>
+
                 <EachProduce farmers={farmers} buyers={buyers} global={global} currentAssignment={bestAssignment} />
               </div>
 

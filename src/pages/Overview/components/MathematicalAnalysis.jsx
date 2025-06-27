@@ -62,34 +62,6 @@ function MathematicalAnalysis() {
         </p>
     </div>
 
-    {/* Normalization Techniques */}
-    <div className="mb-8">
-    <h3 className="text-2xl font-bold text-gray-700 mb-4">Normalization Techniques</h3>
-    <p className="text-gray-600 mb-4">
-        To ensure that distances and supply values contribute proportionally to the final cost, we normalize them using
-        <strong> Max Normalization</strong>. This allows all values to be scaled between 0 and 1 before applying exponents.
-    </p>
-
-    <div className="bg-yellow-50 p-6 rounded-lg mb-4">
-        <h4 className="font-bold text-yellow-800 mb-2">Normalized Distance</h4>
-        <div className="text-center text-lg font-mono text-black mb-2">
-        <BlockMath math={"\\tilde{d}_{ij} = \\frac{d_{ij}}{\\max_k (d_{ik})}"} />
-        </div>
-        <p className="text-yellow-700">
-        Distance between farmer <InlineMath math="i" /> and buyer <InlineMath math="j" /> is divided by the maximum distance from farmer <InlineMath math="i" /> to all buyers. This ensures relative proximity is captured.
-        </p>
-    </div>
-
-    <div className="bg-yellow-50 p-6 rounded-lg">
-        <h4 className="font-bold text-yellow-800 mb-2">Normalized Farmer Supply</h4>
-        <div className="text-center text-lg font-mono text-black mb-2">
-        <BlockMath math={"\\tilde{s}_{if} = \\frac{s_{if}}{\\max_k (s_{ik})}"} />
-        </div>
-        <p className="text-yellow-700">
-        Supply of produce <InlineMath math="f" /> from farmer <InlineMath math="i" /> is normalized against the maximum supply of any produce by that farmer, so that produce types are weighted fairly across limited or abundant harvests.
-        </p>
-    </div>
-    </div>
 
     {/* Cost Formula */}
     <div className="mb-8">

@@ -1,7 +1,7 @@
 import { useGlobalData } from "../../../default-data/DefaultGlobalData";
 import { BlockMath, InlineMath } from "react-katex";
 
-function DisplaySolution({ farmerIndex, buyerIndex, solutionIndex = 0, distanceMatrix }) {
+function DisplaySolution({ farmerIndex, buyerIndex, solutionIndex = 0, distanceMatrix, totalCost }) {
   const { farmers, buyers, global } = useGlobalData();
 
   const alpha = global.penalty_undersupply_farmer;
@@ -13,34 +13,6 @@ function DisplaySolution({ farmerIndex, buyerIndex, solutionIndex = 0, distanceM
   const normalized_distance = distance / Math.max(...rowDistances);
 
   if (solutionIndex === -1) {
-    let costParts = [];
-    let solutionParts = [];
-    let totalCost = 0;
-
-    global.produce.forEach((produce, index) => {
-      const supplyFarmer = farmers[farmerIndex].produce[index].supply;
-      const buyerCurrent = buyers[buyerIndex].produce[index].supply_current;
-      const buyerLimit = buyers[buyerIndex].produce[index].supply_limit;
-
-      const farmerSupplyMax = Math.max(1e-6, ...farmers[farmerIndex].produce.map(p => p.supply));
-      const normalizedFarmerSupply = supplyFarmer / farmerSupplyMax;
-
-      const priority = produce.priority || 1;
-      const normalizedPriority = 1 / (priority + 1e-6);
-
-      const buyerCost = 1 + Math.pow(buyerCurrent / buyerLimit, delta);
-      const farmerCost = 1 + Math.pow(normalizedFarmerSupply, alpha);
-
-      const cost =
-        normalizedPriority *
-        (Math.pow(normalized_distance, beta) * buyerCost) /
-        farmerCost;
-
-      costParts.push(`C_{${produce.type}}`);
-      solutionParts.push(`${cost.toFixed(4)}`);
-      totalCost += cost;
-    });
-
     return (
       <div className="flex flex-col text-sm text-neutral-700">
         <p className="font-extrabold text-xl">Total Computation (All Produce Types)</p>
@@ -48,18 +20,13 @@ function DisplaySolution({ farmerIndex, buyerIndex, solutionIndex = 0, distanceM
         <p><span className="font-bold">Buyer:</span> {buyers[buyerIndex].store_name}</p>
         <br />
         <div>
-          <BlockMath math={`C_{total} = ${costParts.join(" + ")}`} />
-          <BlockMath math={`C_{total} = ${solutionParts.join(" + ")}`} />
-          <div className="mt-2 text-xl font-bold">
-            <BlockMath math={`C_{total} = ${totalCost.toFixed(4)}`} />
-            <BlockMath math={`C_{total} \\texttt{(scaled)} = ${(totalCost * 100).toFixed(4)}`} />
-          </div>
+          <BlockMath math={`C_{total} = ${totalCost.toFixed(4)}`} />
+          <BlockMath math={`C_{total} \\texttt{(scaled)} = ${(totalCost * 100).toFixed(4)}`} />
         </div>
       </div>
     );
   }
 
-  // --- SINGLE PRODUCE CALCULATION ---
   const produceType = global.produce[solutionIndex].type;
   const supplyFarmer = farmers[farmerIndex].produce[solutionIndex].supply;
   const buyerCurrent = buyers[buyerIndex].produce[solutionIndex].supply_current;
@@ -107,7 +74,6 @@ function DisplaySolution({ farmerIndex, buyerIndex, solutionIndex = 0, distanceM
           </div>
         </div>
       </div>
-
     </div>
   );
 }
