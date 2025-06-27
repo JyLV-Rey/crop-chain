@@ -12,30 +12,30 @@ function DisplayDistanceMatrix({ distanceMatrix, buyers, farmers }) {
     <div className="flex flex-row w-fit gap-2 justify-between p-5 rounded-lg shadow-2xl">
       {/* Matrix Table */}
       <div className="flex flex-col text-xs h-full gap-2">
-        {/* Column Header: Farmers */}
+        {/* Column Header: Buyers */}
         <div className="flex flex-row w-full justify-between">
           <div className="rounded-md shadow-lg bg-amber-100 text-amber-800 font-extrabold w-40 p-2 text-center">
-            <p>Buyer ↓ / Farmer →</p>
+            <p>Farmer ↓ / Buyer →</p>
           </div>
-          {farmers.map((farmer, index) => (
+          {buyers.map((buyer, index) => (
             <div
               key={index}
-              className="rounded-md shadow-lg bg-purple-200 text-purple-800 font-extrabold w-25 p-2 text-center"
+              className="rounded-md shadow-lg bg-emerald-100 text-emerald-800 font-extrabold w-25 p-2 text-center"
             >
-              <p>{farmer.farm_name}</p>
+              <p>{buyer.store_name}</p>
             </div>
           ))}
         </div>
 
-        {/* Rows: Buyers */}
-        {buyers.map((buyer, buyerIndex) => (
-          <div key={buyerIndex} className="flex flex-row justify-between gap-2 items-center">
-            <div className="rounded-md shadow-lg bg-emerald-100 text-emerald-800 font-extrabold w-40 p-2 text-center">
-              <p>{buyer.store_name}</p>
+        {/* Rows: Farmers */}
+        {farmers.map((farmer, farmerIndex) => (
+          <div key={farmerIndex} className="flex flex-row justify-between gap-2 items-center">
+            <div className="rounded-md shadow-lg bg-purple-200 text-purple-800 font-extrabold w-40 p-2 text-center">
+              <p>{farmer.farm_name}</p>
             </div>
-            {farmers.map((farmer, farmerIndex) => (
+            {buyers.map((buyer, buyerIndex) => (
               <button
-                key={farmerIndex}
+                key={buyerIndex}
                 onClick={() => {
                   const isSame =
                     displayIndex.buyer_index === buyerIndex &&

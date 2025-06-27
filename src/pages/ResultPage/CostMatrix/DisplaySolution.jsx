@@ -8,13 +8,16 @@ function DisplaySolution({ farmerIndex, buyerIndex, solutionIndex = 0, distanceM
   const beta = global.penalty_distance;
   const delta = global.penalty_oversupply_buyer;
 
+  const farmer = farmers[farmerIndex];
+  const buyer = buyers[buyerIndex];
+
+  //  Access distance from farmer to buyer
   const distance = distanceMatrix[farmerIndex][buyerIndex].distance;
+
+  //  Normalize using all distances for the same farmer row
   const rowDistances = distanceMatrix[farmerIndex].map(cell => cell.distance);
   const rawNormalizedDistance = distance / Math.max(...rowDistances);
   const normalizedDistance = Math.pow(rawNormalizedDistance, beta);
-
-  const farmer = farmers[farmerIndex];
-  const buyer = buyers[buyerIndex];
 
   const farmerSupplyMax = Math.max(1e-6, ...farmer.produce.map(p => p.supply));
 
@@ -26,7 +29,7 @@ function DisplaySolution({ farmerIndex, buyerIndex, solutionIndex = 0, distanceM
     global.produce.forEach((produce, produceIndex) => {
       const type = produce.type;
       const priority = produce.priority || 1;
-      const normalizedPriority = 1 / priority; // match costMatrix
+      const normalizedPriority = 1 / priority;
 
       const supplyFarmer = farmer.produce[produceIndex].supply;
       const buyerCurrent = buyer.produce[produceIndex].supply_current;
@@ -55,9 +58,7 @@ function DisplaySolution({ farmerIndex, buyerIndex, solutionIndex = 0, distanceM
         <p><span className="font-bold">Farmer:</span> {farmer.farm_name}</p>
         <p><span className="font-bold">Buyer:</span> {buyer.store_name}</p>
         <br />
-
         <hr className="my-4" />
-
         <BlockMath math={`${symbolicSum}`} />
         <BlockMath math={`= ${numericSum}`} />
         <BlockMath math={`C_{total} = ${sum.toFixed(4)}`} />
@@ -67,7 +68,7 @@ function DisplaySolution({ farmerIndex, buyerIndex, solutionIndex = 0, distanceM
     );
   }
 
-  // Single-produce view
+  // SINGLE PRODUCE
   const produce = global.produce[solutionIndex];
   const produceType = produce.type;
   const priority = produce.priority || 1;

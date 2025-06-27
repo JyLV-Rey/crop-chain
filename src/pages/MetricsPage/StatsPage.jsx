@@ -29,7 +29,7 @@ function StatsPage() {
   const [bestDistanceAssignment, setBestDistanceAssignment] = useState(data.bestAssignment);
   const [bestUndersupplyAssignment, setBestUndersupplyAssignment] = useState(data.bestAssignment);
   const [bestOversupplyAssignment, setBestOversupplyAssignment] = useState(data.bestAssignment);
-  
+
   // awaits the distance matrix
   useEffect(() => {
     async function fetchMatrixes() {
