@@ -128,7 +128,6 @@ graph TD
 - Modern web browser (Chrome, Firefox, Safari, Edge)
 
 ### Quick Start
-should insert docker setup here
 
 ```bash
 # Clone the repository
