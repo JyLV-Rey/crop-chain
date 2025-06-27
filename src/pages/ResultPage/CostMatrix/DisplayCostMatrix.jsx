@@ -9,7 +9,7 @@ function DisplayCostMatrix({ costMatrix, buyers, farmers, global, distanceMatrix
     console.log(displayIndex);
   }, [displayIndex]);
 
-  if (bestAssignment.bestAssignment == undefined) return (<></>);
+  if (!bestAssignment?.bestAssignment) return null;
 
   function isAssigned(farmerIndex, buyerIndex) {
     return bestAssignment.bestAssignment.some(
@@ -22,41 +22,54 @@ function DisplayCostMatrix({ costMatrix, buyers, farmers, global, distanceMatrix
     <>
       <div className="flex flex-row w-fit gap-10 justify-between p-5 rounded-lg shadow-2xl">
         <div className="flex flex-col text-xs h-full gap-2">
-          <div className={`flex flex-row w-full justify-between`}>
-            <div className="rounded-md shadow-lg bg-amber-100 text-amber-800 font-extrabold w-40 text-bold p-2 text-center">Cost</div>
-            {farmers.map((farmer, index) => (
-              <div key={index} className="rounded-md shadow-lg bg-purple-200 text-purple-800 font-extrabold w-25 p-2 text-center">
-                {farmer.farm_name}
+          <div className="flex flex-row w-full justify-between">
+            <div className="rounded-md shadow-lg bg-amber-100 text-amber-800 font-extrabold w-40 p-2 text-center">Cost</div>
+            {buyers.map((buyer, index) => (
+              <div key={index} className="rounded-md shadow-lg bg-purple-200 text-purple-800 font-extrabold w-35 p-2 text-center">
+                {buyer.store_name}
               </div>
             ))}
           </div>
-          {costMatrix.map((row, buyerIndex) => (
-            <div key={buyerIndex} className={`flex flex-row justify-between gap-2 items-center`}>
-              <div className="rounded-md shadow-lg bg-emerald-100 text-emerald-800 font-extrabold w-40 text-bold p-2 text-center">
-                {buyers[buyerIndex].store_name}
+
+          {farmers.map((farmer, farmerIndex) => (
+            <div key={farmerIndex} className="flex flex-row justify-between gap-2 items-center">
+              <div className="rounded-md shadow-lg bg-emerald-100 text-emerald-800 font-extrabold w-40 p-2 text-center">
+                {farmer.farm_name}
               </div>
-              {row.map((cost, farmerIndex) => (
+              {buyers.map((buyer, buyerIndex) => (
                 <button
-                  key={farmerIndex}
-                  onClick={() => setDisplayIndex({ buyer_index: buyerIndex, farmer_index: farmerIndex })}
-                  className={`hover:scale-105 duration-200 ease-(--my-beizer) hover:bg-amber-100 hover:text-amber-700 shadow-lg font-bold cursor-pointer rounded-md w-25 p-2 text-center ${isAssigned(farmerIndex, buyerIndex) ? "bg-blue-100 text-blue-800" : "bg-neutral-100"}`}
+                  key={buyerIndex}
+                  onClick={() =>
+                    setDisplayIndex({ farmer_index: farmerIndex, buyer_index: buyerIndex })
+                  }
+                  className={`hover:scale-105 duration-200 hover:bg-amber-100 hover:text-amber-700 shadow-lg font-bold cursor-pointer rounded-md w-35 p-2 text-center ${
+                    isAssigned(farmerIndex, buyerIndex)
+                      ? "bg-blue-100 text-blue-800"
+                      : "bg-neutral-100"
+                  }`}
                 >
-                  {cost.toFixed(2)}
+                  {costMatrix[farmerIndex][buyerIndex]?.toFixed(2)}
                 </button>
               ))}
             </div>
           ))}
+
           {displayIndex.buyer_index !== undefined && displayIndex.farmer_index !== undefined && (
             <>
-              <p className="text-lg"><span className="font-bold">Total Recursive Iterations:</span> {bestAssignment.iteration}</p>
-              <p className="text-lg p-2 bg-blue-100 w-fit text-blue-800 rounded-xl">
-                <span className="font-bold">Total Minimum Cost:</span> {bestAssignment.minCost.toFixed(2)}
+              <p className="text-lg">
+                <span className="font-bold">Total Recursive Iterations:</span>{" "}
+                {bestAssignment.iteration}
               </p>
+              <p className="text-lg p-2 bg-blue-100 w-fit text-blue-800 rounded-xl">
+                <span className="font-bold">Total Minimum Cost:</span>{" "}
+                {bestAssignment.minCost.toFixed(2)}
+              </p>
+
               <p className="text-sm font-extrabold mt-5 text-neutral-700">View Computation (p)</p>
               <div className="flex flex-row justify-between gap-2 items-center text-neutral-600 font-semibold">
                 <button
                   onClick={() => setSelectedSolution(-1)}
-                  className="bg-neutral-100 flex-grow shadow-lg p-2 hover:scale-105 duration-200 ease-(--my-beizer) hover:bg-emerald-100 hover:text-emerald-700 font-bold cursor-pointer"
+                  className="bg-neutral-100 flex-grow shadow-lg p-2 hover:scale-105 hover:bg-purple-100 hover:text-purple-700 font-bold cursor-pointer"
                 >
                   Total Computation
                 </button>
@@ -64,7 +77,7 @@ function DisplayCostMatrix({ costMatrix, buyers, farmers, global, distanceMatrix
                   <button
                     key={index}
                     onClick={() => setSelectedSolution(index)}
-                    className="bg-neutral-100 flex-grow shadow-lg p-2 hover:scale-105 duration-200 ease-(--my-beizer) cursor-pointer hover:bg-blue-100 hover:text-blue-700 hover:text-bold"
+                    className="bg-neutral-100 flex-grow shadow-lg p-2 hover:scale-105 cursor-pointer hover:bg-blue-100 hover:text-blue-700"
                   >
                     {produce.type}
                   </button>
@@ -80,7 +93,7 @@ function DisplayCostMatrix({ costMatrix, buyers, farmers, global, distanceMatrix
             buyerIndex={displayIndex.buyer_index}
             solutionIndex={selectedSolution}
             distanceMatrix={distanceMatrix}
-            totalCost={costMatrix[displayIndex.buyer_index][displayIndex.farmer_index]}
+            totalCost={costMatrix[displayIndex.farmer_index][displayIndex.buyer_index]}
           />
         )}
       </div>
