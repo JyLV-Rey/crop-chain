@@ -7,7 +7,7 @@ function FarmerField( {farmer, global }) {
             <h1 className="text-xl font-extrabold">
               {farmer.last_name}, {farmer.first_name}
             </h1>
-            <h2 className="font-bold text-lg">{farmer.farm_name}</h2>
+            <h2 className="font-bold text-sm">{farmer.farm_name}</h2>
             <p className="font-light text-sm">
               {farmer.location.latitude.toFixed(4)}, {farmer.location.longitude.toFixed(4)}
             </p>

@@ -82,14 +82,14 @@ function DisplaySolution({ farmerIndex, buyerIndex, solutionIndex = 0, distanceM
     farmerCost;
 
   return (
-    <div className="flex flex-col text-sm text-neutral-700">
+    <div className="flex flex-col w-full text-sm text-neutral-700">
       <p className="font-extrabold text-xl">Cost for {produceType}</p>
       <p><span className="font-bold">Farmer:</span> {farmer.farm_name}</p>
       <p><span className="font-bold">Buyer:</span> {buyer.store_name}</p>
       <br />
 
-      <div className="flex flex-row gap-10">
-        <div className="flex flex-col mt-2 gap-2">
+      <div className="flex flex-row gap-2">
+        <div className="flex flex-col mt-2 w-45 text-xs gap-2">
           <InlineMath math={`d = ${distance.toFixed(2)}`} />
           <InlineMath math={`\\tilde{d} = \\frac{${distance.toFixed(2)}}{${Math.max(...rowDistances).toFixed(2)}} = ${normalized_distance.toFixed(4)}`} />
           <InlineMath math={`s = ${supplyFarmer}`} />
@@ -100,11 +100,11 @@ function DisplaySolution({ farmerIndex, buyerIndex, solutionIndex = 0, distanceM
           <InlineMath math={`\\tilde{P}_{${produceType}} = \\frac{1}{${priority}} = ${normalizedPriority.toFixed(4)}`} />
         </div>
 
-        <div className="flex flex-col mt-2">
+        <div className="flex flex-col text-sm mt-2">
           <BlockMath
             math={`C_{${produceType}} = ${normalizedPriority.toFixed(4)} \\cdot \\frac{${normalized_distance.toFixed(4)}^{${beta}} \\cdot \\left(1 + \\left( \\frac{${buyerCurrent}}{${buyerLimit}} \\right)^{${delta}} \\right)}{${normalizedFarmerSupply.toFixed(4)}^{${alpha}}}`}
           />
-          <div className="text-2xl">
+          <div className="t">
             <BlockMath math={`C_{${produceType}} = ${cost.toFixed(4)}`} />
           </div>
         </div>
