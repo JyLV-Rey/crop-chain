@@ -1,24 +1,3 @@
-const nominatimCache = new Map(); // To avoid redundant lookups
-
-async function reverseGeocode({ latitude, longitude }) {
-  const key = `${latitude},${longitude}`;
-  if (nominatimCache.has(key)) return nominatimCache.get(key);
-
-  const url = `http://localhost:3002/api/reverse?lat=${latitude}&lon=${longitude}`;
-  const res = await fetch(url);
-
-  if (!res.ok) {
-    const text = await res.text();
-    throw new Error(`Nominatim error: ${res.status} - ${text}`);
-  }
-
-  const data = await res.json();
-  const locationName = data.display_name || "Unknown location";
-
-  nominatimCache.set(key, locationName);
-  return locationName;
-}
-
 async function getDistanceValhalla(start, end) {
   const url = 'http://localhost:3001/api/route';
 
@@ -60,16 +39,13 @@ export default async function getDistanceMatrix(buyers, farmers) {
   for (const farmer of farmers) {
     const row = [];
 
-    const farmerLocationName = await reverseGeocode(farmer.location);
-
     for (const buyer of buyers) {
-      const buyerLocationName = await reverseGeocode(buyer.location);
       const valhallaData = await getDistanceValhalla(farmer.location, buyer.location);
 
       row.push({
         ...valhallaData,
-        buyer_location_name: buyerLocationName,
-        farmer_location_name: farmerLocationName
+        buyer_location_name: "N/A",
+        farmer_location_name: "N/A"
       });
     }
 

@@ -7,40 +7,35 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
-function BuyerSaturationStats({ buyers, farmers, bestAssignment, bestUndersupplyAssignment }) {
+function BuyerSaturationStats({ buyers, farmers, bestAssignment, global, bestUndersupplyAssignment }) {
   // Compute how fulfilled each buyer is
-  const computeSaturation = (assignment) => {
-    const buyerTotals = buyers.map(() => 0);
-    assignment.bestAssignment.forEach(([f, b]) => {
-      const farmer = farmers[f];
-      farmer.produce.forEach((produce) => {
-        buyerTotals[b] += produce.supply;
-      });
+const computeSaturation = (assignment) => {
+  const buyerTotals = buyers.map(() => global.produce.map(() => 0));
+
+  assignment.forEach(([f, b]) => {
+    const farmer = farmers[f];
+    farmer.produce.forEach((produce, i) => {
+      buyerTotals[b][i] += produce.supply;
     });
+  });
 
-    return buyers.map((buyer, i) => {
-      const totalNeeded = buyer.produce.reduce((acc, p) => acc + p.supply_limit, 0);
-      const fulfilled = buyerTotals[i];
-      return Math.min((fulfilled / totalNeeded) * 100, 100); // Cap at 100%
-    });
-  };
+  return buyers.map((buyer, bIndex) => {
+    const totalNeeded = buyer.produce.reduce((sum, p) => sum + p.supply_limit, 0);
+    const totalFulfilled = buyer.produce.reduce((sum, p, i) => {
+      return sum + Math.min(buyerTotals[bIndex][i], p.supply_limit);
+    }, 0);
 
-  // Map each buyer to the assigned farmer name
-  const getFarmerNamesFromAssignments = (assignment) => {
-    const names = buyers.map(() => "Unassigned");
-    assignment.bestAssignment.forEach(([farmerIndex, buyerIndex]) => {
-      names[buyerIndex] = farmers[farmerIndex].farm_name;
-    });
-    return names;
-  };
+    return Math.min((totalFulfilled / totalNeeded) * 100, 100);
+  });
+};
 
-  const currentSaturation = computeSaturation(bestAssignment);
-  const bestSaturation = computeSaturation(bestUndersupplyAssignment);
 
-  const currentFarmerNames = getFarmerNamesFromAssignments(bestAssignment);
-  const bestFarmerNames = getFarmerNamesFromAssignments(bestUndersupplyAssignment);
+
+  const currentSaturation = computeSaturation(bestAssignment.bestAssignment);
+  const bestSaturation = computeSaturation(bestUndersupplyAssignment.bestAssignment);
 
   const totalCurrent = currentSaturation.reduce((a, b) => a + b, 0);
   const totalBest = bestSaturation.reduce((a, b) => a + b, 0);
@@ -54,26 +49,18 @@ function BuyerSaturationStats({ buyers, farmers, bestAssignment, bestUndersupply
     labels: buyers.map((b) => b.store_name),
     datasets: [
       {
-        label: "Optimal Assignment (Min. Undersupply)",
-        data: bestSaturation,
-        backgroundColor: "rgba(54, 162, 235, 0.5)",
-        borderColor: "rgba(54, 162, 235, 1)",
-        borderWidth: 1,
-        datalabels: {
-          display: true,
-          formatter: (_, context) => bestFarmerNames[context.dataIndex],
-        },
-      },
-      {
         label: "Current Assignment (You)",
         data: currentSaturation,
         backgroundColor: "rgba(255, 99, 132, 0.5)",
         borderColor: "rgba(255, 99, 132, 1)",
         borderWidth: 1,
-        datalabels: {
-          display: true,
-          formatter: (_, context) => currentFarmerNames[context.dataIndex],
-        },
+      },
+      {
+        label: "Optimal Assignment (Min Undersupply)",
+        data: bestSaturation,
+        backgroundColor: "rgba(54, 162, 235, 0.5)",
+        borderColor: "rgba(54, 162, 235, 1)",
+        borderWidth: 1,
       },
     ],
   };
@@ -82,22 +69,10 @@ function BuyerSaturationStats({ buyers, farmers, bestAssignment, bestUndersupply
     responsive: true,
     plugins: {
       legend: { position: "top" },
-      datalabels: {
-        anchor: "end",
-        align: "top",
-        font: {
-          weight: "bold",
-        },
-      },
       tooltip: {
         callbacks: {
           label: function (context) {
-            const buyerIndex = context.dataIndex;
-            const datasetLabel = context.dataset.label;
-            const farmerName = datasetLabel.includes("Optimal")
-              ? bestFarmerNames[buyerIndex]
-              : currentFarmerNames[buyerIndex];
-            return `${datasetLabel}: ${context.parsed.y.toFixed(2)}% (Farmer: ${farmerName})`;
+            return `${context.dataset.label}: ${context.parsed.y.toFixed(2)}%`;
           },
         },
       },
@@ -106,14 +81,14 @@ function BuyerSaturationStats({ buyers, farmers, bestAssignment, bestUndersupply
       y: {
         beginAtZero: true,
         max: 100,
-        title: { display: true, text: "Fulfillment (%)" },
+        title: { display: true, text: "Buyer Need Fulfillment (%)" },
       },
     },
   };
 
   return (
-    <div className="flex flex-row mt-6 gap-4 w-full">
-      <div className="text-lg bg-neutral-100 p-4 rounded-lg w-1/2">
+    <div className="flex flex-col md:flex-row mt-6 gap-4 w-full">
+      <div className="text-lg bg-neutral-100 p-4 rounded-lg w-full md:w-1/2">
         <p className="font-bold text-2xl mb-2">Buyer Saturation Metrics</p>
 
         <p>
@@ -155,7 +130,7 @@ function BuyerSaturationStats({ buyers, farmers, bestAssignment, bestUndersupply
         </p>
       </div>
 
-      <div className="w-1/2">
+      <div className="w-full md:w-1/2">
         <Bar data={data} options={options} />
       </div>
     </div>

@@ -1,21 +1,33 @@
-function costMatrix(farmers, buyers, distanceMatrix, global, disregardDistance = false, disregardUndersupply = false, disregardOversupply = false) {
+function costMatrix(farmers, buyers, distanceMatrix, global, isolationCase = 0) {
   const matrix = [];
 
   let penalty_oversupply = global.penalty_oversupply_buyer;
   let penalty_undersupply = global.penalty_undersupply_farmer;
   let penalty_distance = global.penalty_distance;
+  let disregardOversupply = false;
+  let disregardUndersupply = false;
 
   // This is for the statistics page, i needed to compute for the perfect assignment disregarding each individual parameter.
-  if (disregardDistance) {
-    penalty_distance = 0;
-  }
-
-  if (disregardUndersupply) {
-    penalty_undersupply = 0;
-  }
-
-  if (disregardOversupply) {
-    penalty_oversupply = 0;
+  switch (isolationCase) {
+    case 1:
+      penalty_distance = 1;
+      penalty_undersupply = 0;
+      penalty_oversupply = 0;
+      disregardOversupply = true;
+      disregardUndersupply = true;
+      break;
+    case 2:
+      penalty_distance = 0;
+      penalty_undersupply = 1;
+      penalty_oversupply = 0;
+      break;
+    case 3:
+      penalty_distance = 0;
+      penalty_undersupply = 0;
+      penalty_oversupply = 1;
+      break;
+    default:
+      break;
   }
 
   // note to self always ddouble check the indexes, it's hard to debug
@@ -31,7 +43,7 @@ function costMatrix(farmers, buyers, distanceMatrix, global, disregardDistance =
 
         // Distances
         const { distance } = distanceMatrix[farmerIndex][buyerIndex];
-        const rowDistances = distanceMatrix[buyerIndex].map(cell => cell.distance);
+        const rowDistances = distanceMatrix[farmerIndex].map(cell => cell.distance);
         const distance_cost = distance / Math.max(...rowDistances);
 
         // Priority of the Produce
@@ -44,7 +56,7 @@ function costMatrix(farmers, buyers, distanceMatrix, global, disregardDistance =
         const buyer_supply_current = buyer_supply.supply_current;
 
         // Supply of Farmer
-        const farmer_supply_max = Math.max(1e-6, ...farmer.produce.map(p => p.supply));
+        const farmer_supply_max = Math.max(1e-6, ...farmers.map(f => f.produce[produceIndex].supply));
         const farmer_supply = produce.supply;
 
         // Normalization Methods

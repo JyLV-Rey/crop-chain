@@ -14,6 +14,7 @@ import LineChart from "./components/LineChart";
 import GlobalSummaryStats from "./metrics/produce/TotalProduceAggregation";
 import PriorityUtilizationChart from "./components/PriorityUtilization";
 import PriorityConfidenceChart from "./components/PriorityConfidence";
+import RandomAssignmentButton from "../ResultPage/components/RandomAssignmentButton";
 
 function StatsPage() {
   const { farmers, buyers, global } = useGlobalData()
@@ -46,9 +47,9 @@ function StatsPage() {
   useEffect (() => {
     if (distanceMatrix.length > 0) {
       setCostMatrix(getCostMatrix(farmers, buyers, distanceMatrix, global))
-      setBestDistance(getCostMatrix(farmers, buyers, distanceMatrix, global, false, true, true));
-      setBestUndersupply(getCostMatrix(farmers, buyers, distanceMatrix, global, true, false, true));
-      setBestOversupply(getCostMatrix(farmers, buyers, distanceMatrix, global, true, true, false));
+      setBestDistance(getCostMatrix(farmers, buyers, distanceMatrix, global, 1));
+      setBestUndersupply(getCostMatrix(farmers, buyers, distanceMatrix, global, 2));
+      setBestOversupply(getCostMatrix(farmers, buyers, distanceMatrix, global, 3));
     };
   }, [buyers, distanceMatrix, farmers, global]);
 
@@ -64,9 +65,9 @@ function StatsPage() {
 
   if (bestAssignment.bestAssignment.length !== 0) {
    // console.log(JSON.stringify({ distanceMatrix, finalCostMatrix, bestAssignment }, null, 2));
-    console.log("Distance Matrix", distanceMatrix)
-    console.log("Final Cost Matrix", costMatrix)
-    console.log("Best Assignment", bestAssignment)
+ //   console.log("Distance Matrix", distanceMatrix)
+ //   console.log("Final Cost Matrix", costMatrix)
+ //   console.log("Best Assignment", bestAssignment)
 
     console.log("Best Distance Assignment", bestDistanceAssignment)
     console.log("Best Undersupply Assignment", bestUndersupplyAssignment)
@@ -84,19 +85,20 @@ function StatsPage() {
               <p className="font-extrabold text-5xl text-center">Statistics</p>
               <p className="font-semibold text-2xl text-center">Here are the statistics of the current session</p>
             </div>
+              
 
               <div>
                 <p className="font-bold text-3xl">Best Distance Comparison</p>
                 <p>The theoretical perfect distance assignment is given by the blue data, the red data is the current assignment. This is to show how close/far the current assignment is from the perfect assignment in terms of distance</p>
                   <DistanceStats buyers={buyers} farmers={farmers} bestAssignment={bestAssignment} bestDistanceAssignment={bestDistanceAssignment} distanceMatrix={distanceMatrix}/>
               </div>
-
+<RandomAssignmentButton farmers={farmers} buyers={buyers} setBestAssignment={setBestAssignment}></RandomAssignmentButton>
               <div>
               <p className="font-bold text-3xl">Best Oversupply Comparison</p>
               <p className="">
                 This section compares how much more produce buyers are receiving than they can handle. It shows how the current assignment leads to excess delivery (oversupply), and how the optimal assignment reduces that waste while still meeting demand.
               </p>
-                <BuyerSaturationStats buyers={buyers} farmers={farmers} bestAssignment={bestAssignment} bestUndersupplyAssignment={bestOversupplyAssignment} />
+                <BuyerSaturationStats global={global} buyers={buyers} farmers={farmers} bestAssignment={bestUndersupplyAssignment} bestUndersupplyAssignment={bestAssignment} />
               </div>
 
               <div>

@@ -1,31 +1,31 @@
 import { Bar } from "react-chartjs-2";
-import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, LineElement, PointElement } from "chart.js";
+import {
+  Chart as ChartJS,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+  LineElement,
+  PointElement
+} from "chart.js";
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, LineElement, PointElement);
 
 function ParamChart({ buyers, farmers, currentAssignment, bestAssignment, matrix }) {
-  // Build label→value maps
-  const labelDistanceMap = (assignment) =>
-    assignment.bestAssignment.reduce((acc, [f_index, b_index]) => {
-      const label = `${farmers[f_index].farm_name} → ${buyers[b_index].store_name}`;
-      acc[label] = matrix[f_index][b_index].distance;
-      return acc;
-    }, {});
+  const extractDistances = (assignment) => {
+    return assignment.bestAssignment.map(([f_index, b_index]) => {
+      return matrix[f_index][b_index].distance;
+    });
+  };
 
-  const currentMap = labelDistanceMap(currentAssignment);
-  const bestMap = labelDistanceMap(bestAssignment);
+  const current_data = extractDistances(currentAssignment);
+  const best_data = extractDistances(bestAssignment);
 
-  // Unique combined label set
-  const labels = Array.from(new Set([...Object.keys(currentMap), ...Object.keys(bestMap)]));
-
-  const current_data = labels.map(label => currentMap[label] ?? 0);
-  const best_data = labels.map(label => bestMap[label] ?? 0);
-
+  console.log({current_data, best_data});
   const maxValue = Math.max(...current_data.concat(best_data));
   const dynamicMax = Math.ceil(maxValue + 50);
 
   const data = {
-    labels,
+    labels: current_data.map((_, index) => `Pair ${index + 1}`),
     datasets: [
       {
         label: "Best Assignment by Distance",
@@ -60,6 +60,5 @@ function ParamChart({ buyers, farmers, currentAssignment, bestAssignment, matrix
 
   return <Bar data={data} options={options} />;
 }
-
 
 export default ParamChart;
